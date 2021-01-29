@@ -120,6 +120,11 @@ body {
     background-color: #d49f1b;
 }
 
-#elsewhereContainer {
+#elsewhereContainer, #progressContainer {
     opacity: 0;
+}
+
+#eduProgressBar {
+    background-color: #d49f1b;
+    transition: width 1.5s ease;
 }
