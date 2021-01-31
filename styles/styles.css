@@ -120,11 +120,17 @@ body {
     background-color: #d49f1b;
 }
 
-#elsewhereContainer, #progressContainer {
+#elsewhereContainer,
+#progressContainer {
     opacity: 0;
 }
 
 #eduProgressBar {
     background-color: #d49f1b;
     transition: width 1.5s ease;
+}
+
+#eduProgressBarWrapper {
+    background-color: #071625;
+    border: 1px solid #d49f1b;
 }
