@@ -111,6 +111,7 @@ body {
     color: #d49f1b;
     text-decoration: none;
     padding: 10px 30px;
+    transition-duration: 0.3s;
 }
 
 .button--gold:hover {
