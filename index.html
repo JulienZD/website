@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
 	<meta charset="UTF-8" />
@@ -16,9 +16,9 @@
 	<link rel="stylesheet" href="styles/styles.css" />
 </head>
 
-<body>
-	<div class="container">
-		<main class="text-left text-md-center">
+<body class="d-flex flex-column h-100">
+	<main class="text-left text-md-center">
+		<div id=#wrapper>
 			<h1 class="visuallyhidden">Hi, my name is Julien</h1>
 			<div id="introContainer">
 				<h1 aria-hidden="true">
@@ -48,8 +48,12 @@
 				</div>
 				<p class="text-left">I'm due to graduate on June 1st, 2023.</p>
 			</section>
-		</main>
-	</div>
+		</div>
+	</main>
+
+	<footer class="mt-auto text-right mb-sm-1">
+		<a class="pr-2" href="https://github.com/JulienZD/website">Source</a>
+	</footer>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="scripts/main.js"></script>
