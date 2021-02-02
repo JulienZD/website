@@ -3,7 +3,7 @@ displayIntro();
 function displayIntro() {
 	setAnimEvents();
 	const children = document.querySelector('#introContainer h1').children;
-	const duration = 1.25;
+	const duration = 1;
 
 	for (let i = 0; i < children.length; i++) {
 		const child = children[i];
@@ -21,11 +21,11 @@ function setAnimEvents() {
 	const progressContainer = document.querySelector('#progressContainer');
 
 	logo.addEventListener('animationstart', () => {
-		setTimeout(() => $('#elsewhereContainer').css('animation', '1s appear forwards'), 1500);
+		setTimeout(() => $('#elsewhereContainer').css('animation', '1s appear forwards'), 1000);
 	});
 
 	elsewhereContainer.addEventListener('animationstart', () => {
-		setTimeout(() => $('#progressContainer').css('animation', '1s appear forwards'), 1000);
+		setTimeout(() => $('#progressContainer').css('animation', '1s appear forwards'), 875);
 	});
 
 	progressContainer.addEventListener('animationstart', () => {
