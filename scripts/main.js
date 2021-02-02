@@ -1,18 +1,37 @@
-const julienLogo = document.querySelector('#julienLogo');
-const elsewhereContainer = document.querySelector('#elsewhereContainer');
-const progressContainer = document.querySelector('#progressContainer');
+displayIntro();
 
-julienLogo.addEventListener('animationstart', () => {
-	setTimeout(() => $('#elsewhereContainer').css('animation', '1s appear forwards'), 1500);
-});
+function displayIntro() {
+	setAnimEvents();
+	const children = document.querySelector('#introContainer h1').children;
+	const duration = 1.25;
 
-elsewhereContainer.addEventListener('animationstart', () => {
-	setTimeout(() => $('#progressContainer').css('animation', '1s appear forwards'), 1000);
-});
+	for (let i = 0; i < children.length; i++) {
+		const child = children[i];
 
-progressContainer.addEventListener('animationstart', () => {
-	setTimeout(() => displayEduProgress(), 150);
-});
+		child.style.animationDuration = `${duration * (i + 1)}s`;
+		child.style.animationDelay = `${i}s`;
+	}
+
+	logo.style.animationDelay = `${children.length}s`;
+}
+
+function setAnimEvents() {
+	const logo = document.querySelector('#logo');
+	const elsewhereContainer = document.querySelector('#elsewhereContainer');
+	const progressContainer = document.querySelector('#progressContainer');
+
+	logo.addEventListener('animationstart', () => {
+		setTimeout(() => $('#elsewhereContainer').css('animation', '1s appear forwards'), 1500);
+	});
+
+	elsewhereContainer.addEventListener('animationstart', () => {
+		setTimeout(() => $('#progressContainer').css('animation', '1s appear forwards'), 1000);
+	});
+
+	progressContainer.addEventListener('animationstart', () => {
+		setTimeout(() => displayEduProgress(), 150);
+	});
+}
 
 function displayEduProgress() {
 	const percentualProgress = `${getPercentualEduProgress().toFixed(2)}%`;

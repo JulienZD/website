@@ -83,26 +83,16 @@ body {
     color: #d49f1b;
 }
 
-#julienLogo {
+#logo {
     opacity: 0;
     animation: 2.25s appear forwards;
-    animation-delay: 2s;
     margin: auto;
 }
 
-.animHi {
+#introContainer h1 * {
     opacity: 0;
-    font-size: 5rem;
-    animation: 1.25s appear forwards;
-    margin-bottom: 0;
-}
-
-.animMyNameIs {
-    opacity: 0;
-    margin-top: 0;
-    font-size: 3rem;
-    animation: 2.5s appear forwards;
-    animation-delay: 1s;
+    animation: appear;
+    animation-fill-mode: forwards;
 }
 
 @keyframes appear {
