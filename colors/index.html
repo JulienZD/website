@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="Hi, I'm Julien" />
+	<meta property="og:description" content="Color Combination Previewer." />
+	<meta property="og:image" content="http://jzd.me/img/CircleJ.png" />
+	<meta property="og:url" content="https://jzd.me/colors" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<title>Color Combination Previewer</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../styles/styles.css" />
+</head>
+
+<body>
+	<main class="container">
+		<h1>Color Combination Previewer</h1>
+		<div class="row">
+			<form class="form mx-auto" action="javascript:previewColors()">
+				<div class="form-group">
+					<label class="control-label" for="colorList">Colors (newline separated)</label>
+					<textarea class="form-control" id="colorList" name="colorList" rows="10" cols="5"
+						placeholder="#000\n#aaa"></textarea>
+				</div>
+				<button class="button--gold">Preview color combinations</button>
+			</form>
+		</div>
+	</main>
+
+	<script>
+		const colorInput = document.getElementById('colorList');
+		colorInput.placeholder = colorInput.placeholder.replace(/\\n/g, '\n');
+		colorInput.style.lineHeight = '1.15rem';
+	</script>
+	<script src="colors.js"></script>
+</body>
+
+</html>
