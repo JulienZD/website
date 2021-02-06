@@ -74,27 +74,36 @@ function createText() {
 	return p;
 }
 
-const createButton = (textColor, bgColor) => {
-	const button = document.createElement('button');
-	button.className = 'btn btn-sm mr-1';
-	button.style.color = textColor;
-	button.textContent = 'Button';
-	// bgColor signifies whether the button should be outlined or not
-	if (bgColor) button.style.backgroundColor = bgColor;
-	else button.style.borderColor = textColor;
-	return button;
-}
-
 function createButtons(primary, secondary) {
 	const btnGroup = document.createElement('div');
 	btnGroup.className = 'd-flex mt-1';
 
-	const btn = createButton(primary, secondary);
-	const outlinedBtn = createButton(secondary);
+	const btn = createDefaultButton(primary, secondary);
+	const outlinedBtn = createOutlinedButton(secondary);
 
 	btnGroup.appendChild(btn);
 	btnGroup.appendChild(outlinedBtn);
 	return btnGroup;
+}
+
+function createButton(color) {
+	const button = document.createElement('button');
+	button.className = 'btn btn-sm mr-1';
+	button.style.color = color;
+	button.textContent = 'Button';
+	return button;
+}
+
+function createDefaultButton(textColor, bgColor) {
+	const button = createButton(textColor);
+	button.style.backgroundColor = bgColor;
+	return button;
+}
+
+function createOutlinedButton(color) {
+	const button = createButton(color);
+	button.style.borderColor = color;
+	return button;
 }
 
 function createCardFooter(primary, secondary) {
