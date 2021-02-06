@@ -74,6 +74,34 @@ a:hover {
     padding-bottom: 15px;
 }
 
+.custom-control-label::before {
+    background-color: var(--main-bg);
+    border-color: var(--main-text);
+}
+
+.form-control {
+    background-color: var(--main-bg);
+    color: var(--main-text);
+    border-color: var(--main-text);
+    filter: brightness(105%);
+}
+
+.form-control::placeholder {
+    color: var(--main-text);
+    opacity: 0.6;
+}
+
+.form-control:focus {
+    background-color: var(--main-bg);
+    color: var(--main-text);
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+    background-color: var(--main-text);
+    border-color: var(--main-text);
+    color: var(--main-bg);
+}
+
 .links {
     padding-top: 15px;
 }
