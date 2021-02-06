@@ -46,12 +46,8 @@ function displayColors(colorSet) {
 	container.innerHTML = '';
 	container.style.display = '';
 
-	const colors = {
-		primary: Array.from(colorSet),
-		secondary: Array.from(colorSet)
-	}
-	for (const primary of colors.primary) {
-		for (const secondary of colors.secondary) {
+	for (const primary of colorSet) {
+		for (const secondary of colorSet) {
 			if (primary === secondary) continue;
 			const wrapper = createColorPreview(primary, secondary);
 			container.appendChild(wrapper);
