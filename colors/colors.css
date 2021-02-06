@@ -1,7 +1,16 @@
+.card,
 .color-card {
     border: 3px solid transparent;
-    background-clip: padding-box;
     border-radius: 2.5%;
+}
+
+.card-body {
+    padding: 0.5rem;
+}
+
+.card-footer {
+    padding: 0.5rem !important;
+    border-top: none;
 }
 
 #colorList {

@@ -4,11 +4,9 @@ function getUniqueColors() {
 	return new Set(input.filter(c => c.match(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/)));
 }
 
-const createCardParent = (bgCol, txtCol) => {
+const createCard = () => {
 	const card = document.createElement('article');
-	card.className = 'col color-card p-2';
-	card.style.backgroundColor = bgCol;
-	card.style.color = txtCol;
+	card.className = 'card';
 	return card;
 }
 
@@ -22,15 +20,12 @@ function createHeaders(count) {
 	return hgroup;
 }
 
-function createTexts(primary, secondary) {
-	const texts = ['The quick brown fox jumps over the lazy dog', `Primary: ${primary}`, `Secondary: ${secondary}`]
+function createText() {
+	const text = 'The quick brown fox jumps over the lazy dog';
 	const textWrapper = document.createElement('div');
-	textWrapper.className = 'd-flex flex-column';
-	for (const text of texts) {
-		const span = document.createElement('span');
-		span.textContent = text;
-		textWrapper.appendChild(span);
-	}
+	const span = document.createElement('span');
+	span.textContent = text;
+	textWrapper.appendChild(span);
 	return textWrapper;
 }
 
@@ -57,9 +52,31 @@ function createButtons(primary, secondary) {
 	return btnGroup;
 }
 
+function createCardFooter(primary, secondary) {
+	const footer = document.createElement('div');
+	footer.className = 'card-footer d-flex flex-column text-muted';
+	const texts = [`Primary: ${primary}`, `Secondary: ${secondary}`];
+	texts.map(t => {
+		const small = document.createElement('small');
+		small.textContent = t;
+		footer.appendChild(small);
+	});
+	return footer;
+}
+
+function createCardBody(primary, secondary) {
+	const body = document.createElement('div');
+	body.className = 'card-body color-card';
+	body.style.backgroundColor = primary;
+	body.style.color = secondary;
+	const elements = [createHeaders(3), createText(), createButtons(primary, secondary)];
+	elements.map(e => body.appendChild(e));
+	return body;
+}
+
 function createColorCard(primary, secondary) {
-	const parent = createCardParent(primary, secondary);
-	const children = [createHeaders(3), createTexts(primary, secondary), createButtons(primary, secondary)];
+	const parent = createCard();
+	const children = [createCardBody(primary, secondary), createCardFooter(primary, secondary)];
 	children.map(c => parent.appendChild(c));
 	return parent;
 }
