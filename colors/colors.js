@@ -34,9 +34,32 @@ function createTexts(primary, secondary) {
 	return textWrapper;
 }
 
+const createButton = (textColor, bgColor) => {
+	const btn = document.createElement('button');
+	btn.className = 'btn btn-sm mr-1';
+	btn.style.color = textColor;
+	btn.textContent = 'Button';
+	// bgColor signifies whether the button should be outlined or not
+	if (bgColor) btn.style.backgroundColor = bgColor;
+	else btn.style.borderColor = textColor;
+	return btn;
+}
+
+function createButtons(primary, secondary) {
+	const btnGroup = document.createElement('div');
+	btnGroup.className = 'd-flex mt-1';
+
+	const btn = createButton(primary, secondary);
+	const outlineBtn = createButton(secondary);
+
+	btnGroup.appendChild(btn);
+	btnGroup.appendChild(outlineBtn);
+	return btnGroup;
+}
+
 function createColorCard(primary, secondary) {
 	const parent = createCardParent(primary, secondary);
-	const children = [createHeaders(3), createTexts(primary, secondary)];
+	const children = [createHeaders(3), createTexts(primary, secondary), createButtons(primary, secondary)];
 	children.map(c => parent.appendChild(c));
 	return parent;
 }
