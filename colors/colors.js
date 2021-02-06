@@ -1,12 +1,13 @@
 const colorWellInput = document.getElementById('colorWell');
-const textarea = document.getElementById('colorList');
+const colorListInput = document.getElementById('colorList');
+colorListInput.placeholder = colorListInput.placeholder.replace(/\\n/g, '\n');
 colorWellInput.addEventListener('change', addSelectedColorToInputList, false);
 
 function addSelectedColorToInputList() {
 	if (!colorWellInput.value) return;
-	const currentValues = textarea.value.split(/\r?\n/);
-	let valueToAdd = textarea.value && currentValues[currentValues.length - 1] !== '' ? `\n${colorWellInput.value}` : colorWellInput.value;
-	textarea.value += valueToAdd;
+	const currentValues = colorListInput.value.split(/\r?\n/);
+	let valueToAdd = colorListInput.value && currentValues[currentValues.length - 1] !== '' ? `\n${colorWellInput.value}` : colorWellInput.value;
+	colorListInput.value += valueToAdd;
 }
 
 function previewColors() {
@@ -16,7 +17,7 @@ function previewColors() {
 }
 
 function getUniqueColors() {
-	const input = textarea.value.trim().split('\n');
+	const input = colorListInput.value.trim().split('\n');
 	return new Set(input.filter(c => c.match(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/)));
 }
 
