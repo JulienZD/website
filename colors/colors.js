@@ -57,5 +57,6 @@ function displayColors(colorSet) {
 
 function previewColors() {
 	const colors = getUniqueColors();
+	if (colors.size <= 1) return;
 	displayColors(colors);
 }
