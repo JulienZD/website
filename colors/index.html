@@ -12,6 +12,11 @@
 	<title>Color Combination Previewer</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="../styles/styles.css" />
+	<style>
+		.background {
+			border: 1px dashed black;
+		}
+	</style>
 </head>
 
 <body>
@@ -24,8 +29,11 @@
 					<textarea class="form-control" id="colorList" name="colorList" rows="10" cols="5"
 						placeholder="#000\n#aaa"></textarea>
 				</div>
-				<button class="button--gold">Preview color combinations</button>
+				<button class="button--gold btn-block">Preview colors</button>
 			</form>
+		</div>
+		<div id="colorPreviews" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 mt-3 rounded bg-light p-2"
+			style="display: none;">
 		</div>
 	</main>
 
