@@ -20,7 +20,11 @@
 	<main class="container">
 		<h1 class="text-center">Color Combination Previewer</h1>
 		<div class="row">
-			<form class="form mx-auto" action="javascript:previewColors()">
+			<form class="mx-auto" action="javascript:previewColors()">
+				<div class="form-group">
+					<label class="control-label" for="colorWell">Add color to list (optional)</label>
+					<input id="colorWell" class="form-control" type="color" value="#ffffff" />
+				</div>
 				<div class="form-group">
 					<label class="control-label" for="colorList">Colors (newline separated)</label>
 					<textarea class="form-control" id="colorList" name="colorList" rows="10" cols="5"
@@ -44,11 +48,6 @@
 			<a class="j-link" href="https://github.com/JulienZD/website">Source</a>
 		</div>
 	</footer>
-
-	<script>
-		const colorInput = document.getElementById('colorList');
-		colorInput.placeholder = colorInput.placeholder.replace(/\\n/g, '\n');
-	</script>
 	<script src="colors.js"></script>
 </body>
 
