@@ -37,7 +37,7 @@ a:hover {
     color: var(--main-text);
 }
 
-main {
+#main {
     height: 100%;
     max-width: 720px;
     margin: 0 auto;
