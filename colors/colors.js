@@ -10,11 +10,11 @@ const createCard = () => {
 	return card;
 }
 
-function createHeaders(count) {
+function createHeadings(count) {
 	const hgroup = document.createElement('hgroup');
 	for (let i = 1; i <= count; i++) {
 		const header = document.createElement(`h${i}`);
-		header.textContent = `Header ${i}`;
+		header.textContent = `Heading ${i}`;
 		hgroup.appendChild(header);
 	}
 	return hgroup;
@@ -69,7 +69,7 @@ function createCardBody(primary, secondary) {
 	body.className = 'card-body color-card';
 	body.style.backgroundColor = primary;
 	body.style.color = secondary;
-	const elements = [createHeaders(3), createText(), createButtons(primary, secondary)];
+	const elements = [createHeadings(3), createText(), createButtons(primary, secondary)];
 	elements.map(e => body.appendChild(e));
 	return body;
 }
