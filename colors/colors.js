@@ -6,7 +6,7 @@ function getUniqueColors() {
 
 const createCard = () => {
 	const card = document.createElement('article');
-	card.className = 'card';
+	card.className = 'card bg-dark';
 	return card;
 }
 
@@ -54,7 +54,7 @@ function createButtons(primary, secondary) {
 
 function createCardFooter(primary, secondary) {
 	const footer = document.createElement('div');
-	footer.className = 'card-footer d-flex flex-column text-muted';
+	footer.className = 'card-footer d-flex flex-column bg-dark text-light';
 	const texts = [`Primary: ${primary}`, `Secondary: ${secondary}`];
 	texts.map(t => {
 		const small = document.createElement('small');
