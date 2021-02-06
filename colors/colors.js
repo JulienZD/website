@@ -4,12 +4,12 @@ function getUniqueColors() {
 	return new Set(input.filter(c => c.match(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/)));
 }
 
-const createWrapper = (bgCol, txtCol) => {
-	const wrapper = document.createElement('article');
-	wrapper.className = 'col background p-2';
-	wrapper.style.backgroundColor = bgCol;
-	wrapper.style.color = txtCol;
-	return wrapper;
+const createCardParent = (bgCol, txtCol) => {
+	const card = document.createElement('article');
+	card.className = 'col color-card p-2';
+	card.style.backgroundColor = bgCol;
+	card.style.color = txtCol;
+	return card;
 }
 
 function createHeaders(count) {
@@ -34,8 +34,8 @@ function createTexts(primary, secondary) {
 	return textWrapper;
 }
 
-function createColorPreview(primary, secondary) {
-	const parent = createWrapper(primary, secondary);
+function createColorCard(primary, secondary) {
+	const parent = createCardParent(primary, secondary);
 	const children = [createHeaders(3), createTexts(primary, secondary)];
 	children.map(c => parent.appendChild(c));
 	return parent;
@@ -49,8 +49,8 @@ function displayColors(colorSet) {
 	for (const primary of colorSet) {
 		for (const secondary of colorSet) {
 			if (primary === secondary) continue;
-			const wrapper = createColorPreview(primary, secondary);
-			container.appendChild(wrapper);
+			const colorCard = createColorCard(primary, secondary);
+			container.appendChild(colorCard);
 		}
 	}
 }
