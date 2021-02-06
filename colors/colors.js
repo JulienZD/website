@@ -64,7 +64,8 @@ function createColorCard(primary, secondary) {
 	return parent;
 }
 
-function displayColors(colorSet) {
+function displayColors(colorSet, shouldShuffle = false) {
+	const cards = [];
 	const container = document.getElementById('colorPreviews');
 	container.innerHTML = '';
 	container.style.display = '';
@@ -73,13 +74,26 @@ function displayColors(colorSet) {
 		for (const secondary of colorSet) {
 			if (primary === secondary) continue;
 			const colorCard = createColorCard(primary, secondary);
-			container.appendChild(colorCard);
+			cards.push(colorCard);
 		}
 	}
+
+	if (shouldShuffle) shuffleArray(cards);
+	cards.map(c => container.appendChild(c));
 }
+
+const shouldShuffle = () => document.getElementById('shuffle').checked;
 
 function previewColors() {
 	const colors = getUniqueColors();
 	if (colors.size <= 1) return;
-	displayColors(colors);
+	displayColors(colors, shouldShuffle());
+}
+
+// Shuffle function by https://stackoverflow.com/a/12646864
+function shuffleArray(array) {
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]];
+	}
 }
