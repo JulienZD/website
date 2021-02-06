@@ -13,6 +13,13 @@
     border-top: none;
 }
 
+.badge:empty {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
 #colorList {
     line-height: 1.15rem;
 }

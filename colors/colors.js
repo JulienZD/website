@@ -52,6 +52,13 @@ function createButtons(primary, secondary) {
 	return btnGroup;
 }
 
+const createBadge = (bgColor) => {
+	const badge = document.createElement('span');
+	badge.className = 'badge badge-pill ml-1';
+	badge.style.backgroundColor = bgColor;
+	return badge;
+}
+
 function createCardFooter(primary, secondary) {
 	const footer = document.createElement('div');
 	footer.className = 'card-footer d-flex flex-column bg-dark text-light';
@@ -59,6 +66,8 @@ function createCardFooter(primary, secondary) {
 	texts.map(t => {
 		const small = document.createElement('small');
 		small.textContent = t;
+		const badge = t.startsWith('Primary') ? createBadge(primary) : createBadge(secondary);
+		small.appendChild(badge);
 		footer.appendChild(small);
 	});
 	return footer;
