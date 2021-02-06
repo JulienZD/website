@@ -1,3 +1,14 @@
+const colorWellInput = document.getElementById('colorWell');
+const textarea = document.getElementById('colorList');
+colorWellInput.addEventListener('change', addSelectedColorToInputList, false);
+
+function addSelectedColorToInputList() {
+	if (!colorWellInput.value) return;
+	const currentValues = textarea.value.split(/\r?\n/);
+	let valueToAdd = textarea.value && currentValues[currentValues.length - 1] !== '' ? `\n${colorWellInput.value}` : colorWellInput.value;
+	textarea.value += valueToAdd;
+}
+
 function previewColors() {
 	const colors = getUniqueColors();
 	if (colors.size <= 1) return;
@@ -5,7 +16,6 @@ function previewColors() {
 }
 
 function getUniqueColors() {
-	const textarea = document.getElementById('colorList');
 	const input = textarea.value.trim().split('\n');
 	return new Set(input.filter(c => c.match(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/)));
 }
