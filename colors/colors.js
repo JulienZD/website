@@ -1,7 +1,44 @@
+function previewColors() {
+	const colors = getUniqueColors();
+	if (colors.size <= 1) return;
+	displayColors(colors, shouldShuffle());
+}
+
 function getUniqueColors() {
 	const textarea = document.getElementById('colorList');
 	const input = textarea.value.trim().split('\n');
 	return new Set(input.filter(c => c.match(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/)));
+}
+
+const shouldShuffle = () => document.getElementById('shuffle').checked;
+
+function displayColors(colorSet, shouldShuffle = false) {
+	const container = document.getElementById('colorPreviews');
+	container.innerHTML = '';
+	container.style.display = '';
+
+	const cards = createColorCards(colorSet);
+	if (shouldShuffle) shuffleArray(cards);
+	cards.forEach(card => container.appendChild(card));
+}
+
+function createColorCards(colorSet) {
+	const cards = [];
+	for (const primary of colorSet) {
+		for (const secondary of colorSet) {
+			if (primary === secondary) continue;
+			const card = createColorCard(primary, secondary);
+			cards.push(card);
+		}
+	}
+	return cards;
+}
+
+function createColorCard(primary, secondary) {
+	const parent = createCard();
+	const children = [createCardBody(primary, secondary), createCardFooter(primary, secondary)];
+	children.forEach(c => parent.appendChild(c));
+	return parent;
 }
 
 const createCard = () => {
@@ -10,34 +47,42 @@ const createCard = () => {
 	return card;
 }
 
+function createCardBody(primary, secondary) {
+	const body = document.createElement('div');
+	body.className = 'card-body color-card';
+	body.style.backgroundColor = primary;
+	body.style.color = secondary;
+	const elements = [createHeadings(3), createText(), createButtons(primary, secondary)];
+	elements.forEach(e => body.appendChild(e));
+	return body;
+}
+
 function createHeadings(count) {
-	const hgroup = document.createElement('hgroup');
+	if (count > 6) count = 6;
+	const hGroup = document.createElement('hgroup');
 	for (let i = 1; i <= count; i++) {
 		const header = document.createElement(`h${i}`);
 		header.textContent = `Heading ${i}`;
-		hgroup.appendChild(header);
+		hGroup.appendChild(header);
 	}
-	return hgroup;
+	return hGroup;
 }
 
 function createText() {
-	const text = 'The quick brown fox jumps over the lazy dog';
-	const textWrapper = document.createElement('div');
-	const span = document.createElement('span');
-	span.textContent = text;
-	textWrapper.appendChild(span);
-	return textWrapper;
+	const p = document.createElement('p');
+	p.textContent = 'The quick brown fox jumps over the lazy dog';
+	return p;
 }
 
 const createButton = (textColor, bgColor) => {
-	const btn = document.createElement('button');
-	btn.className = 'btn btn-sm mr-1';
-	btn.style.color = textColor;
-	btn.textContent = 'Button';
+	const button = document.createElement('button');
+	button.className = 'btn btn-sm mr-1';
+	button.style.color = textColor;
+	button.textContent = 'Button';
 	// bgColor signifies whether the button should be outlined or not
-	if (bgColor) btn.style.backgroundColor = bgColor;
-	else btn.style.borderColor = textColor;
-	return btn;
+	if (bgColor) button.style.backgroundColor = bgColor;
+	else button.style.borderColor = textColor;
+	return button;
 }
 
 function createButtons(primary, secondary) {
@@ -45,11 +90,25 @@ function createButtons(primary, secondary) {
 	btnGroup.className = 'd-flex mt-1';
 
 	const btn = createButton(primary, secondary);
-	const outlineBtn = createButton(secondary);
+	const outlinedBtn = createButton(secondary);
 
 	btnGroup.appendChild(btn);
-	btnGroup.appendChild(outlineBtn);
+	btnGroup.appendChild(outlinedBtn);
 	return btnGroup;
+}
+
+function createCardFooter(primary, secondary) {
+	const footer = document.createElement('div');
+	footer.className = 'card-footer d-flex flex-column bg-dark text-light';
+	const texts = [`Primary: ${primary}`, `Secondary: ${secondary}`];
+	texts.forEach(text => {
+		const small = document.createElement('small');
+		small.textContent = text;
+		const badge = text.startsWith('Primary') ? createBadge(primary) : createBadge(secondary);
+		small.appendChild(badge);
+		footer.appendChild(small);
+	});
+	return footer;
 }
 
 const createBadge = (bgColor) => {
@@ -57,63 +116,6 @@ const createBadge = (bgColor) => {
 	badge.className = 'badge badge-pill ml-1';
 	badge.style.backgroundColor = bgColor;
 	return badge;
-}
-
-function createCardFooter(primary, secondary) {
-	const footer = document.createElement('div');
-	footer.className = 'card-footer d-flex flex-column bg-dark text-light';
-	const texts = [`Primary: ${primary}`, `Secondary: ${secondary}`];
-	texts.map(t => {
-		const small = document.createElement('small');
-		small.textContent = t;
-		const badge = t.startsWith('Primary') ? createBadge(primary) : createBadge(secondary);
-		small.appendChild(badge);
-		footer.appendChild(small);
-	});
-	return footer;
-}
-
-function createCardBody(primary, secondary) {
-	const body = document.createElement('div');
-	body.className = 'card-body color-card';
-	body.style.backgroundColor = primary;
-	body.style.color = secondary;
-	const elements = [createHeadings(3), createText(), createButtons(primary, secondary)];
-	elements.map(e => body.appendChild(e));
-	return body;
-}
-
-function createColorCard(primary, secondary) {
-	const parent = createCard();
-	const children = [createCardBody(primary, secondary), createCardFooter(primary, secondary)];
-	children.map(c => parent.appendChild(c));
-	return parent;
-}
-
-function displayColors(colorSet, shouldShuffle = false) {
-	const cards = [];
-	const container = document.getElementById('colorPreviews');
-	container.innerHTML = '';
-	container.style.display = '';
-
-	for (const primary of colorSet) {
-		for (const secondary of colorSet) {
-			if (primary === secondary) continue;
-			const colorCard = createColorCard(primary, secondary);
-			cards.push(colorCard);
-		}
-	}
-
-	if (shouldShuffle) shuffleArray(cards);
-	cards.map(c => container.appendChild(c));
-}
-
-const shouldShuffle = () => document.getElementById('shuffle').checked;
-
-function previewColors() {
-	const colors = getUniqueColors();
-	if (colors.size <= 1) return;
-	displayColors(colors, shouldShuffle());
 }
 
 // Shuffle function by https://stackoverflow.com/a/12646864
