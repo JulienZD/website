@@ -10,13 +10,7 @@
 	<title>Color Combination Previewer</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="../styles/styles.css" />
-	<style>
-		.color-card {
-			border: 3px solid transparent;
-			background-clip: padding-box;
-			border-radius: 2.5%;
-		}
-	</style>
+	<link rel="stylesheet" href="colors.css" />
 </head>
 
 <body>
@@ -46,7 +40,6 @@
 	<script>
 		const colorInput = document.getElementById('colorList');
 		colorInput.placeholder = colorInput.placeholder.replace(/\\n/g, '\n');
-		colorInput.style.lineHeight = '1.15rem';
 	</script>
 	<script src="colors.js"></script>
 </body>

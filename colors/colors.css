@@ -1,0 +1,9 @@
+.color-card {
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    border-radius: 2.5%;
+}
+
+#colorList {
+    line-height: 1.15rem;
+}
