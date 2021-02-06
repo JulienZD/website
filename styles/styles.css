@@ -47,13 +47,13 @@ main {
     align-items: center;
 }
 
-footer a,
-footer a:hover {
-    text-decoration: none;
+.j-link,
+.j-link:hover {
+    text-decoration: none !important;
 }
 
-footer a:hover {
-    filter: brightness(150%);
+.j-link:hover {
+    filter: brightness(150%) !important;
 }
 
 .title {
