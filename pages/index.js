@@ -37,6 +37,9 @@ function setAnimEvents() {
   });
 }
 
+const endDate = new Date(2023, 5, 1);
+const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+
 export default function Home() {
   useEffect(() => {
     displayIntro();
@@ -67,8 +70,8 @@ export default function Home() {
         <section id="progressContainer" className="mt-5">
           <h2 className="title">Educational progress</h2>
           <h3>Software Engineering Bachelor's degree</h3>
-          <EduProgressBar />
-          <p className="text-left">I'm due to graduate on June 1st, 2023.</p>
+          <EduProgressBar endDate={endDate} />
+          <p className="text-left">I'm due to graduate on {endDate.toLocaleDateString('en-US', dateOptions)}.</p>
         </section>
       </div>
     </Layout>

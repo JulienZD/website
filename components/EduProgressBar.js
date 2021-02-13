@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 
-function getPercentualEduProgress() {
+function getPercentualEduProgress(endDate) {
   const startDate = new Date(2019, 8, 1);
-  const endDate = new Date(2023, 5, 1);
   const now = new Date();
   const totalEduTime = endDate - startDate;
   const elapsedTime = now - startDate;
@@ -10,18 +9,18 @@ function getPercentualEduProgress() {
   return percentage.toFixed(2);
 }
 
-export default function EduProgressBar() {
+export default function EduProgressBar({ endDate }) {
   const [percentage, setPercentage] = React.useState(0);
   const tryUpdatePercentage = () => {
-    const newPercentage = getPercentualEduProgress();
+    const newPercentage = getPercentualEduProgress(endDate);
     if (newPercentage > percentage) {
-      setPercentage(getPercentualEduProgress());
+      setPercentage(getPercentualEduProgress(endDate));
     }
   };
 
   useEffect(() => {
     document.querySelector('#progressContainer').addEventListener('animationstart', () => {
-      setTimeout(setPercentage(getPercentualEduProgress()), 150);
+      setTimeout(setPercentage(getPercentualEduProgress(endDate)), 150);
     });
   });
 
