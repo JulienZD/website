@@ -1,0 +1,18 @@
+.card,
+.colorCard {
+  border: 3px solid transparent;
+  border-radius: 2.5%;
+}
+
+.cardBody {
+  padding: 0.5rem;
+}
+
+.cardFooter {
+  padding: 0.5rem !important;
+  border-top: none;
+}
+
+.button {
+  padding: 8px;
+}
