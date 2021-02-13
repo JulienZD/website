@@ -1,0 +1,27 @@
+{
+  "name": "jzd-website",
+  "private": true,
+  "version": "0.1.0",
+  "description": "This is the source code for my website at https://jzd.me",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JulienZD/website.git"
+  },
+  "dependencies": {
+    "next": "^10.0.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  },
+  "author": "JulienZD",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JulienZD/website/issues"
+  },
+  "homepage": "https://github.com/JulienZD/website#readme"
+}
