@@ -29,7 +29,7 @@ const ColorDescriptor = ({ text, color }) => {
   return (
     <small>
       <span>
-        {text}: {color}
+        {text}: {color.toLowerCase()}
       </span>
       <ColoredCircle color={color} />
     </small>
