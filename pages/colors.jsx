@@ -1,15 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Layout from '@components/layout';
-import ColorDeck from '@components/colors/ColorDeck';
-import ColorForm from '@components/colors/ColorForm';
+import ColorPreviewer from '@components/colors/Previewer';
 
 const pageTitle = 'Preview Color Combinations';
 
-export default function Colors() {
-  const [state, setState] = useState({ colors: new Set(['#000', '#fff']), doShuffle: false });
+function tryImportColors(colors) {
+  if (!colors) return;
+  const splitColors = colors.split(',');
+  if (!splitColors.length) return;
+  return splitColors.filter((c) => c.match(/^([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/)).map((c) => `#${c}`);
+}
 
-  const displayColors = ({ colorSet, doShuffle }) => setState({ colors: colorSet, doShuffle: doShuffle });
+export default function Colors() {
+  const [colors, setColors] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!router.isReady) return null;
+    const { share: query } = router.query;
+    setColors(tryImportColors(query));
+  }, [router.isReady]);
+
   return (
     <Layout>
       <Head>
@@ -32,12 +45,8 @@ export default function Colors() {
         </p>
         <p>The preview will automatically update as long as you enter more than two unique colors.</p>
       </div>
-      <div className="container">
-        <div className="row">
-          <ColorForm onChangeCallback={displayColors} defaultColors={Array.from(state.colors)} />
-        </div>
-        <ColorDeck doShuffle={state.doShuffle} colors={state.colors}></ColorDeck>
-      </div>
+      {!colors && <ColorPreviewer initialColors={['#000', '#fff']} />}
+      {colors && <ColorPreviewer initialColors={colors} />}
     </Layout>
   );
 }
