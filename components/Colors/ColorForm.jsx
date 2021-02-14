@@ -71,7 +71,7 @@ export default class ColorForm extends Component {
             className="custom-control-input"
           />
           <label htmlFor="shuffle" className="custom-control-label">
-            Shuffle output?
+            Shuffle output
           </label>
         </div>
       </form>
