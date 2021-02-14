@@ -6,12 +6,9 @@ export default class ColorForm extends Component {
     this.state = {
       colors: props.defaultColors.join('\n'),
       doShuffle: false,
-      colorSet: new Set([props.defaultColors]),
       hasClicked: false,
     };
-
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleColorInputChange = this.handleColorInputChange.bind(this);
   }
 
   handleInputChange(event) {
@@ -21,30 +18,11 @@ export default class ColorForm extends Component {
     this.setState({ [name]: value }, this.onChangeCallback);
   }
 
-  handleColorInputChange(event) {
-    const value = event.target.value;
-    this.setState({ colors: value });
-    const colorInput = value
-      .trim()
-      .split('\n')
-      .filter((c) => c.match(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/));
-    const colorSet = new Set(colorInput);
-    // Prevent epilepsy
-    if (areSetsEqual(colorSet, this.state.colorSet) || colorSet.size !== colorInput.length) return;
-
-    this.setState({ colorSet: colorSet }, this.onChangeCallback);
-  }
-
   onChangeCallback() {
     this.props.onChangeCallback(this.state);
   }
 
   handleSubmit = (event) => event.preventDefault();
-
-  checkFirstFocus = () => {
-    if (this.state.hasClicked) return;
-    this.setState({ hasClicked: true, colors: '' }, this.onChangeCallback);
-  };
 
   render() {
     return (
@@ -58,8 +36,7 @@ export default class ColorForm extends Component {
             name="colors"
             className="form-control"
             value={this.state.colors}
-            onFocus={this.checkFirstFocus}
-            onChange={this.handleColorInputChange}
+            onChange={this.handleInputChange}
             rows="10"
             cols="5"
           ></textarea>
@@ -80,10 +57,4 @@ export default class ColorForm extends Component {
       </form>
     );
   }
-}
-
-function areSetsEqual(setA, setB) {
-  if (setA.size !== setB.size) return false;
-  for (const a of setA) if (!setB.has(a)) return false;
-  return true;
 }
