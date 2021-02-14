@@ -50,11 +50,14 @@ export default class ColorForm extends Component {
     return (
       <form className="mx-auto" onSubmit={this.handleSubmit} style={{ maxWidth: '500px' }}>
         <div className="form-group">
-          <label className="control-label">Colors (newline separated)</label>
+          <label className="control-label" htmlFor="colorInput">
+            Colors (newline separated)
+          </label>
           <textarea
+            id="colorInput"
             name="colors"
             className="form-control"
-            value={this.state.colors ?? '#000\n#fff'}
+            value={this.state.colors}
             onFocus={this.checkFirstFocus}
             onChange={this.handleColorInputChange}
             rows="10"
