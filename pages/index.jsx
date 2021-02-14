@@ -1,7 +1,7 @@
-import Layout from '../components/layout';
 import { useEffect } from 'react';
-import EduProgressBar from '../components/EduProgressBar';
-import styles from '../components/Home.module.css';
+import Layout from '@components/layout';
+import EduProgressBar from '@components/EduProgressBar';
+import styles from '@components/Home.module.css';
 
 function displayIntro() {
   setAnimEvents();

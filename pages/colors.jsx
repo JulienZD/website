@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Head from 'next/head';
-import Layout from '../components/layout';
-import ColorDeck from '../components/colors/ColorDeck';
-import ColorForm from '../components/colors/ColorForm';
+import Layout from '@components/layout';
+import ColorDeck from '@components/colors/ColorDeck';
+import ColorForm from '@components/colors/ColorForm';
 
 const pageTitle = 'Preview Color Combinations';
 
