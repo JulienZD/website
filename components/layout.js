@@ -14,7 +14,11 @@ export default function Layout({ children, home }) {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:title" content="Hi, I'm Julien" key="og:title" />
-        <meta property="og:description" content="Here be dragons." />
+        <meta
+          property="og:description"
+          content="Here you'll find the results of me tinkering around with various technologies."
+          key="og:description"
+        />
         <meta property="og:image" content="http://jzd.me/images/CircleJ.png" />
         <meta property="og:url" content="https://jzd.me" />
         <meta name="twitter:card" content="summary_large_image" />
