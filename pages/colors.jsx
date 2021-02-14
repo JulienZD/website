@@ -30,6 +30,7 @@ export default function Colors() {
           </a>{' '}
           you enter.
         </p>
+        <p>The preview will automatically update as long as you enter more than two unique colors.</p>
       </div>
       <div className="container">
         <div className="row">

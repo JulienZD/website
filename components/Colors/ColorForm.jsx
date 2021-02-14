@@ -11,7 +11,6 @@ export default class ColorForm extends Component {
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleColorInputChange = this.handleColorInputChange.bind(this);
   }
 
@@ -40,10 +39,7 @@ export default class ColorForm extends Component {
     this.props.onChangeCallback(this.state);
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    this.onChangeCallback();
-  }
+  handleSubmit = (event) => event.preventDefault();
 
   checkFirstFocus = () => {
     if (this.state.hasClicked) return;
@@ -77,9 +73,6 @@ export default class ColorForm extends Component {
           <label htmlFor="shuffle" className="custom-control-label">
             Shuffle output?
           </label>
-        </div>
-        <div className="form-group mt-2">
-          <button className="button--gold btn-block">Preview colors</button>
         </div>
       </form>
     );
