@@ -15,4 +15,13 @@
 
 .button {
   padding: 8px;
+  color: currentColor !important;
+}
+
+.button:focus {
+  box-shadow: none;
+}
+
+.button:hover {
+  filter: brightness(150%);
 }
