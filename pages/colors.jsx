@@ -6,13 +6,6 @@ import ColorPreviewer from '@components/colors/ColorPreviewer';
 
 const pageTitle = 'Preview Color Combinations';
 
-function tryImportColors(colors) {
-  if (!colors) return;
-  const splitColors = colors.split(',');
-  if (!splitColors.length) return;
-  return splitColors.filter((c) => c.match(/^([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/)).map((c) => `#${c}`);
-}
-
 export default function Colors() {
   const [colors, setColors] = useState(null);
   const router = useRouter();
@@ -20,7 +13,15 @@ export default function Colors() {
   useEffect(() => {
     if (!router.isReady) return null;
     const { share: query } = router.query;
-    setColors(tryImportColors(query));
+    if (query) {
+      let decoded;
+      try {
+        decoded = atob(query);
+      } catch (err) {
+        return;
+      }
+      setColors(tryImportColors(decodeURIComponent(decoded)));
+    }
   }, [router.isReady]);
 
   return (
@@ -49,4 +50,11 @@ export default function Colors() {
       {colors && <ColorPreviewer initialColors={colors} />}
     </Layout>
   );
+}
+
+function tryImportColors(colors) {
+  if (!colors) return;
+  const splitColors = colors.split(',');
+  if (!splitColors.length) return;
+  return splitColors.filter((c) => c.match(/^([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/)).map((c) => `#${c}`);
 }
