@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Layout from '@components/layout';
-import ColorPreviewer from '@components/colors/Previewer';
+import ColorPreviewer from '@components/colors/ColorPreviewer';
 
 const pageTitle = 'Preview Color Combinations';
 
