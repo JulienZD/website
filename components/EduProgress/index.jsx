@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { Progress } from 'reactstrap';
+import styles from './index.module.css';
 
 function getPercentualEduProgress(endDate) {
   const startDate = new Date(2019, 8, 1);
@@ -9,7 +11,7 @@ function getPercentualEduProgress(endDate) {
   return percentage.toFixed(2);
 }
 
-export default function EduProgressBar({ endDate }) {
+export default function EduProgress({ endDate }) {
   const [percentage, setPercentage] = React.useState(0);
   const tryUpdatePercentage = () => {
     const newPercentage = getPercentualEduProgress(endDate);
@@ -30,18 +32,8 @@ export default function EduProgressBar({ endDate }) {
   }, [percentage]);
 
   return (
-    <div id="eduProgressBarWrapper" className="progress">
-      <div
-        id="eduProgressBar"
-        className="progress-bar text-dark"
-        role="progressbar"
-        aria-valuenow={percentage}
-        style={{ width: percentage + '%' }}
-        aria-valuemin="0"
-        aria-valuemax="100"
-      >
-        {percentage}%
-      </div>
-    </div>
+    <Progress className={styles.progress} barClassName={styles.progressBar} value={percentage}>
+      {percentage}%
+    </Progress>
   );
 }

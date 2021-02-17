@@ -1,0 +1,10 @@
+.progressBar {
+  background-color: var(--main-text);
+  color: var(--main-bg);
+  transition: width 1.5s ease;
+}
+
+.progress {
+  background-color: var(--main-bg);
+  border: 1px solid var(--main-text);
+}

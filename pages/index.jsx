@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Layout from '@components/layout';
-import EduProgressBar from '@components/EduProgressBar';
+import EduProgress from '@components/EduProgress';
 import styles from '@components/Home.module.css';
 
 function displayIntro() {
@@ -70,7 +70,7 @@ export default function Home() {
         <section id="progressContainer" className="mt-5">
           <h2 className="title">Educational progress</h2>
           <h3>Software Engineering Bachelor's degree</h3>
-          <EduProgressBar endDate={endDate} />
+          <EduProgress endDate={endDate} />
           <p className="text-left">I'm due to graduate on {endDate.toLocaleDateString('en-US', dateOptions)}.</p>
         </section>
       </div>

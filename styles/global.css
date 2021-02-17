@@ -181,13 +181,3 @@ p a.j-link:hover {
 #progressContainer {
   opacity: 0;
 }
-
-#eduProgressBar {
-  background-color: var(--main-text);
-  transition: width 1.5s ease;
-}
-
-#eduProgressBarWrapper {
-  background-color: var(--main-bg);
-  border: 1px solid var(--main-text);
-}
