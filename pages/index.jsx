@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Layout from '@components/layout';
 import EduProgress from '@components/EduProgress';
+import SocialButton from '@components/SocialButton';
 import styles from '@components/Home.module.css';
 
 function displayIntro() {
@@ -59,15 +60,9 @@ export default function Home() {
         <section id="elsewhereContainer">
           <h2 className="title mt-3 mt-sm-5">Find me elsewhere</h2>
           <div className="links">
-            <a href="https://github.com/JulienZD" rel="noopener noreferrer" className="button--gold">
-              <i className="bi bi-github" aria-label="My GitHub"></i>
-            </a>
-            <a href="https://linkedin.com/in/julienzapataduque/" rel="noopener noreferrer" className="button--gold">
-              <i className="bi bi-linkedin" aria-label="My LinkedIn"></i>
-            </a>
-            <a href="https://twitter.com/JulienIsMe" rel="noopener noreferrer" className="button--gold">
-              <i className="bi bi-twitter" aria-label="My Twitter"></i>
-            </a>
+            <SocialButton href="https://github.com/JulienZD" icon="github" ariaLabel="My GitHub" />
+            <SocialButton href="https://linkedin.com/in/julienzapataduque/" icon="linkedin" ariaLabel="My LinkedIn" />
+            <SocialButton href="https://twitter.com/JulienIsMe" icon="twitter" ariaLabel="My Twitter" />
           </div>
         </section>
         <section id="progressContainer" className="mt-5">
