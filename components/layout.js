@@ -6,7 +6,7 @@ export default function Layout({ children, home }) {
   useEffect(() => {
     document.querySelector('body').className = 'h-100';
     document.querySelector('html').className = 'h-100';
-    document.querySelector('#__next').className = 'h-100 d-flex flex-column';
+    document.querySelector('#__next').className = 'd-flex flex-column h-100';
   });
   return (
     <>
@@ -29,13 +29,15 @@ export default function Layout({ children, home }) {
       </Head>
       {!home && (
         <header>
-          <Link href="/">
-            <a className="j-link pl-2">Home</a>
-          </Link>
+          <nav className="navbar navbar-expand-md fixed-top">
+            <Link href="/">
+              <a className="j-link">Home</a>
+            </Link>
+          </nav>
         </header>
       )}
       <main>{children}</main>
-      <footer className="mt-auto text-right mb-sm-1">
+      <footer className="mt-auto text-right py-1">
         <div className="text-right pr-2">
           {home && (
             <Link href="/colors">
@@ -47,6 +49,14 @@ export default function Layout({ children, home }) {
           </a>
         </div>
       </footer>
+      {!home && (
+        <style jsx>{`
+          main {
+            padding-top: 50px;
+            flex-shrink: 0 !important;
+          }
+        `}</style>
+      )}
     </>
   );
 }
