@@ -1,0 +1,42 @@
+#flipBox {
+  background-color: transparent;
+  perspective: 1000px;
+  height: 40px;
+  width: 44px;
+}
+
+#flipBox:hover {
+  cursor: pointer;
+}
+
+#flipBox:hover .flipBoxInner {
+  transform: rotateY(180deg);
+}
+
+.flipBoxInner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+  height: 100%;
+  width: 100%;
+}
+
+.flipBoxFront,
+.flipBoxBack {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  background-color: var(--main-bg);
+}
+
+.flipBoxBack {
+  transform: rotateY(180deg);
+}
+
+.flipBoxBack p {
+  filter: brightness(150%) !important;
+}

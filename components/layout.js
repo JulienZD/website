@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import HomeButton from '@components/HomeButton';
 
 export default function Layout({ children, home }) {
   useEffect(() => {
@@ -30,9 +31,7 @@ export default function Layout({ children, home }) {
       {!home && (
         <header>
           <nav className="navbar navbar-expand-md fixed-top">
-            <Link href="/">
-              <a className="j-link">Home</a>
-            </Link>
+            <HomeButton />
           </nav>
         </header>
       )}
