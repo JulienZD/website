@@ -62,6 +62,9 @@ export default function Home() {
             <a href="https://github.com/JulienZD" rel="noopener noreferrer" className="button--gold">
               <i className="bi bi-github" aria-label="My GitHub"></i>
             </a>
+            <a href="https://linkedin.com/in/julienzapataduque/" rel="noopener noreferrer" className="button--gold">
+              <i className="bi bi-linkedin" aria-label="My LinkedIn"></i>
+            </a>
             <a href="https://twitter.com/JulienIsMe" rel="noopener noreferrer" className="button--gold">
               <i className="bi bi-twitter" aria-label="My Twitter"></i>
             </a>
