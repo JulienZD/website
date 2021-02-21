@@ -1,10 +1,10 @@
 .progressBar {
-  background-color: var(--main-text);
-  color: var(--main-bg);
+  @apply flex flex-col justify-center text-center whitespace-nowrap overflow-hidden bg-secondary text-primary;
   transition: width 1.5s ease;
 }
 
 .progress {
-  background-color: var(--main-bg);
-  border: 1px solid var(--main-text);
+  @apply flex text-xs rounded overflow-hidden h-4 bg-primary border border-secondary;
+  line-height: 0;
+  font-size: 0.75rem;
 }

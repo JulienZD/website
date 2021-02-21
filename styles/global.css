@@ -2,43 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --main-bg: #071625;
-  --main-text: #d49f1b;
+@layer base {
+  body {
+    @apply text-body;
+  }
+
+  @screen md {
+    body {
+      @apply text-body-md;
+    }
+  }
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-2xl;
+  }
 }
 
-* {
-  box-sizing: border-box;
+:root {
+  --color-primary: #071625;
+  --color-secondary: #d49f1b;
 }
 
 html {
-  font-size: 12px;
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-    sans-serif;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
 }
 
 body {
-  background: var(--main-bg);
-  color: var(--main-text);
+  background: var(--color-primary);
+  color: var(--color-secondary);
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
     Arial, sans-serif;
 }
 
 a,
 a:hover {
-  color: var(--main-text);
+  color: var(--color-secondary);
 }
 
 .j-link,
@@ -48,85 +55,71 @@ a:hover {
 
 p a.j-link,
 .j-link:hover {
-  filter: brightness(150%) !important;
+  @apply text-secondary-light;
 }
 
 p a.j-link:hover {
   text-decoration: underline !important;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-    Arial, sans-serif;
-  display: block;
+.btn {
+  @apply mx-1 py-3 px-8 rounded shadow-md transition-colors duration-300;
+}
+
+.btn-outline {
+  @apply border bg-primary text-secondary border-secondary hover:bg-secondary hover:text-primary;
+}
+
+.btn-primary {
+  @apply border bg-secondary text-primary hover:bg-primary hover:text-secondary hover:border-secondary;
+}
+
+.btn-link {
+  @apply hover:text-secondary-light;
+}
+
+.fixed-top {
+  @apply fixed inset-x-0 top-0 z-50;
+}
+
+.section-title {
+  @apply text-4xl text-secondary-dark;
   font-weight: 300;
-  font-size: 3rem;
-  color: #997415;
   letter-spacing: 1px;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+@screen md {
+  .section-title {
+    @apply text-5xl;
+  }
 }
 
 .custom-control-label::before {
-  background-color: var(--main-bg);
-  border-color: var(--main-text);
+  background-color: var(--color-primary);
+  border-color: var(--color-secondary);
 }
 
 .form-control {
-  background-color: var(--main-bg);
-  color: var(--main-text);
-  border-color: var(--main-text);
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
   filter: brightness(105%);
 }
 
 .form-control::placeholder {
-  color: var(--main-text);
+  color: var(--color-secondary);
   opacity: 0.6;
 }
 
 .form-control:focus {
-  background-color: var(--main-bg);
-  color: var(--main-text);
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: var(--main-text);
-  border-color: var(--main-text);
-  color: var(--main-bg);
-}
-
-.links {
-  padding-top: 15px;
-}
-
-.visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-}
-
-[class^='anim'] {
-  color: var(--main-text);
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 #logo {
@@ -162,23 +155,6 @@ p a.j-link:hover {
   to {
     margin-left: 0;
   }
-}
-
-.button--gold {
-  display: inline-flex;
-  margin: 0 4px;
-  border-radius: 4px;
-  border: 1px solid var(--main-text);
-  color: var(--main-text);
-  background-color: var(--main-bg);
-  text-decoration: none;
-  padding: 10px 30px;
-  transition: color 0.3s, background-color 0.3s;
-}
-
-.button--gold:hover {
-  color: var(--main-bg);
-  background-color: var(--main-text);
 }
 
 #elsewhereContainer,

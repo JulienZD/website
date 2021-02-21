@@ -48,26 +48,32 @@ export default function Home() {
   });
   return (
     <Layout home>
-      <div id="wrapper" className="text-left text-md-center">
-        <h1 className="visuallyhidden">Hi, my name is Julien</h1>
+      <div id="wrapper" className="text-left md:text-center">
+        <h1 className="sr-only">Hi, my name is Julien</h1>
         <section id="introContainer">
           <h1 aria-hidden="true">
             <span style={{ fontSize: 5 + 'rem' }}> Hi, </span>
             <span style={{ fontSize: 3 + 'rem' }}> my name is </span>
           </h1>
-          <img id="logo" src="images/julien.svg" aria-hidden="true" title="I drew this myself, can you believe it?" />
+          <img
+            className="inline"
+            id="logo"
+            src="images/julien.svg"
+            aria-hidden="true"
+            title="I drew this myself, can you believe it?"
+          />
         </section>
-        <section id="elsewhereContainer">
-          <h2 className="title mt-3 mt-sm-5">Find me elsewhere</h2>
-          <div className="links">
+        <section id="elsewhereContainer" className="mt-4 mt-sm-12">
+          <h2 className="section-title">Find me elsewhere</h2>
+          <div className="pt-4">
             <SocialButton href="https://github.com/JulienZD" icon="github" ariaLabel="My GitHub" />
             <SocialButton href="https://linkedin.com/in/julienzapataduque/" icon="linkedin" ariaLabel="My LinkedIn" />
             <SocialButton href="https://twitter.com/JulienIsMe" icon="twitter" ariaLabel="My Twitter" />
           </div>
         </section>
-        <section id="progressContainer" className="mt-5">
-          <h2 className="title">Educational progress</h2>
-          <h3>Software Engineering Bachelor's degree</h3>
+        <section id="progressContainer" className="mt-12">
+          <h2 className="section-title">Educational progress</h2>
+          <h3 className="text-left mb-2">Software Engineering Bachelor's degree</h3>
           <EduProgress endDate={endDate} />
           <p className="text-left">I'm due to graduate on {endDate.toLocaleDateString('en-US', dateOptions)}.</p>
         </section>

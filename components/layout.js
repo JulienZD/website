@@ -5,9 +5,9 @@ import HomeButton from '@components/HomeButton';
 
 export default function Layout({ children, home }) {
   useEffect(() => {
-    document.querySelector('body').className = 'h-100';
-    document.querySelector('html').className = 'h-100';
-    document.querySelector('#__next').className = 'd-flex flex-column h-100';
+    document.querySelector('body').className = 'h-full';
+    document.querySelector('html').className = 'h-full';
+    document.querySelector('#__next').className = 'flex flex-col h-full';
   });
   return (
     <>
@@ -25,12 +25,11 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
 
         <title>Hi, I'm Julien</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.2.2/font/bootstrap-icons.css" />
       </Head>
       {!home && (
         <header>
-          <nav className="navbar navbar-expand-md fixed-top">
+          <nav className="py-2 px-4 fixed-top">
             <HomeButton />
           </nav>
         </header>
