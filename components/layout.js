@@ -40,10 +40,10 @@ export default function Layout({ children, home }) {
         <div className="text-right pr-2">
           {home && (
             <Link href="/colors">
-              <a className="j-link mr-2">Preview Color Combinations</a>
+              <a className="link-animated-hover mr-2">Preview Color Combinations</a>
             </Link>
           )}
-          <a className="j-link" href="https://github.com/JulienZD/website">
+          <a className="link-animated-hover" href="https://github.com/JulienZD/website">
             Source
           </a>
         </div>
