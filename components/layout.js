@@ -36,7 +36,7 @@ export default function Layout({ children, home }) {
         </header>
       )}
       <main>{children}</main>
-      <footer className="mt-auto text-right py-1">
+      <footer className="mt-auto text-right py-3 pr-4">
         <div className="text-right pr-2">
           {home && (
             <Link href="/colors">
