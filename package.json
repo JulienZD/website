@@ -5,10 +5,11 @@
   "license": "MIT",
   "author": "JulienZD",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "npm run clean && next dev",
+    "build": "npm run clean && next build",
     "start": "next start",
-    "export": "next build && next export"
+    "export": "npm run build && next export",
+    "clean": "npx rimraf .next"
   },
   "dependencies": {
     "next": "^10.0.0",
