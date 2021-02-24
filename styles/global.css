@@ -24,6 +24,12 @@
 }
 
 :root {
+  --main-bg: #071625;
+  --main-text: #d49f1b;
+  --color-link: #0c2640;
+}
+
+:root {
   --color-primary: #071625;
   --color-secondary: #d49f1b;
 }
@@ -46,6 +52,44 @@ body {
 a,
 a:hover {
   color: var(--color-secondary);
+}
+
+.link-animated-hover {
+  display: inline-block;
+  text-decoration: none !important;
+  border-radius: 0.25em;
+  padding: 0 2px;
+  margin-right: -1px;
+  margin-left: -1px;
+  transition: color 0.075s linear;
+}
+
+p a.link-animated-hover {
+  color: #ffce55;
+}
+
+.link-animated-hover:hover {
+  background-color: transparent;
+}
+
+.link-animated-hover::after {
+  position: relative;
+  top: 0.1rem;
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin: 0 auto;
+  background-color: var(--main-text);
+  box-shadow: 0 0 0.45rem 0.075rem var(--main-text);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.15s linear;
+  border-radius: 0.25em !important;
+  content: '';
+}
+
+.link-animated-hover:hover.link-animated-hover::after {
+  transform: scaleX(1);
 }
 
 .j-link,

@@ -39,7 +39,7 @@ export default function Colors() {
         <h1>{pageTitle}</h1>
         <p>
           View all possible combinations for any{' '}
-          <a className="j-link" href="https://en.wikipedia.org/wiki/Web_colors#Hex_triplet">
+          <a className="link-animated-hover" href="https://en.wikipedia.org/wiki/Web_colors#Hex_triplet">
             hex color values
           </a>{' '}
           you enter.

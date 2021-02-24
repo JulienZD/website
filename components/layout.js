@@ -35,14 +35,14 @@ export default function Layout({ children, home }) {
         </header>
       )}
       <main>{children}</main>
-      <footer className="mt-auto text-right py-1">
+      <footer className="mt-auto text-right py-3 pr-4">
         <div className="text-right pr-2">
           {home && (
             <Link href="/colors">
-              <a className="j-link mr-2">Preview Color Combinations</a>
+              <a className="link-animated-hover mr-2">Preview Color Combinations</a>
             </Link>
           )}
-          <a className="j-link" href="https://github.com/JulienZD/website">
+          <a className="link-animated-hover" href="https://github.com/JulienZD/website">
             Source
           </a>
         </div>
