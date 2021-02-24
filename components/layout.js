@@ -34,7 +34,7 @@ export default function Layout({ children, home }) {
           </nav>
         </header>
       )}
-      <main>{children}</main>
+      <main className={home ? null : 'with-header'}>{children}</main>
       <footer className="mt-auto text-right py-3 pr-4">
         <div className="text-right pr-2">
           {home && (
@@ -47,14 +47,6 @@ export default function Layout({ children, home }) {
           </a>
         </div>
       </footer>
-      {!home && (
-        <style jsx>{`
-          main {
-            padding-top: 50px;
-            flex-shrink: 0 !important;
-          }
-        `}</style>
-      )}
     </>
   );
 }

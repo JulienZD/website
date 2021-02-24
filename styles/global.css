@@ -49,6 +49,11 @@ body {
     Arial, sans-serif;
 }
 
+main.with-header {
+  padding-top: 50px;
+  flex-shrink: 0 !important;
+}
+
 a,
 a:hover {
   color: var(--color-secondary);
