@@ -90,10 +90,6 @@ p a.link-animated-hover {
   color: #ffce55;
 }
 
-.link-animated-hover:hover {
-  background-color: transparent;
-}
-
 .link-animated-hover::after {
   position: relative;
   top: 0.1rem;
