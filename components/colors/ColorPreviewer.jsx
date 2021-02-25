@@ -27,7 +27,7 @@ export default function ColorPreviewer({ initialColors }) {
     <>
       <ColorForm colors={colors} doShuffle={doShuffle} onColorChange={setColors} onDoShuffleChange={setDoShuffle} />
       {getHexColors().length >= 2 && (
-        <div className="col-12 d-flex justify-content-end">
+        <div className="flex justify-end">
           <ShareButton getUrl={getShareUrl} />
         </div>
       )}

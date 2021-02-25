@@ -35,7 +35,7 @@ export default function Colors() {
           key="og:description"
         />
       </Head>
-      <div className="container mx-auto">
+      <div className="container mx-auto max-w-6xl">
         <div className="text-center">
           <h1>{pageTitle}</h1>
           <p className="mt-2 mb-4">

@@ -11,7 +11,7 @@ export default function ColorDeck({ colors, doShuffle }) {
     }
   }
   if (doShuffle) cards = shuffle(cards);
-  return <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 mt-3 rounded bg-dark p-2">{cards}</div>;
+  return <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4 rounded bg-gray-700 p-2">{cards}</div>;
 }
 
 // Shuffle function by https://stackoverflow.com/a/12646864

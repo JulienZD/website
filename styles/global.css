@@ -125,8 +125,16 @@ p a.j-link:hover {
   text-decoration: underline !important;
 }
 
+button:focus {
+  @apply focus:ring focus:outline-none focus:ring-secondary-dark;
+}
+
 .btn {
-  @apply mx-1 py-3 px-8 rounded transition-colors duration-300;
+  @apply mx-1 py-2 px-8 rounded transition-colors duration-300;
+}
+
+.btn-sm {
+  @apply px-2 py-1 text-sm;
 }
 
 .btn-outline {
