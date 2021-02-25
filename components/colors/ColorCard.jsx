@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from './ColorCard.module.css';
+import calcContrast from '@lib/calcContrast';
 
 function OutlinedButton({ color }) {
   return (
@@ -45,6 +46,7 @@ function CardFooter({ primary, secondary, onClick }) {
       <div className="flex flex-col">
         <ColorDescriptor text="Primary" color={primary} />
         <ColorDescriptor text="Secondary" color={secondary} />
+        <small>Contrast Ratio: {calcContrast(primary, secondary)}</small>
       </div>
       <div className="flex justify-end" style={{ color: 'var(--main-text)' }}>
         <button title={copyBtn.title} className="btn-link btn btn-sm" onClick={toClipboard} aria-label={copyBtn.title}>
