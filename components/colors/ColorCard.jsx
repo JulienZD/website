@@ -24,14 +24,14 @@ function ColoredCircle({ color }) {
   );
 }
 
-const ColorDescriptor = ({ text, color }) => {
+function ColorDescriptor({ text, color }) {
   return (
-    <small className="d-flex flex-nowrap align-items-center">
-      <span className="text-nowrap">{`${text}: ${color.toLowerCase()}`}</span>
+    <small className="flex flex-nowrap items-center">
+      <span className="whitespace-nowrap">{`${text}: ${color.toLowerCase()}`}</span>
       <ColoredCircle color={color} />
     </small>
   );
-};
+}
 
 function CardFooter({ primary, secondary, onClick }) {
   const [copyBtn, setCopyBtnText] = useState({ icon: 'clipboard', title: 'Copy to clipboard' });
