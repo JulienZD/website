@@ -24,16 +24,14 @@ export default function ColorPreviewer({ initialColors }) {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <ColorForm colors={colors} doShuffle={doShuffle} onColorChange={setColors} onDoShuffleChange={setDoShuffle} />
-        {getHexColors().length >= 2 && (
-          <div className="col-12 d-flex justify-content-end">
-            <ShareButton getUrl={getShareUrl} />
-          </div>
-        )}
-      </div>
+    <>
+      <ColorForm colors={colors} doShuffle={doShuffle} onColorChange={setColors} onDoShuffleChange={setDoShuffle} />
+      {getHexColors().length >= 2 && (
+        <div className="col-12 d-flex justify-content-end">
+          <ShareButton getUrl={getShareUrl} />
+        </div>
+      )}
       <ColorDeck doShuffle={doShuffle} colors={new Set(getHexColors())}></ColorDeck>
-    </div>
+    </>
   );
 }

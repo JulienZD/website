@@ -35,19 +35,21 @@ export default function Colors() {
           key="og:description"
         />
       </Head>
-      <div className="text-center">
-        <h1>{pageTitle}</h1>
-        <p>
-          View all possible combinations for any{' '}
-          <a className="link-animated-hover" href="https://en.wikipedia.org/wiki/Web_colors#Hex_triplet">
-            hex color values
-          </a>{' '}
-          you enter.
-        </p>
-        <p>The preview will automatically update as long as you enter more than two unique colors.</p>
+      <div className="container mx-auto">
+        <div className="text-center">
+          <h1>{pageTitle}</h1>
+          <p className="mt-2 mb-4">
+            View all possible combinations for any{' '}
+            <a className="link-animated-hover" href="https://en.wikipedia.org/wiki/Web_colors#Hex_triplet">
+              hex color values
+            </a>{' '}
+            you enter.
+          </p>
+          <p>The preview will automatically update as long as you enter more than two unique colors.</p>
+        </div>
+        {!colors && <ColorPreviewer initialColors={['#000', '#fff']} />}
+        {colors && <ColorPreviewer initialColors={colors} />}
       </div>
-      {!colors && <ColorPreviewer initialColors={['#000', '#fff']} />}
-      {colors && <ColorPreviewer initialColors={colors} />}
     </Layout>
   );
 }

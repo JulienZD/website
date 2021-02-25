@@ -59,6 +59,23 @@ a:hover {
   color: var(--color-secondary);
 }
 
+.form {
+  @apply mx-auto flex flex-col;
+}
+
+.form-group {
+  @apply inline-flex flex-col mb-3;
+}
+
+form textarea,
+form input {
+  @apply focus:ring-offset-transparent focus:ring-secondary-dark focus:ring-1;
+}
+
+textarea {
+  @apply rounded bg-transparent border-secondary focus:border-current;
+}
+
 .link-animated-hover {
   display: inline-block;
   text-decoration: none !important;
