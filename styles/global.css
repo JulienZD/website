@@ -110,7 +110,8 @@ p a.link-animated-hover {
   content: '';
 }
 
-.link-animated-hover:hover.link-animated-hover::after {
+.link-animated-hover:hover.link-animated-hover::after,
+.link-animated-hover:focus.link-animated-hover::after {
   transform: scaleX(1);
 }
 
