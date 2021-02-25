@@ -1,7 +1,18 @@
 import { useState } from 'react';
 import ColorForm from './ColorForm';
 import ColorDeck from './ColorDeck';
+import ColorCard from './ColorCard';
 import ShareButton from '@components/ShareButton';
+
+function getAllCombinations(set) {
+  const array = Array.from(set);
+  const result = array.flatMap((first, i) =>
+    array.slice(i + 1).map((second) => {
+      return { first, second };
+    })
+  );
+  return result;
+}
 
 export default function ColorPreviewer({ initialColors }) {
   const [colors, setColors] = useState(initialColors.join('\n'));
@@ -23,6 +34,18 @@ export default function ColorPreviewer({ initialColors }) {
       .filter((c) => c.match(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/));
   };
 
+  function generateCards() {
+    const colorCombinations = getAllCombinations(new Set(getHexColors()));
+    return [
+      ...colorCombinations.map(({ first, second }) => (
+        <ColorCard key={`${first}${second}`} primary={first} secondary={second} />
+      )),
+      ...colorCombinations.map(({ first, second }) => (
+        <ColorCard key={`${second}${first}`} primary={second} secondary={first} />
+      )),
+    ];
+  }
+
   return (
     <>
       <ColorForm colors={colors} doShuffle={doShuffle} onColorChange={setColors} onDoShuffleChange={setDoShuffle} />
@@ -31,7 +54,7 @@ export default function ColorPreviewer({ initialColors }) {
           <ShareButton getUrl={getShareUrl} />
         </div>
       )}
-      <ColorDeck doShuffle={doShuffle} colors={new Set(getHexColors())}></ColorDeck>
+      <ColorDeck doShuffle={doShuffle} cards={generateCards()} />
     </>
   );
 }
