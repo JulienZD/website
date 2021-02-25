@@ -4,16 +4,7 @@ import ColorDeck from './ColorDeck';
 import ColorCard from './ColorCard';
 import ShareButton from '@components/ShareButton';
 import uniqueArray from '@lib/uniqueArray';
-
-function getAllCombinations(set) {
-  const array = Array.from(set);
-  const result = array.flatMap((first, i) =>
-    array.slice(i + 1).map((second) => {
-      return { first, second };
-    })
-  );
-  return result;
-}
+import { allCombinationsFromSet } from '@lib/allCombinations';
 
 export default function ColorPreviewer({ initialColors }) {
   const [colors, setColors] = useState(uniqueArray(initialColors).join('\n'));
@@ -36,7 +27,7 @@ export default function ColorPreviewer({ initialColors }) {
   };
 
   function generateCards() {
-    const colorCombinations = getAllCombinations(new Set(getHexColors()));
+    const colorCombinations = allCombinationsFromSet(getHexColors());
     return [
       ...colorCombinations.map(({ first, second }) => (
         <ColorCard key={`${first}${second}`} primary={first} secondary={second} />
