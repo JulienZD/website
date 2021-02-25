@@ -9,26 +9,15 @@ function OutlinedButton({ color }) {
   );
 }
 
-function ColoredCircle({ color }) {
-  return (
-    <>
-      <span className="badge badge-pill ml-1" style={{ backgroundColor: color }}></span>
-      <style jsx>{`
-        .badge:empty {
-          height: 15px;
-          width: 15px;
-          display: inline-block;
-        }
-      `}</style>
-    </>
-  );
+function Circle({ color }) {
+  return <div className="inline-block h-4 w-4 rounded-full ml-1" style={{ backgroundColor: color }} />;
 }
 
 function ColorDescriptor({ text, color }) {
   return (
     <small className="flex flex-nowrap items-center">
       <span className="whitespace-nowrap">{`${text}: ${color.toLowerCase()}`}</span>
-      <ColoredCircle color={color} />
+      <Circle color={color} />
     </small>
   );
 }
