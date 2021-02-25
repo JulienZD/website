@@ -36,10 +36,10 @@ export default function Layout({ children, home }) {
       )}
       <main className={home ? null : 'with-header'}>{children}</main>
       <footer className="mt-auto text-right py-3 pr-4">
-        <div className="text-right pr-2">
+        <div className="flex justify-end">
           {home && (
             <Link href="/colors">
-              <a className="link-animated-hover mr-2">Preview Color Combinations</a>
+              <a className="link-animated-hover">Preview Color Combinations</a>
             </Link>
           )}
           <a className="link-animated-hover" href="https://github.com/JulienZD/website">

@@ -76,6 +76,11 @@ textarea {
   @apply rounded bg-transparent border-secondary focus:border-current;
 }
 
+footer a,
+footer a.link-animated-hover {
+  @apply ml-4 first:ml-0;
+}
+
 .link-animated-hover {
   display: inline-block;
   text-decoration: none !important;
