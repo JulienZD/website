@@ -3,6 +3,7 @@ import ColorForm from './ColorForm';
 import ColorDeck from './ColorDeck';
 import ColorCard from './ColorCard';
 import ShareButton from '@components/ShareButton';
+import uniqueArray from '@lib/uniqueArray';
 
 function getAllCombinations(set) {
   const array = Array.from(set);
@@ -15,12 +16,12 @@ function getAllCombinations(set) {
 }
 
 export default function ColorPreviewer({ initialColors }) {
-  const [colors, setColors] = useState(initialColors.join('\n'));
+  const [colors, setColors] = useState(uniqueArray(initialColors).join('\n'));
   const [doShuffle, setDoShuffle] = useState(false);
 
   const getShareUrl = () => {
     if (!colors.length) return;
-    const hexColors = getHexColors().join(',');
+    const hexColors = uniqueArray(getHexColors()).join(',');
     if (!hexColors.length) return;
     const encoded = btoa(hexColors.replace(/#/g, ''));
 
