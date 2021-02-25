@@ -129,7 +129,7 @@ p a.j-link:hover {
 }
 
 .btn {
-  @apply mx-1 py-3 px-8 rounded shadow-md transition-colors duration-300;
+  @apply mx-1 py-3 px-8 rounded transition-colors duration-300;
 }
 
 .btn-outline {
