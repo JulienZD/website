@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ColorForm from './ColorForm';
 import ColorDeck from './ColorDeck';
 import ColorCard from './ColorCard';
@@ -7,27 +7,22 @@ import uniqueArray from '@lib/uniqueArray';
 import { allCombinationsFromSet } from '@lib/allCombinations';
 
 export default function ColorPreviewer({ initialColors }) {
-  const [colors, setColors] = useState(uniqueArray(initialColors).join('\n'));
+  const [colorInput, setColors] = useState(uniqueArray(initialColors).join('\n'));
   const [doShuffle, setDoShuffle] = useState(false);
 
-  const getShareUrl = () => {
-    if (!colors.length) return;
-    const hexColors = uniqueArray(getHexColors()).join(',');
-    if (!hexColors.length) return;
-    const encoded = btoa(hexColors.replace(/#/g, ''));
+  const hexColors = colorInput
+    .trim()
+    .split('\n')
+    .filter((c) => c.match(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/));
+  const urlColors = () => hexColors.map((c) => c.replace('#', '')).join('-');
 
-    return `${location.pathname}?share=${encodeURIComponent(encoded)}`;
-  };
-
-  const getHexColors = () => {
-    return colors
-      .trim()
-      .split('\n')
-      .filter((c) => c.match(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/));
-  };
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.history.replaceState(window.history.state, '', `/colors/${urlColors()}`);
+  }, [hexColors]);
 
   function generateCards() {
-    const colorCombinations = allCombinationsFromSet(getHexColors());
+    const colorCombinations = allCombinationsFromSet(hexColors);
     return [
       ...colorCombinations.map(({ first, second }) => (
         <ColorCard key={`${first}${second}`} primary={first} secondary={second} />
@@ -40,10 +35,10 @@ export default function ColorPreviewer({ initialColors }) {
 
   return (
     <>
-      <ColorForm colors={colors} doShuffle={doShuffle} onColorChange={setColors} onDoShuffleChange={setDoShuffle} />
-      {getHexColors().length >= 2 && (
+      <ColorForm colors={colorInput} doShuffle={doShuffle} onColorChange={setColors} onDoShuffleChange={setDoShuffle} />
+      {hexColors.length >= 2 && (
         <div className="flex justify-end">
-          <ShareButton getUrl={getShareUrl} />
+          <ShareButton getUrl={() => location.pathname} />
         </div>
       )}
       <ColorDeck doShuffle={doShuffle} cards={generateCards()} />
