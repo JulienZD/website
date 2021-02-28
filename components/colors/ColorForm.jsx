@@ -14,7 +14,7 @@ export default function ColorForm({ colors, doShuffle, onColorChange, onDoShuffl
           name="colors"
           value={colors}
           onChange={handleColorTextChange}
-          className="resize-y"
+          className="resize-none"
           rows="10"
           cols="5"
         />

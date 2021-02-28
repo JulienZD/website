@@ -21,14 +21,19 @@ export default function Colors({ initialColors = ['#000', '#fff'] }) {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
           <h1>{pageTitle}</h1>
-          <p className="mt-2 mb-4">
-            View all possible combinations for any{' '}
-            <a className="link-animated-hover" href="https://en.wikipedia.org/wiki/Web_colors#Hex_triplet">
-              hex color values
-            </a>{' '}
-            you enter.
-          </p>
-          <p>The preview will automatically update as long as you enter more than two unique colors.</p>
+          <div className="text-left sm:w-7/12 sm:mx-auto">
+            <p className="mt-2 mb-2">
+              View all possible combinations for any{' '}
+              <a className="link-animated-hover" href="https://en.wikipedia.org/wiki/Web_colors#Hex_triplet">
+                hex color values
+              </a>{' '}
+              you enter.
+            </p>
+            <p className="mb-2">
+              The preview will automatically update as long as you enter more than two unique colors.
+            </p>
+            <p>For performance reasons, the amount of colors you can enter has been limited to ten.</p>
+          </div>
         </div>
         <ColorPreviewer initialColors={initialColors} />
       </div>

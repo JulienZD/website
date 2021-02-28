@@ -13,7 +13,8 @@ export default function ColorPreviewer({ initialColors }) {
   const hexColors = colorInput
     .trim()
     .split('\n')
-    .filter((c) => c.match(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/));
+    .filter((c) => c.match(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/))
+    .slice(0, 10);
   const urlColors = () => hexColors.map((c) => c.replace('#', '')).join('-');
 
   useEffect(() => {
