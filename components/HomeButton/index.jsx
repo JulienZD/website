@@ -18,7 +18,7 @@ export default function HomeButton() {
         <div className={styles.flipBoxFront}>
           <Link href="/">
             <a className="j-link">
-              <img src="images/CircleJ.png" alt="Go to the homepage" width="36" />
+              <img src="/images/CircleJ.png" alt="Go to the homepage" width="36" />
             </a>
           </Link>
         </div>
