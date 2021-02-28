@@ -6,24 +6,7 @@ import ColorPreviewer from '@components/colors/ColorPreviewer';
 
 const pageTitle = 'Preview Color Combinations';
 
-export default function Colors() {
-  const [colors, setColors] = useState(null);
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!router.isReady) return null;
-    const { share: query } = router.query;
-    if (query) {
-      let decoded;
-      try {
-        decoded = atob(query);
-      } catch (err) {
-        return;
-      }
-      setColors(tryImportColors(decodeURIComponent(decoded)));
-    }
-  }, [router.isReady]);
-
+export default function Colors({ initialColors = ['#000', '#fff'] }) {
   return (
     <Layout>
       <Head>
@@ -47,16 +30,8 @@ export default function Colors() {
           </p>
           <p>The preview will automatically update as long as you enter more than two unique colors.</p>
         </div>
-        {!colors && <ColorPreviewer initialColors={['#000', '#fff']} />}
-        {colors && <ColorPreviewer initialColors={colors} />}
+        <ColorPreviewer initialColors={initialColors} />
       </div>
     </Layout>
   );
-}
-
-function tryImportColors(colors) {
-  if (!colors) return;
-  const splitColors = colors.split(',');
-  if (!splitColors.length) return;
-  return splitColors.filter((c) => c.match(/^([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/)).map((c) => `#${c}`);
 }
