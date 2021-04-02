@@ -28,7 +28,7 @@ export default function Layout({ children, home }) {
           </nav>
         </header>
       )}
-      <main className={home ? null : 'with-header'}>{children}</main>
+      <main className={home ? 'home' : 'with-header'}>{children}</main>
       <footer className="mt-auto text-right py-3 pr-4">
         <div className="flex justify-end">
           {home && (
