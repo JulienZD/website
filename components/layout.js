@@ -1,18 +1,12 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useEffect } from 'react';
 import HomeButton from '@components/HomeButton';
 
 export default function Layout({ children, home }) {
-  useEffect(() => {
-    document.querySelector('body').className = 'h-full';
-    document.querySelector('html').className = 'h-full';
-    document.querySelector('#__next').className = 'flex flex-col h-full';
-  });
   return (
     <>
       <Head>
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:title" content="Hi, I'm Julien" key="og:title" />
         <meta
