@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Colors from './index';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+import pageTitle from './index';
 
 export default function slug() {
   const [colors, setColors] = useState('');
@@ -9,7 +11,20 @@ export default function slug() {
     if (!router.isReady) return;
     setColors(tryImportColors(router.query.slug));
   }, [router.isReady]);
-  return !colors ? <></> : <Colors initialColors={colors} />;
+  return (
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="og:title" value={pageTitle} key="og:title" />
+        <meta
+          name="og:description"
+          value="Check out this awesome combination of colors that has been shared with you!"
+          key="og:description"
+        />
+      </Head>
+      {colors && <Colors initialColors={colors} shared />}
+    </>
+  );
 }
 
 function tryImportColors(query) {
