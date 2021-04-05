@@ -49,6 +49,17 @@ body {
     Arial, sans-serif;
 }
 
+html,
+body,
+#__next {
+  height: 100% !important;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+}
+
 main.with-header {
   padding-top: 50px;
   flex-shrink: 0 !important;
