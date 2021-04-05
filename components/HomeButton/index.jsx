@@ -1,24 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import styles from './index.module.css';
 
 export default function HomeButton() {
-  useEffect(() => {
-    const buttonArea = document.querySelector(`#${styles.flipBox}`);
-    const mainLink = buttonArea.querySelector('a');
-    buttonArea.addEventListener('click', handleClick);
+  const boxAreaRef = useRef(null);
+  const linkRef = useRef(null);
 
-    function handleClick(e) {
-      mainLink.click();
-    }
-  });
+  useEffect(() => {
+    boxAreaRef.current.addEventListener('click', () => linkRef.current.click());
+  }, []);
   return (
-    <div id={styles.flipBox}>
+    <div ref={boxAreaRef} id={styles.flipBox}>
       <div className={styles.flipBoxInner}>
         <div className={styles.flipBoxFront}>
           <Link href="/">
-            <a className="j-link">
-              <img src="images/CircleJ.png" alt="Go to the homepage" width="36" />
+            <a ref={linkRef} className="j-link">
+              <img src="/images/CircleJ.png" alt="Go to the homepage" width="36" />
             </a>
           </Link>
         </div>

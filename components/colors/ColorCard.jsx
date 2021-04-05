@@ -1,37 +1,31 @@
 import { useState, useEffect } from 'react';
 import styles from './ColorCard.module.css';
+import calcContrast from '@lib/calcContrast';
 
 function OutlinedButton({ color }) {
   return (
-    <button className="btn btn-sm mr-1" style={{ color: color, border: `1px solid ${color}` }} tabIndex="-1">
+    <div
+      className="btn btn-sm select-none cursor-pointer first:ml-0 mr-1 focus:ring-0 focus:ring-transparent"
+      style={{ color: color, border: `1px solid ${color}` }}
+      tabIndex="-1"
+    >
       Button
-    </button>
+    </div>
   );
 }
 
-function ColoredCircle({ color }) {
-  return (
-    <>
-      <span className="badge badge-pill ml-1" style={{ backgroundColor: color }}></span>
-      <style jsx>{`
-        .badge:empty {
-          height: 15px;
-          width: 15px;
-          display: inline-block;
-        }
-      `}</style>
-    </>
-  );
+function Circle({ color }) {
+  return <div className="inline-block h-4 w-4 rounded-full ml-1" style={{ backgroundColor: color }} />;
 }
 
-const ColorDescriptor = ({ text, color }) => {
+function ColorDescriptor({ text, color }) {
   return (
-    <small className="d-flex flex-nowrap align-items-center">
-      <span className="text-nowrap">{`${text}: ${color.toLowerCase()}`}</span>
-      <ColoredCircle color={color} />
+    <small className="flex flex-nowrap items-center">
+      <span className="whitespace-nowrap">{`${text}: ${color.toLowerCase()}`}</span>
+      <Circle color={color} />
     </small>
   );
-};
+}
 
 function CardFooter({ primary, secondary, onClick }) {
   const [copyBtn, setCopyBtnText] = useState({ icon: 'clipboard', title: 'Copy to clipboard' });
@@ -48,21 +42,17 @@ function CardFooter({ primary, secondary, onClick }) {
   }, [copyBtn]);
 
   return (
-    <div className={`${styles.cardFooter} row no-gutters justify-content-between bg-dark text-light`}>
-      <div className="col d-flex flex-column">
+    <div className={`${styles.cardFooter} flex justify-between text-gray-300`}>
+      <div className="flex flex-col">
         <ColorDescriptor text="Primary" color={primary} />
         <ColorDescriptor text="Secondary" color={secondary} />
+        <small>Contrast Ratio: {calcContrast(primary, secondary)}</small>
       </div>
-      <div className="col d-flex justify-content-end" style={{ color: 'var(--main-text)' }}>
-        <button
-          title={copyBtn.title}
-          className={`btn-sm btn-link btn ${styles.button}`}
-          onClick={toClipboard}
-          aria-label={copyBtn.title}
-        >
+      <div className="flex justify-end" style={{ color: 'var(--main-text)' }}>
+        <button title={copyBtn.title} className="btn-link btn btn-sm" onClick={toClipboard} aria-label={copyBtn.title}>
           <i className={`bi bi-${copyBtn.icon}`}></i>
         </button>
-        <button className={`btn btn-sm btn-link ${styles.button}`} onClick={onClick} aria-label="Invert colors">
+        <button className="btn btn-sm btn-link" onClick={onClick} aria-label="Invert colors">
           <i className="bi bi-circle-half"></i>
         </button>
       </div>
@@ -79,7 +69,7 @@ export default function ColorCard({ primary, secondary }) {
   const swapColors = () => setTheme({ primary: theme.secondary, secondary: theme.primary });
 
   return (
-    <article className={`card ${styles.card} bg-dark`}>
+    <article className={`card ${styles.card}`}>
       <div className={`${styles.cardBody} ${styles.colorCard}`} style={getStyle()}>
         <hgroup>
           <h1>Heading 1</h1>
@@ -87,11 +77,11 @@ export default function ColorCard({ primary, secondary }) {
           <h3>Heading 3</h3>
         </hgroup>
         <p>The quick brown fox jumps over the lazy dog</p>
-        <div className="d-flex mt-1">
+        <div className="flex mt-1">
           <OutlinedButton color={theme.secondary} />
-          <button className="btn btn-sm mr-1" style={getStyle(true)} tabIndex="-1">
+          <div className="btn btn-sm mr-1 select-none cursor-pointer" style={getStyle(true)} tabIndex="-1">
             Button
-          </button>
+          </div>
         </div>
       </div>
       <CardFooter primary={theme.primary} secondary={theme.secondary} onClick={swapColors} />

@@ -11,7 +11,7 @@ function getPercentualEduProgress(endDate) {
   return percentage.toFixed(2);
 }
 
-export default function EduProgress({ endDate }) {
+export default function EduProgress({ endDate, container }) {
   const [percentage, setPercentage] = React.useState(0);
   const tryUpdatePercentage = () => {
     const newPercentage = getPercentualEduProgress(endDate);
@@ -21,7 +21,7 @@ export default function EduProgress({ endDate }) {
   };
 
   useEffect(() => {
-    document.querySelector('#progressContainer').addEventListener('animationstart', () => {
+    container.current.addEventListener('animationstart', () => {
       setTimeout(setPercentage(getPercentualEduProgress(endDate)), 150);
     });
   });

@@ -25,7 +25,7 @@ export default function ShareButton({ getUrl }) {
   }, [shareBtn]);
 
   return (
-    <button className="btn btn-sm button--gold" type="button" onClick={share}>
+    <button className="btn btn-outline" type="button" onClick={share}>
       {shareBtn}
     </button>
   );
