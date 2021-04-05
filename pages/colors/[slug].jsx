@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import Colors from './index';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import pageTitle from './index';
 
 export default function slug() {
   const [colors, setColors] = useState('');
@@ -14,10 +13,10 @@ export default function slug() {
   return (
     <>
       <Head>
-        <title>{pageTitle}</title>
-        <meta name="og:title" value={pageTitle} key="og:title" />
+        <title>Preview Color Combinations</title>
+        <meta property="og:title" content="Preview Color Combinations" />
         <meta
-          name="og:description"
+          property="og:description"
           value="Check out this awesome combination of colors that has been shared with you!"
           key="og:description"
         />

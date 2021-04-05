@@ -2,13 +2,14 @@ import Head from 'next/head';
 import Link from 'next/link';
 import HomeButton from '@components/HomeButton';
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home, title = "Hi, I'm Julien" }) {
   return (
     <>
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta property="og:title" content="Hi, I'm Julien" key="og:title" />
+        <title>{title}</title>
+        <meta property="og:title" content={title} />
         <meta
           property="og:description"
           content="Here you'll find the results of me tinkering around with various technologies."
@@ -18,7 +19,6 @@ export default function Layout({ children, home }) {
         <meta property="og:url" content="https://jzd.me" />
         <meta name="twitter:card" content="summary_large_image" />
 
-        <title>Hi, I'm Julien</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.2.2/font/bootstrap-icons.css" />
       </Head>
       {!home && (
