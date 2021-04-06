@@ -1,9 +1,7 @@
-import LabeledCheckbox from '@components/form/LabeledCheckbox';
 import ColorInput from '@components/form/ColorInput';
 
-export default function ColorForm({ colors, doShuffle, onColorChange, onDoShuffleChange }) {
+export default function ColorForm({ colors, onColorChange }) {
   const handleColorTextChange = (e) => onColorChange(e.target.value);
-  const handleDoShuffleChange = (e) => onDoShuffleChange(e.target.checked);
   const handleColorInputChange = (newColor) => {
     if (!colors.includes(newColor)) onColorChange(colors.concat(`\n${newColor}`));
   };
@@ -24,13 +22,6 @@ export default function ColorForm({ colors, doShuffle, onColorChange, onDoShuffl
           cols="5"
         />
       </div>
-      <LabeledCheckbox
-        id="shuffle"
-        name="doShuffle"
-        isChecked={doShuffle}
-        onChange={handleDoShuffleChange}
-        label="Shuffle output"
-      />
     </form>
   );
 }

@@ -1,8 +1,21 @@
-export default function ColorDeck({ cards, doShuffle }) {
+import { useState } from 'react';
+import LabeledCheckbox from '@components/form/LabeledCheckbox';
+
+export default function ColorDeck({ cards }) {
+  const [doShuffle, setDoShuffle] = useState(false);
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4 rounded bg-gray-700 p-2">
-      {doShuffle ? shuffle(cards) : cards}
-    </div>
+    <>
+      <LabeledCheckbox
+        id="shuffle"
+        name="doShuffle"
+        isChecked={doShuffle}
+        onChange={(e) => setDoShuffle(e.target.checked)}
+        label="Shuffle output"
+      />
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4 rounded bg-gray-700 p-2">
+        {doShuffle ? shuffle(cards) : cards}
+      </div>
+    </>
   );
 }
 
