@@ -20,7 +20,7 @@ export default function Colors({ shared, initialColors = ['#000', '#fff'] }) {
           <h1>{title}</h1>
           <div className="text-left sm:w-7/12 sm:mx-auto">
             <p className="mt-2 mb-2">
-              View all possible combinations for any{' '}
+              View all combinations for any{' '}
               <a className="link-animated-hover" href="https://en.wikipedia.org/wiki/Web_colors#Hex_triplet">
                 hex color values
               </a>{' '}
@@ -29,7 +29,16 @@ export default function Colors({ shared, initialColors = ['#000', '#fff'] }) {
             <p className="mb-2">
               The preview will automatically update as long as you enter more than two unique colors.
             </p>
-            <p>For performance reasons, the amount of colors you can enter has been limited to ten.</p>
+            <p>
+              The preview filters out combinations with a contrast ratio that doesn't meet the{' '}
+              <a
+                className="link-animated-hover"
+                href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast"
+              >
+                <abbr title="Web Content Accessibility Guidelines">WCAG</abbr>
+              </a>{' '}
+              standards.
+            </p>
           </div>
         </div>
         <ColorPreviewer initialColors={initialColors} />

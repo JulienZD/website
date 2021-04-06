@@ -27,7 +27,7 @@ function ColorDescriptor({ text, color }) {
   );
 }
 
-function CardFooter({ primary, secondary, onClick }) {
+function CardFooter({ primary, secondary, contrast, onClick }) {
   const [copyBtn, setCopyBtnText] = useState({ icon: 'clipboard', title: 'Copy to clipboard' });
   const toClipboard = async () => {
     if (copyBtn.icon !== 'clipboard') return;
@@ -46,7 +46,7 @@ function CardFooter({ primary, secondary, onClick }) {
       <div className="flex flex-col">
         <ColorDescriptor text="Primary" color={primary} />
         <ColorDescriptor text="Secondary" color={secondary} />
-        <small>Contrast Ratio: {calcContrast(primary, secondary)}</small>
+        <small>Contrast Ratio: {contrast}</small>
       </div>
       <div className="flex justify-end" style={{ color: 'var(--main-text)' }}>
         <button title={copyBtn.title} className="btn-link btn btn-sm" onClick={toClipboard} aria-label={copyBtn.title}>
@@ -60,7 +60,7 @@ function CardFooter({ primary, secondary, onClick }) {
   );
 }
 
-export default function ColorCard({ primary, secondary }) {
+export default function ColorCard({ primary, secondary, contrast }) {
   const [theme, setTheme] = useState({ primary: primary, secondary: secondary });
 
   const colorStyle = (background, foreground) => ({ backgroundColor: background, color: foreground });
@@ -84,7 +84,7 @@ export default function ColorCard({ primary, secondary }) {
           </div>
         </div>
       </div>
-      <CardFooter primary={theme.primary} secondary={theme.secondary} onClick={swapColors} />
+      <CardFooter primary={theme.primary} secondary={theme.secondary} contrast={contrast} onClick={swapColors} />
     </article>
   );
 }
