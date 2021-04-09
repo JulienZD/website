@@ -1,19 +1,22 @@
 import { useState } from 'react';
 import LabeledCheckbox from '@components/form/LabeledCheckbox';
 
-export default function ColorDeck({ cards }) {
+export default function ColorDeck({ cards, errorMsg }) {
   const [doShuffle, setDoShuffle] = useState(false);
+  const cardDeck = doShuffle ? shuffle(cards) : cards;
   return (
     <>
-      <LabeledCheckbox
-        id="shuffle"
-        name="doShuffle"
-        isChecked={doShuffle}
-        onChange={(e) => setDoShuffle(e.target.checked)}
-        label="Shuffle output"
-      />
+      {cards.length > 0 && (
+        <LabeledCheckbox
+          id="shuffle"
+          name="doShuffle"
+          isChecked={doShuffle}
+          onChange={(e) => setDoShuffle(e.target.checked)}
+          label="Shuffle output"
+        />
+      )}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4 rounded bg-gray-700 p-2">
-        {doShuffle ? shuffle(cards) : cards}
+        {cards.length ? cardDeck : <p className="bg-primary text-center col-span-full">{errorMsg}</p>}
       </div>
     </>
   );

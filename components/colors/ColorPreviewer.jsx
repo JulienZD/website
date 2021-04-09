@@ -40,7 +40,14 @@ export default function ColorPreviewer({ initialColors }) {
           <ShareButton getUrl={() => location.pathname} />
         </div>
       )}
-      <ColorDeck cards={cardList} />
+      <ColorDeck
+        cards={cardList}
+        errorMsg={
+          hexColors.length < 2
+            ? 'Enter two or more colors'
+            : 'There is not enough contrast between the colors you provided'
+        }
+      />
     </>
   );
 }
