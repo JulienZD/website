@@ -1,7 +1,13 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import LabeledCheckbox from '@components/form/LabeledCheckbox';
+import shuffle from '@lib/shuffle';
 
-export default function ColorDeck({ cards, errorMsg }) {
+interface Props {
+  cards: JSX.Element[];
+  errorMsg: string;
+}
+
+export default function ColorDeck({ cards, errorMsg }: Props) {
   const [doShuffle, setDoShuffle] = useState(false);
   const cardDeck = doShuffle ? shuffle(cards) : cards;
   return (
@@ -11,7 +17,7 @@ export default function ColorDeck({ cards, errorMsg }) {
           id="shuffle"
           name="doShuffle"
           isChecked={doShuffle}
-          onChange={(e) => setDoShuffle(e.target.checked)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setDoShuffle(e.target.checked)}
           label="Shuffle output"
         />
       )}
@@ -20,14 +26,4 @@ export default function ColorDeck({ cards, errorMsg }) {
       </div>
     </>
   );
-}
-
-// Shuffle function by https://stackoverflow.com/a/12646864
-function shuffle(array) {
-  const shuffledArray = array.slice();
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-  }
-  return shuffledArray;
 }

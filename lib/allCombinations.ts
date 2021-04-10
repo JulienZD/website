@@ -1,8 +1,8 @@
 import uniqueArray from './uniqueArray';
 import calcContrast from '@lib/calcContrast';
 
-function allColorCombinations(set) {
-  const combinations = allCombinations(uniqueArray(set));
+function allColorCombinations(array: string[]) {
+  const combinations = allCombinations(uniqueArray(array));
   return [
     ...combinations.map(({ first, second }) => ({
       primary: first,
@@ -17,7 +17,7 @@ function allColorCombinations(set) {
   ];
 }
 
-function allCombinations(array) {
+function allCombinations<Type>(array: Type[]) {
   return array.flatMap((first, i) =>
     array.slice(i + 1).map((second) => {
       return { first, second };

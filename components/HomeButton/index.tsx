@@ -3,8 +3,8 @@ import Link from 'next/link';
 import styles from './index.module.css';
 
 export default function HomeButton() {
-  const boxAreaRef = useRef(null);
-  const linkRef = useRef(null);
+  const boxAreaRef = useRef<HTMLDivElement>(null);
+  const linkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     boxAreaRef.current.addEventListener('click', () => linkRef.current.click());

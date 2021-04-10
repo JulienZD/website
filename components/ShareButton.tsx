@@ -3,11 +3,15 @@ import { useState, useEffect } from 'react';
 const shareText = 'Share';
 const copiedText = 'Copied!';
 
-export default function ShareButton({ getUrl }) {
+interface Props {
+  url?: string;
+}
+
+export default function ShareButton({ url }: Props) {
   const [shareBtn, setShareBtn] = useState(shareText);
 
   const share = async () => {
-    const shareUrl = `${location.origin}${getUrl()}`;
+    const shareUrl = `${location.origin}${url || location.pathname}`;
     if (navigator.share) {
       await navigator.share({
         url: shareUrl,

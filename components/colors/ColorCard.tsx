@@ -1,24 +1,34 @@
 import { useState, useEffect } from 'react';
 import styles from './ColorCard.module.css';
-import calcContrast from '@lib/calcContrast';
 
-function OutlinedButton({ color }) {
+interface ColorCombination {
+  primary: string;
+  secondary: string;
+  contrast: number;
+}
+
+interface CardFooterProps {
+  colorCombination: ColorCombination;
+  onClick: () => void;
+}
+
+function OutlinedButton({ color }: { color: string }) {
   return (
     <div
       className="btn btn-sm select-none cursor-pointer first:ml-0 mr-1 focus:ring-0 focus:ring-transparent"
       style={{ color: color, border: `1px solid ${color}` }}
-      tabIndex="-1"
+      tabIndex={-1}
     >
       Button
     </div>
   );
 }
 
-function Circle({ color }) {
+function Circle({ color }: { color: string }) {
   return <div className="inline-block h-4 w-4 rounded-full ml-1" style={{ backgroundColor: color }} />;
 }
 
-function ColorDescriptor({ text, color }) {
+function ColorDescriptor({ text, color }: { text: string; color: string }) {
   return (
     <small className="flex flex-nowrap items-center">
       <span className="whitespace-nowrap">{`${text}: ${color.toLowerCase()}`}</span>
@@ -27,7 +37,7 @@ function ColorDescriptor({ text, color }) {
   );
 }
 
-function CardFooter({ primary, secondary, contrast, onClick }) {
+function CardFooter({ colorCombination: { primary, secondary, contrast }, onClick }: CardFooterProps) {
   const [copyBtn, setCopyBtnText] = useState({ icon: 'clipboard', title: 'Copy to clipboard' });
   const toClipboard = async () => {
     if (copyBtn.icon !== 'clipboard') return;
@@ -42,7 +52,7 @@ function CardFooter({ primary, secondary, contrast, onClick }) {
   }, [copyBtn]);
 
   return (
-    <div className={`${styles.cardFooter} flex justify-between text-gray-300`}>
+    <div className="p-2 flex justify-between text-gray-300">
       <div className="flex flex-col">
         <ColorDescriptor text="Primary" color={primary} />
         <ColorDescriptor text="Secondary" color={secondary} />
@@ -60,17 +70,15 @@ function CardFooter({ primary, secondary, contrast, onClick }) {
   );
 }
 
-export default function ColorCard({ primary, secondary, contrast }) {
-  const [theme, setTheme] = useState({ primary: primary, secondary: secondary });
+export default function ColorCard(props: ColorCombination) {
+  const [theme, setTheme] = useState({ primary: props.primary, secondary: props.secondary });
+  const { primary, secondary } = theme;
 
-  const colorStyle = (background, foreground) => ({ backgroundColor: background, color: foreground });
-  const getStyle = (alt) =>
-    !alt ? colorStyle(theme.primary, theme.secondary) : colorStyle(theme.secondary, theme.primary);
-  const swapColors = () => setTheme({ primary: theme.secondary, secondary: theme.primary });
+  const swapColors = () => setTheme({ primary: secondary, secondary: primary });
 
   return (
-    <article className={`card ${styles.card}`}>
-      <div className={`${styles.cardBody} ${styles.colorCard}`} style={getStyle()}>
+    <article className="m-1">
+      <div className="p-2 rounded-md" style={{ backgroundColor: primary, color: secondary }}>
         <hgroup>
           <h1>Heading 1</h1>
           <h2>Heading 2</h2>
@@ -78,13 +86,17 @@ export default function ColorCard({ primary, secondary, contrast }) {
         </hgroup>
         <p>The quick brown fox jumps over the lazy dog</p>
         <div className="flex mt-1">
-          <OutlinedButton color={theme.secondary} />
-          <div className="btn btn-sm mr-1 select-none cursor-pointer" style={getStyle(true)} tabIndex="-1">
+          <OutlinedButton color={secondary} />
+          <div
+            className="btn btn-sm mr-1 select-none cursor-pointer"
+            style={{ backgroundColor: secondary, color: primary }}
+            tabIndex={-1}
+          >
             Button
           </div>
         </div>
       </div>
-      <CardFooter primary={theme.primary} secondary={theme.secondary} contrast={contrast} onClick={swapColors} />
+      <CardFooter colorCombination={props} onClick={swapColors} />
     </article>
   );
 }

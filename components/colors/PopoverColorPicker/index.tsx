@@ -1,21 +1,28 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { KeyboardEvent, useCallback, useRef, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
 import styles from './index.module.css';
 
 import useUnfocus from '@hooks/useUnfocus';
 
+interface Props {
+  color: string;
+  onChange: (newColor: string) => void;
+  onClose: () => void;
+}
+
 // Immproved component of https://codesandbox.io/s/opmco?file=/src/PopoverPicker.js
-export default function PopoverPicker({ color, onChange, onClose }) {
-  const popover = useRef();
+export default function PopoverPicker({ color, onChange, onClose }: Props) {
+  const popover = useRef<HTMLDivElement>();
   const [isOpen, toggle] = useState(false);
 
   const close = useCallback(() => {
     onClose();
     toggle(false);
   }, [color]);
+
   useUnfocus(popover, close);
 
-  const ariaOpen = (event) => {
+  const ariaOpen = (event: KeyboardEvent) => {
     if (event.code !== 'Space' && event.code !== 'Enter') return;
     event.preventDefault();
     toggle(true);

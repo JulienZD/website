@@ -1,17 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { RefObject, useEffect } from 'react';
 import { Progress } from 'reactstrap';
 import styles from './index.module.css';
 
-function getPercentualEduProgress(endDate) {
-  const startDate = new Date(2019, 8, 1);
-  const now = new Date();
-  const totalEduTime = endDate - startDate;
-  const elapsedTime = now - startDate;
-  const percentage = (elapsedTime / totalEduTime) * 100;
-  return percentage.toFixed(2);
+interface Props {
+  endDate: Date;
+  container: RefObject<HTMLDivElement>;
 }
 
-export default function EduProgress({ endDate, container }) {
+function getPercentualEduProgress(endDate: Date) {
+  const startDate = new Date(2019, 8, 1);
+  const totalEduTime = endDate.getTime() - startDate.getTime();
+  const elapsedTime = Date.now() - startDate.getTime();
+  const percentage = (elapsedTime / totalEduTime) * 100;
+  return Number(percentage.toFixed(2));
+}
+
+export default function EduProgress({ endDate, container }: Props) {
   const [percentage, setPercentage] = React.useState(0);
   const tryUpdatePercentage = () => {
     const newPercentage = getPercentualEduProgress(endDate);
@@ -22,7 +26,7 @@ export default function EduProgress({ endDate, container }) {
 
   useEffect(() => {
     container.current.addEventListener('animationstart', () => {
-      setTimeout(setPercentage(getPercentualEduProgress(endDate)), 150);
+      setTimeout(() => setPercentage(getPercentualEduProgress(endDate)), 150);
     });
   });
 

@@ -1,32 +1,44 @@
-import { useEffect, useRef } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import Layout from '@components/layout';
 import EduProgress from '@components/EduProgress';
 import SocialButton from '@components/SocialButton';
 
-function displayIntro(elements) {
+interface Elements {
+  logo: RefObject<HTMLElement>;
+  elsewhereContainer: RefObject<HTMLElement>;
+  progressContainer: RefObject<HTMLElement>;
+  h1Ref: RefObject<HTMLElement>;
+}
+
+function displayIntro(elements: Elements) {
   setAnimEvents(elements);
   const { children } = elements.h1Ref.current;
+  const { logo } = elements;
   const duration = 1;
 
   for (let i = 0; i < children.length; i++) {
-    const child = children[i];
+    const child = children[i] as HTMLElement;
 
     child.style.animationDuration = `${duration * (i + 1)}s`;
     child.style.animationDelay = `${i}s`;
   }
 
-  logo.style.animationDelay = `${children.length}s`;
+  logo.current.style.animationDelay = `${children.length}s`;
 }
 
-function setAnimEvents({ logo, elsewhereContainer, progressContainer }) {
-  const setAnim = (el) => {
+function setAnimEvents({ logo, elsewhereContainer, progressContainer }: Omit<Elements, 'h1Ref'>) {
+  const setAnim = (el: HTMLElement) => {
     if (!el) return;
     el.style.animationDuration = '1s';
     el.style.animationFillMode = 'forwards';
     el.style.animationName = 'appear';
   };
 
-  const animateElementAfterPrevious = ({ current: prevAnimatedEl }, nextAnimatedEl, delay) => {
+  const animateElementAfterPrevious = (
+    { current: prevAnimatedEl }: RefObject<HTMLElement>,
+    nextAnimatedEl: RefObject<HTMLElement>,
+    delay: number
+  ) => {
     prevAnimatedEl.addEventListener('animationstart', () => {
       setTimeout(() => setAnim(nextAnimatedEl.current), delay);
     });
@@ -36,13 +48,12 @@ function setAnimEvents({ logo, elsewhereContainer, progressContainer }) {
 }
 
 const endDate = new Date(2023, 5, 1);
-const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
 
 export default function Home() {
-  const logo = useRef(null);
-  const elsewhereContainer = useRef(null);
-  const progressContainer = useRef(null);
-  const h1Ref = useRef(null);
+  const logo = useRef<HTMLImageElement>(null);
+  const elsewhereContainer = useRef<HTMLDivElement>(null);
+  const progressContainer = useRef<HTMLDivElement>(null);
+  const h1Ref = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     displayIntro({ logo, elsewhereContainer, progressContainer, h1Ref });
@@ -53,8 +64,8 @@ export default function Home() {
         <h1 className="sr-only">Hi, my name is Julien</h1>
         <section id="introContainer">
           <h1 ref={h1Ref} aria-hidden="true">
-            <span style={{ fontSize: 5 + 'rem' }}> Hi, </span>
-            <span style={{ fontSize: 3 + 'rem' }}> my name is </span>
+            <span className="text-7xl"> Hi, </span>
+            <span className="text-5xl"> my name is </span>
           </h1>
           <img
             ref={logo}
@@ -77,7 +88,10 @@ export default function Home() {
           <h2 className="section-title">Educational progress</h2>
           <h3 className="text-left mb-2">Software Engineering Bachelor's degree</h3>
           <EduProgress endDate={endDate} container={progressContainer} />
-          <p className="text-left">I'm due to graduate on {endDate.toLocaleDateString('en-US', dateOptions)}.</p>
+          <p className="text-left">
+            I'm due to graduate on{' '}
+            {endDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}.
+          </p>
         </section>
       </div>
     </Layout>

@@ -2,7 +2,12 @@ import Head from 'next/head';
 import Layout from '@components/layout';
 import ColorPreviewer from '@components/colors/ColorPreviewer';
 
-export default function Colors({ shared, initialColors = ['#000', '#fff'] }) {
+interface Props {
+  shared: boolean;
+  initialColors: string[];
+}
+
+export default function Colors({ shared, initialColors = ['#000', '#fff'] }: Props) {
   const title = 'Preview Color Combinations';
   return (
     <Layout title={title}>
@@ -10,7 +15,7 @@ export default function Colors({ shared, initialColors = ['#000', '#fff'] }) {
         {!shared && (
           <meta
             property="og:description"
-            value="View all combinations of your favorite colors in a simple overview."
+            content="View all combinations of your favorite colors in a simple overview."
             key="og:description"
           />
         )}

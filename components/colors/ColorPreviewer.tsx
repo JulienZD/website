@@ -15,7 +15,11 @@ function generateCards(hexColors) {
     ));
 }
 
-export default function ColorPreviewer({ initialColors }) {
+interface Props {
+  initialColors: string[];
+}
+
+export default function ColorPreviewer({ initialColors }: Props) {
   const [colorInput, setColors] = useState(uniqueArray(initialColors).join('\n'));
 
   const hexColors = colorInput
@@ -37,7 +41,7 @@ export default function ColorPreviewer({ initialColors }) {
       <ColorForm colors={colorInput} onColorChange={setColors} />
       {hexColors.length >= 2 && (
         <div className="flex justify-end">
-          <ShareButton getUrl={() => location.pathname} />
+          <ShareButton />
         </div>
       )}
       <ColorDeck

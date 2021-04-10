@@ -1,8 +1,14 @@
 import ColorInput from '@components/form/ColorInput';
+import { ChangeEvent } from 'react';
 
-export default function ColorForm({ colors, onColorChange }) {
-  const handleColorTextChange = (e) => onColorChange(e.target.value);
-  const handleColorInputChange = (newColor) => {
+interface Props {
+  colors: string;
+  onColorChange: (value: string) => void;
+}
+
+export default function ColorForm({ colors, onColorChange }: Props) {
+  const handleColorTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => onColorChange(e.target.value);
+  const handleColorInputChange = (newColor: string) => {
     if (!colors.includes(newColor)) onColorChange(colors.concat(`\n${newColor}`));
   };
   return (
@@ -18,8 +24,8 @@ export default function ColorForm({ colors, onColorChange }) {
           value={colors}
           onChange={handleColorTextChange}
           className="resize-none"
-          rows="10"
-          cols="5"
+          rows={10}
+          cols={5}
         />
       </div>
     </form>

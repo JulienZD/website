@@ -4,11 +4,11 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 export default function slug() {
-  const [colors, setColors] = useState('');
+  const [colors, setColors] = useState(null);
   const router = useRouter();
   useEffect(() => {
     if (!router.isReady) return;
-    setColors(tryImportColors(router.query.slug));
+    setColors(tryImportColors(router.query.slug as string));
   }, [router.isReady]);
   return (
     <>
@@ -17,7 +17,7 @@ export default function slug() {
         <meta property="og:title" content="Preview Color Combinations" />
         <meta
           property="og:description"
-          value="Check out this awesome combination of colors that has been shared with you!"
+          content="Check out this awesome combination of colors that has been shared with you!"
           key="og:description"
         />
       </Head>
@@ -26,7 +26,7 @@ export default function slug() {
   );
 }
 
-function tryImportColors(query) {
+function tryImportColors(query: string) {
   if (!query) return;
   const splitQuery = query.split('-');
   if (!splitQuery.length) return;

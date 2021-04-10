@@ -1,8 +1,15 @@
+import { ReactNode } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import HomeButton from '@components/HomeButton';
 
-export default function Layout({ children, home, title = "Hi, I'm Julien" }) {
+interface Props {
+  children: ReactNode;
+  title?: string;
+  home?: boolean;
+}
+
+export default function Layout({ children, home, title = "Hi, I'm Julien" }: Props) {
   return (
     <>
       <Head>
