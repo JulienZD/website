@@ -2,7 +2,7 @@ import React, { KeyboardEvent, useCallback, useRef, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
 import styles from './index.module.css';
 
-import useUnfocus from '@hooks/useUnfocus';
+import useUnfocus from '@../../hooks/useUnfocus';
 
 interface Props {
   color: string;

@@ -1,6 +1,6 @@
 import uniqueArray from './uniqueArray';
-import calcContrast from '@lib/calcContrast';
-import { ColorCombination } from 'typings';
+import calcContrast from './calcContrast';
+import { ColorCombination } from 'src/typings';
 
 function allColorCombinations(array: string[]): ColorCombination[] {
   const combinations = allCombinations(uniqueArray(array));

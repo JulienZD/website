@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import HomeButton from '@components/HomeButton';
+import HomeButton from './HomeButton';
 
 interface Props {
   children: ReactNode;
