@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ColorCombination } from '@typings/index';
+import { ColorCombination } from 'types';
+
 interface CardFooterProps {
   colorCombination: ColorCombination;
   onClick: () => void;
