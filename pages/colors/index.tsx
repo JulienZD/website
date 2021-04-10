@@ -4,10 +4,10 @@ import ColorPreviewer from '@components/colors/ColorPreviewer';
 
 interface Props {
   shared: boolean;
-  initialColors: string[];
+  initialColors?: string[];
 }
 
-export default function Colors({ shared, initialColors = ['#000', '#fff'] }: Props) {
+export default function Colors({ shared, initialColors = ['#000', '#fff'] }: Props): JSX.Element {
   const title = 'Preview Color Combinations';
   return (
     <Layout title={title}>

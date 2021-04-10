@@ -7,7 +7,7 @@ interface Props {
   errorMsg: string;
 }
 
-export default function ColorDeck({ cards, errorMsg }: Props) {
+export default function ColorDeck({ cards, errorMsg }: Props): JSX.Element {
   const [doShuffle, setDoShuffle] = useState(false);
   const cardDeck = doShuffle ? shuffle(cards) : cards;
   return (
@@ -17,7 +17,7 @@ export default function ColorDeck({ cards, errorMsg }: Props) {
           id="shuffle"
           name="doShuffle"
           isChecked={doShuffle}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setDoShuffle(e.target.checked)}
+          onChange={(e: ChangeEvent<HTMLInputElement>): void => setDoShuffle(e.target.checked)}
           label="Shuffle output"
         />
       )}

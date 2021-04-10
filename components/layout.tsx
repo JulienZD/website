@@ -9,7 +9,7 @@ interface Props {
   home?: boolean;
 }
 
-export default function Layout({ children, home, title = "Hi, I'm Julien" }: Props) {
+export default function Layout({ children, home, title = "Hi, I'm Julien" }: Props): JSX.Element {
   return (
     <>
       <Head>
@@ -26,6 +26,11 @@ export default function Layout({ children, home, title = "Hi, I'm Julien" }: Pro
         <meta property="og:url" content="https://jzd.me" />
         <meta name="twitter:card" content="summary_large_image" />
 
+        <link
+          rel="preload"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.2.2/font/bootstrap-icons.css"
+          as="style"
+        />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.2.2/font/bootstrap-icons.css" />
       </Head>
       {!home && (

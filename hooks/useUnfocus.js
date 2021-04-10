@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useEffect } from 'react';
 
 // Improved version of https://codesandbox.io/s/opmco?file=/src/useClickOutside.js

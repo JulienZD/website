@@ -7,10 +7,10 @@ interface Props {
   url?: string;
 }
 
-export default function ShareButton({ url }: Props) {
+export default function ShareButton({ url }: Props): JSX.Element {
   const [shareBtn, setShareBtn] = useState(shareText);
 
-  const share = async () => {
+  const share = async (): Promise<void> => {
     const shareUrl = `${location.origin}${url || location.pathname}`;
     if (navigator.share) {
       await navigator.share({
@@ -25,7 +25,7 @@ export default function ShareButton({ url }: Props) {
   useEffect(() => {
     if (shareBtn === shareText) return;
     const timeout = setTimeout(() => setShareBtn(shareText), 2000);
-    return () => clearTimeout(timeout);
+    return (): void => clearTimeout(timeout);
   }, [shareBtn]);
 
   return (

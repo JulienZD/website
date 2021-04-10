@@ -7,7 +7,7 @@ interface Props {
   container: RefObject<HTMLDivElement>;
 }
 
-function getPercentualEduProgress(endDate: Date) {
+function getPercentualEduProgress(endDate: Date): number {
   const startDate = new Date(2019, 8, 1);
   const totalEduTime = endDate.getTime() - startDate.getTime();
   const elapsedTime = Date.now() - startDate.getTime();
@@ -15,9 +15,9 @@ function getPercentualEduProgress(endDate: Date) {
   return Number(percentage.toFixed(2));
 }
 
-export default function EduProgress({ endDate, container }: Props) {
+export default function EduProgress({ endDate, container }: Props): JSX.Element {
   const [percentage, setPercentage] = React.useState(0);
-  const tryUpdatePercentage = () => {
+  const tryUpdatePercentage = (): void => {
     const newPercentage = getPercentualEduProgress(endDate);
     if (newPercentage > percentage) {
       setPercentage(getPercentualEduProgress(endDate));
@@ -25,6 +25,7 @@ export default function EduProgress({ endDate, container }: Props) {
   };
 
   useEffect(() => {
+    if (!container.current) return;
     container.current.addEventListener('animationstart', () => {
       setTimeout(() => setPercentage(getPercentualEduProgress(endDate)), 150);
     });
@@ -32,7 +33,7 @@ export default function EduProgress({ endDate, container }: Props) {
 
   useEffect(() => {
     const interval = setInterval(() => tryUpdatePercentage(), 10000);
-    return () => clearInterval(interval);
+    return (): void => clearInterval(interval);
   }, [percentage]);
 
   return (

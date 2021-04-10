@@ -6,13 +6,13 @@ interface Props {
   onColorChange: (value: string) => void;
 }
 
-export default function ColorForm({ colors, onColorChange }: Props) {
-  const handleColorTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => onColorChange(e.target.value);
-  const handleColorInputChange = (newColor: string) => {
+export default function ColorForm({ colors, onColorChange }: Props): JSX.Element {
+  const handleColorTextChange = (e: ChangeEvent<HTMLTextAreaElement>): void => onColorChange(e.target.value);
+  const handleColorInputChange = (newColor: string): void => {
     if (!colors.includes(newColor)) onColorChange(colors.concat(`\n${newColor}`));
   };
   return (
-    <form className="form w-48 mt-3" onSubmit={(e) => e.preventDefault()}>
+    <form className="form w-48 mt-3" onSubmit={(e): void => e.preventDefault()}>
       <ColorInput onClose={handleColorInputChange} />
       <div className="form-group">
         <label className="mb-1" htmlFor="colorInput">

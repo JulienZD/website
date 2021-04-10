@@ -6,7 +6,7 @@ import ShareButton from '@components/ShareButton';
 import uniqueArray from '@lib/uniqueArray';
 import { allColorCombinations } from '@lib/allCombinations';
 
-function generateCards(hexColors) {
+function generateCards(hexColors: string[]): JSX.Element[] {
   const colorCombinations = allColorCombinations(hexColors);
   return colorCombinations
     .filter(({ contrast }) => contrast >= 4.5)
@@ -19,7 +19,7 @@ interface Props {
   initialColors: string[];
 }
 
-export default function ColorPreviewer({ initialColors }: Props) {
+export default function ColorPreviewer({ initialColors }: Props): JSX.Element {
   const [colorInput, setColors] = useState(uniqueArray(initialColors).join('\n'));
 
   const hexColors = colorInput
@@ -27,7 +27,7 @@ export default function ColorPreviewer({ initialColors }: Props) {
     .split('\n')
     .filter((c) => c.match(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/));
 
-  const urlColors = () => hexColors.map((c) => c.replace('#', '')).join('-');
+  const urlColors = (): string => hexColors.map((c) => c.replace('#', '')).join('-');
 
   useEffect(() => {
     if (typeof window === 'undefined') return;

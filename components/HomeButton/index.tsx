@@ -2,12 +2,13 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import styles from './index.module.css';
 
-export default function HomeButton() {
+export default function HomeButton(): JSX.Element {
   const boxAreaRef = useRef<HTMLDivElement>(null);
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    boxAreaRef.current.addEventListener('click', () => linkRef.current.click());
+    if (!boxAreaRef.current) return;
+    boxAreaRef.current.addEventListener('click', () => linkRef.current && linkRef.current.click());
   }, []);
   return (
     <div ref={boxAreaRef} id={styles.flipBox}>

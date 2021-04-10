@@ -3,12 +3,14 @@ import Colors from './index';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
-export default function slug() {
-  const [colors, setColors] = useState(null);
+export default function slug(): JSX.Element {
+  const [colors, setColors] = useState<string[] | null>(null);
   const router = useRouter();
   useEffect(() => {
     if (!router.isReady) return;
-    setColors(tryImportColors(router.query.slug as string));
+    const importedColors = tryImportColors(router.query.slug as string);
+    if (!importedColors) return;
+    setColors(importedColors);
   }, [router.isReady]);
   return (
     <>
@@ -26,7 +28,7 @@ export default function slug() {
   );
 }
 
-function tryImportColors(query: string) {
+function tryImportColors(query: string): string[] | undefined {
   if (!query) return;
   const splitQuery = query.split('-');
   if (!splitQuery.length) return;

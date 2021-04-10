@@ -1,7 +1,13 @@
 import uniqueArray from './uniqueArray';
 import calcContrast from '@lib/calcContrast';
 
-function allColorCombinations(array: string[]) {
+export interface ColorCombination {
+  primary: string;
+  secondary: string;
+  contrast: number;
+}
+
+function allColorCombinations(array: string[]): ColorCombination[] {
   const combinations = allCombinations(uniqueArray(array));
   return [
     ...combinations.map(({ first, second }) => ({
@@ -17,7 +23,7 @@ function allColorCombinations(array: string[]) {
   ];
 }
 
-function allCombinations<Type>(array: Type[]) {
+function allCombinations<Type>(array: Type[]): { first: Type; second: Type }[] {
   return array.flatMap((first, i) =>
     array.slice(i + 1).map((second) => {
       return { first, second };

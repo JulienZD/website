@@ -11,8 +11,8 @@ interface Props {
 }
 
 // Immproved component of https://codesandbox.io/s/opmco?file=/src/PopoverPicker.js
-export default function PopoverPicker({ color, onChange, onClose }: Props) {
-  const popover = useRef<HTMLDivElement>();
+export default function PopoverPicker({ color, onChange, onClose }: Props): JSX.Element {
+  const popover = useRef<HTMLDivElement>(null);
   const [isOpen, toggle] = useState(false);
 
   const close = useCallback(() => {
@@ -22,7 +22,7 @@ export default function PopoverPicker({ color, onChange, onClose }: Props) {
 
   useUnfocus(popover, close);
 
-  const ariaOpen = (event: KeyboardEvent) => {
+  const ariaOpen = (event: KeyboardEvent): void => {
     if (event.code !== 'Space' && event.code !== 'Enter') return;
     event.preventDefault();
     toggle(true);
@@ -37,7 +37,7 @@ export default function PopoverPicker({ color, onChange, onClose }: Props) {
         role="button"
         aria-expanded={isOpen}
         onKeyDown={ariaOpen}
-        onClick={() => toggle(true)}
+        onClick={(): void => toggle(true)}
       />
 
       {isOpen && (

@@ -8,7 +8,7 @@ interface Props {
   label: string;
 }
 
-export default function LabeledCheckbox({ id, name, isChecked, onChange, label }: Props) {
+export default function LabeledCheckbox({ id, name, isChecked, onChange, label }: Props): JSX.Element {
   const cls =
     'rounded bg-transparent border-secondary text-secondary focus:ring-offset-transparent focus:ring-secondary-dark focus:ring-0';
   return (

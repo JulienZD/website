@@ -1,18 +1,11 @@
+import { ColorCombination } from '@lib/allCombinations';
 import { useState, useEffect } from 'react';
-import styles from './ColorCard.module.css';
-
-interface ColorCombination {
-  primary: string;
-  secondary: string;
-  contrast: number;
-}
-
 interface CardFooterProps {
   colorCombination: ColorCombination;
   onClick: () => void;
 }
 
-function OutlinedButton({ color }: { color: string }) {
+function OutlinedButton({ color }: { color: string }): JSX.Element {
   return (
     <div
       className="btn btn-sm select-none cursor-pointer first:ml-0 mr-1 focus:ring-0 focus:ring-transparent"
@@ -24,11 +17,11 @@ function OutlinedButton({ color }: { color: string }) {
   );
 }
 
-function Circle({ color }: { color: string }) {
+function Circle({ color }: { color: string }): JSX.Element {
   return <div className="inline-block h-4 w-4 rounded-full ml-1" style={{ backgroundColor: color }} />;
 }
 
-function ColorDescriptor({ text, color }: { text: string; color: string }) {
+function ColorDescriptor({ text, color }: { text: string; color: string }): JSX.Element {
   return (
     <small className="flex flex-nowrap items-center">
       <span className="whitespace-nowrap">{`${text}: ${color.toLowerCase()}`}</span>
@@ -37,9 +30,9 @@ function ColorDescriptor({ text, color }: { text: string; color: string }) {
   );
 }
 
-function CardFooter({ colorCombination: { primary, secondary, contrast }, onClick }: CardFooterProps) {
+function CardFooter({ colorCombination: { primary, secondary, contrast }, onClick }: CardFooterProps): JSX.Element {
   const [copyBtn, setCopyBtnText] = useState({ icon: 'clipboard', title: 'Copy to clipboard' });
-  const toClipboard = async () => {
+  const toClipboard = async (): Promise<void> => {
     if (copyBtn.icon !== 'clipboard') return;
     await navigator.clipboard.writeText(`background-color: ${primary};\ncolor: ${secondary};`);
     setCopyBtnText({ icon: 'check2', title: 'Copied!' });
@@ -48,7 +41,7 @@ function CardFooter({ colorCombination: { primary, secondary, contrast }, onClic
   useEffect(() => {
     if (copyBtn.icon === 'clipboard') return;
     const timeout = setTimeout(() => setCopyBtnText({ icon: 'clipboard', title: 'Copy to clipboard' }), 2000);
-    return () => clearTimeout(timeout);
+    return (): void => clearTimeout(timeout);
   }, [copyBtn]);
 
   return (
@@ -70,11 +63,11 @@ function CardFooter({ colorCombination: { primary, secondary, contrast }, onClic
   );
 }
 
-export default function ColorCard(props: ColorCombination) {
+export default function ColorCard(props: ColorCombination): JSX.Element {
   const [theme, setTheme] = useState({ primary: props.primary, secondary: props.secondary });
   const { primary, secondary } = theme;
 
-  const swapColors = () => setTheme({ primary: secondary, secondary: primary });
+  const swapColors = (): void => setTheme({ primary: secondary, secondary: primary });
 
   return (
     <article className="m-1">

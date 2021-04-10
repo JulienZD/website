@@ -10,23 +10,23 @@ interface Elements {
   progressContainer: RefObject<HTMLElement>;
 }
 
-function displayIntro(elements: Elements) {
+function displayIntro(elements: Elements): void {
   setAnimEvents(elements);
 }
 
-function setAnimEvents({ introRef, socialsContainer, progressContainer }: Elements) {
+function setAnimEvents({ introRef, socialsContainer, progressContainer }: Elements): void {
   const animateElementAfterPrevious = (
     { current: prevAnimatedEl }: RefObject<HTMLElement>,
     { current: nextAnimatedEl }: RefObject<HTMLElement>,
     delay: number
-  ) => {
+  ): void => {
     if (!prevAnimatedEl || !nextAnimatedEl) return;
     prevAnimatedEl.addEventListener('animationstart', () => {
       setTimeout(() => setAnim(nextAnimatedEl), delay);
     });
   };
 
-  const setAnim = (el: HTMLElement) => {
+  const setAnim = (el: HTMLElement): void => {
     el.style.animationDuration = '1s';
     el.style.animationFillMode = 'forwards';
     el.style.animationName = 'appear';
@@ -38,7 +38,7 @@ function setAnimEvents({ introRef, socialsContainer, progressContainer }: Elemen
 
 const endDate = new Date(2023, 5, 1);
 
-export default function Home() {
+export default function Home(): JSX.Element {
   const socialsContainer = useRef<HTMLDivElement>(null);
   const progressContainer = useRef<HTMLDivElement>(null);
   const introRef = createRef<HTMLImageElement>();

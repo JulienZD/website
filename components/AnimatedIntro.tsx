@@ -1,7 +1,7 @@
 import useCombinedRef from '@hooks/useCombinedRef';
 import React, { forwardRef, MutableRefObject, RefObject, useEffect, useRef } from 'react';
 
-function animateIntroText(logo: RefObject<HTMLImageElement>, textRef: RefObject<HTMLElement>) {
+function animateIntroText(logo: RefObject<HTMLImageElement>, textRef: RefObject<HTMLElement>): void {
   if (!textRef.current || !logo.current) return;
 
   const textNodes = Array.from(textRef.current.children) as HTMLElement[];
