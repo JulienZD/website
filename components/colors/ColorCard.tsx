@@ -53,10 +53,10 @@ function CardFooter({ colorCombination: { primary, secondary, contrast }, onClic
       </div>
       <div className="flex justify-end" style={{ color: 'var(--main-text)' }}>
         <button title={copyBtn.title} className="btn-link btn btn-sm" onClick={toClipboard} aria-label={copyBtn.title}>
-          <i className={`bi bi-${copyBtn.icon}`}></i>
+          <i className={`bi bi-${copyBtn.icon}`} />
         </button>
         <button className="btn btn-sm btn-link" onClick={onClick} aria-label="Invert colors">
-          <i className="bi bi-circle-half"></i>
+          <i className="bi bi-circle-half" />
         </button>
       </div>
     </div>
