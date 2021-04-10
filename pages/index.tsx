@@ -11,40 +11,43 @@ interface Elements {
 }
 
 function displayIntro(elements: Elements) {
+  animateIntroText(elements.logo, elements.h1Ref);
   setAnimEvents(elements);
-  const { children } = elements.h1Ref.current;
-  const { logo } = elements;
-  const duration = 1;
+}
 
-  for (let i = 0; i < children.length; i++) {
-    const child = children[i] as HTMLElement;
+function animateIntroText(logo: RefObject<HTMLElement>, textRef: RefObject<HTMLElement>) {
+  if (!textRef.current || !logo.current) return;
 
-    child.style.animationDuration = `${duration * (i + 1)}s`;
-    child.style.animationDelay = `${i}s`;
-  }
+  const textNodes = Array.from(textRef.current.children) as HTMLElement[];
 
-  logo.current.style.animationDelay = `${children.length}s`;
+  textNodes.forEach((node, index) => {
+    node.style.animationDuration = `${index + 1}s`;
+    node.style.animationDelay = `${index / 2}s`;
+  });
+
+  logo.current.style.animationDelay = '1.25s'; //`${textNodes.length}s`;
 }
 
 function setAnimEvents({ logo, elsewhereContainer, progressContainer }: Omit<Elements, 'h1Ref'>) {
+  const animateElementAfterPrevious = (
+    { current: prevAnimatedEl }: RefObject<HTMLElement>,
+    { current: nextAnimatedEl }: RefObject<HTMLElement>,
+    delay: number
+  ) => {
+    if (!prevAnimatedEl || !nextAnimatedEl) return;
+    prevAnimatedEl.addEventListener('animationstart', () => {
+      setTimeout(() => setAnim(nextAnimatedEl), delay);
+    });
+  };
+
   const setAnim = (el: HTMLElement) => {
-    if (!el) return;
     el.style.animationDuration = '1s';
     el.style.animationFillMode = 'forwards';
     el.style.animationName = 'appear';
   };
 
-  const animateElementAfterPrevious = (
-    { current: prevAnimatedEl }: RefObject<HTMLElement>,
-    nextAnimatedEl: RefObject<HTMLElement>,
-    delay: number
-  ) => {
-    prevAnimatedEl.addEventListener('animationstart', () => {
-      setTimeout(() => setAnim(nextAnimatedEl.current), delay);
-    });
-  };
-  animateElementAfterPrevious(logo, elsewhereContainer, 1000);
-  animateElementAfterPrevious(elsewhereContainer, progressContainer, 875);
+  animateElementAfterPrevious(logo, elsewhereContainer, 750);
+  animateElementAfterPrevious(elsewhereContainer, progressContainer, 0);
 }
 
 const endDate = new Date(2023, 5, 1);
