@@ -238,8 +238,3 @@ button:focus {
     margin-left: 0;
   }
 }
-
-#elsewhereContainer,
-#progressContainer {
-  opacity: 0;
-}
