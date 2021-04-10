@@ -1,5 +1,5 @@
-import { ColorCombination } from '@lib/allCombinations';
 import { useState, useEffect } from 'react';
+import { ColorCombination } from 'typings';
 interface CardFooterProps {
   colorCombination: ColorCombination;
   onClick: () => void;
