@@ -106,8 +106,9 @@ footer a.link-animated-hover {
   @apply inline-block no-underline rounded px-0.5 -mx-px transition-colors duration-75 ease-linear;
 }
 
-p a.link-animated-hover {
-  color: #ffce55;
+p a.link-animated-hover,
+a.link.link-animated-hover {
+  @apply text-secondary-light;
 }
 
 .link-animated-hover::after {
