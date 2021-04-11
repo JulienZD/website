@@ -1,0 +1,17 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "no-console": "warn",
+    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/explicit-function-return-type": "warn"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2021
+  },
+  "extends": ["plugin:@typescript-eslint/recommended", "plugin:@next/next/recommended", "prettier"],
+  "ignorePatterns": [".next/*", "out/*"]
+}
