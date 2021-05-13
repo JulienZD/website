@@ -103,7 +103,7 @@ footer a.link-animated-hover {
 }
 
 .link-animated-hover {
-  @apply inline-block no-underline rounded px-0.5 -mx-px transition-colors duration-75 ease-linear;
+  @apply inline-block no-underline rounded px-0.5 transition-colors duration-75 ease-linear;
 }
 
 p a.link-animated-hover,
