@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import HomeButton from './HomeButton';
+import Header from '@components/Header';
 
 interface Props {
   children: ReactNode;
@@ -33,13 +33,7 @@ export default function Layout({ children, home, title = "Hi, I'm Julien" }: Pro
         />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.2.2/font/bootstrap-icons.css" />
       </Head>
-      {!home && (
-        <header>
-          <nav className="py-2 px-4 fixed-top">
-            <HomeButton />
-          </nav>
-        </header>
-      )}
+      <Header />
       <main className={home ? 'home' : 'with-header'}>{children}</main>
       <footer className="mt-auto text-right py-3 pr-4">
         <div className="flex justify-end">

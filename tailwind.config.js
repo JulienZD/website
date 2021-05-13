@@ -21,6 +21,9 @@ module.exports = {
       '8xl': '6rem',
       '9xl': '8rem',
     },
+    container: {
+      center: true
+    },
     extend: {
       colors: {
         primary: 'var(--color-primary)',
