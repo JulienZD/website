@@ -34,7 +34,7 @@ export default function Layout({ children, home, title = "Hi, I'm Julien" }: Pro
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.2.2/font/bootstrap-icons.css" />
       </Head>
       <Header />
-      <main className={home ? 'home' : 'with-header'}>{children}</main>
+      <main>{children}</main>
       <footer className="mt-auto text-right py-3 pr-4">
         <div className="flex justify-end">
           {home && (
