@@ -33,6 +33,9 @@ module.exports = {
           dark: '#997415',
         },
       },
+      backgroundPosition: {
+        'left-center': '-375px center',
+      },
     },
     variants: {
       extend: {},
