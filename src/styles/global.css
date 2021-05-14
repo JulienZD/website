@@ -137,7 +137,7 @@ p a.j-link:hover {
   @apply underline;
 }
 
-button:focus {
+button:focus-visible {
   @apply focus:ring focus:outline-none focus:ring-secondary-dark;
 }
 
