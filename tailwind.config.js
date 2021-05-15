@@ -22,7 +22,11 @@ module.exports = {
       '9xl': '8rem',
     },
     container: {
-      center: true
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        lg: '0.5rem'
+      },
     },
     extend: {
       colors: {

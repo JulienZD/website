@@ -19,7 +19,7 @@ function NavLink({ href, text, title, className }: Props): JSX.Element {
 
 export default function Header(): JSX.Element {
   return (
-    <header className="container my-8 font-semibold text-lg sm:px-0 px-2">
+    <header className="container my-8 font-semibold text-lg">
       <nav className="flex justify-between">
         <NavLink href="/" text="JZD" title="Home" className="sm:text-2xl" />
         <div className="flex justify-around">
