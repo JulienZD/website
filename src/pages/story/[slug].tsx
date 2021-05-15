@@ -37,9 +37,9 @@ export default function Story({ storyData: { title, description, image, contentH
         <meta name="description" content={description} key="description" />
         <meta property="og:image" content={image} key="og:image" />
       </Head>
-      <h1>{title}</h1>
-      <p>{description}</p>
-      <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+      <h1 className="animate-slideUp">{title}</h1>
+      {image && <img src={image} alt="" width={1280} height={720} className="rounded-t-xl" />}
+      <div className="mt-12" dangerouslySetInnerHTML={{ __html: contentHtml }} />
     </Layout>
   );
 }
