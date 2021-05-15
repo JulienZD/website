@@ -10,5 +10,6 @@ export interface StoryMeta {
   image: string;
   slug: string;
   onHomepage: boolean;
+  order?: number;
   linkText?: string;
 }

@@ -27,7 +27,10 @@ export function getStoriesData(homepage?: boolean): StoryMeta[] {
       ...matterResult.data,
     };
   }) as StoryMeta[];
-  return (homepage ? stories.filter((story) => story.onHomepage) : stories) as StoryMeta[];
+  return (homepage ? stories.filter((story) => story.onHomepage) : stories).sort((a, b) => {
+    if (a.order! > b.order!) return 1;
+    return -1;
+  });
 }
 
 export function getStorySlugs(): { params: { slug: string } }[] {
