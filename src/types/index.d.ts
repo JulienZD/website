@@ -9,5 +9,6 @@ export interface StoryMeta {
   description: string;
   image: string;
   slug: string;
+  onHomepage: boolean;
   linkText?: string;
 }

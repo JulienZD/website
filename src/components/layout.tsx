@@ -22,7 +22,7 @@ export default function Layout({ children, home, title = "Hi, I'm Julien" }: Pro
           content="Here you'll find the results of me tinkering around with various technologies."
           key="og:description"
         />
-        <meta property="og:image" content="http://jzd.me/images/CircleJ.png" />
+        <meta property="og:image" content="http://jzd.me/images/CircleJ.png" key="og:image" />
         <meta property="og:url" content="https://jzd.me" />
         <meta name="twitter:card" content="summary_large_image" />
 
