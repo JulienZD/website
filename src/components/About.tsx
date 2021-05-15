@@ -1,19 +1,14 @@
 import Hero from '@components/Hero';
 import Highlight from '@components/Highlight';
-import { ArrowDown, GitHub, Linkedin, Twitter } from 'react-feather';
-import { RefObject } from 'react';
+import { GitHub, Linkedin, Twitter } from 'react-feather';
 
-interface Props {
-  scrollTo: RefObject<HTMLDivElement>;
-}
-
-export default function About({ scrollTo }: Props): JSX.Element {
+export default function About(): JSX.Element {
   return (
-    <div className="lg:h-screen">
+    <>
       <Hero src="/images/hero.jpg" altSrc="/images/hero-og.jpg" />
       <Socials />
-      <div className="container lg:pr-[600px]">
-        <h1 className="flex flex-col mb-20 md:text-6xl md:whitespace-nowrap">
+      <div id="about" className="container lg:pr-[600px]">
+        <h1 className="flex flex-col mb-12 md:mb-20 md:text-6xl md:whitespace-nowrap">
           <span>Hi, my name is</span>
           <Highlight>Julien Zapata Duque</Highlight>
         </h1>
@@ -36,22 +31,8 @@ export default function About({ scrollTo }: Props): JSX.Element {
         </p>
 
         {/*TODO: add education section*/}
-
-        <button
-          className="mt-48"
-          onClick={(): void => {
-            if (scrollTo && scrollTo.current) scrollTo.current.scrollIntoView({ behavior: 'smooth' });
-          }}
-        >
-          <Highlight>
-            <div className="flex text-xl items-end">
-              <span className="mr-2">Scroll down</span>
-              <ArrowDown className="motion-safe:animate-bounce" size={24} />
-            </div>
-          </Highlight>
-        </button>
       </div>
-    </div>
+    </>
   );
 }
 
