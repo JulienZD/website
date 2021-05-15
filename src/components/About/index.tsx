@@ -26,7 +26,8 @@ export default function About(): JSX.Element {
         <p className="mt-2">
           I'm passionate about all things software development. I'm always reading and learning about new subjects in my
           free time. In college I've learned to make Java applications and do full-stack web development with .NET Core.
-          In my free time I've learned React, TypeScript and Node.js.
+          In my free time I've learned technologies like React, TypeScript and Node.js. Have a look below to see what
+          I've worked on.
         </p>
         <Link href="/about">
           <a className="link-animated-hover mt-8">Read more</a>

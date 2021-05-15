@@ -10,7 +10,7 @@ export default function Projects({ projects }: Props): JSX.Element {
   return (
     <div id="projects" className={`container mt-24 ${styles.projects}`}>
       <h2 className="mb-4 text-4xl">Projects</h2>
-      <p>There's never a time when I'm not working on something. Take a look at my recent endeavours.</p>
+      <p>There's never a time when I'm not working on something. Take a look at my recent endeavors.</p>
       <StoryGrid stories={projects.slice(0, 4)} />
       {projects.length > 4 && (
         <Link href="/projects">
