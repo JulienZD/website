@@ -7,12 +7,13 @@ export default function About(): JSX.Element {
   return (
     <>
       <Hero src="/images/hero.jpg" altSrc="/images/hero-og.jpg" />
-      <Socials />
+
       <article id={styles.about} className="container lg:pr-[600px]">
-        <h1 id={styles.heading} className="flex flex-col mb-12 md:mb-20 md:text-6xl md:whitespace-nowrap">
+        <h1 id={styles.heading} className="flex flex-col mb-4 lg:mb-12 md:text-6xl md:whitespace-nowrap">
           <span>Hi, my name is</span>
           <Highlight>Julien Zapata Duque</Highlight>
         </h1>
+        <Socials />
         <p>
           I'm a {calculateAge()} year old Software Engineering student from The Netherlands. My current focus lies in
           web development.
@@ -42,9 +43,10 @@ function calculateAge(): number {
 }
 
 function Socials(): JSX.Element {
-  const socialClass = 'mx-4 first:ml-0 last:mr-0 focus-visible:ring-2 focus-visible:ring-secondary-dark';
+  const socialClass =
+    'mx-4 first:ml-0 last:mr-0 focus-visible:ring-2 focus-visible:ring-secondary-dark hover:text-[#acacac] transition-colors duration-200';
   return (
-    <div id={styles.socials} className="flex container justify-end mt-4 lg:mr-40 lg:absolute lg:right-0 lg:top-[750px]">
+    <div id={styles.socials} className="flex my-4">
       <a className={socialClass} href="https://github.com/JulienZD" aria-label="View my GitHub" title="View my GitHub">
         <GitHub />
       </a>

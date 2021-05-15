@@ -20,9 +20,12 @@
 #about > *:nth-child(4) {
     animation-delay: 1s;
 }
+#about > *:nth-child(5) {
+    animation-delay: 1.2s;
+}
 
 #socials > * {
-    @apply animate-slideLeft opacity-0;
+    @apply animate-slideUp opacity-0;
 }
 
 #socials > *:nth-child(1) {
