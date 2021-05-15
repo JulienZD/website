@@ -2,6 +2,7 @@ import Hero from '@components/Hero';
 import Highlight from '@components/Highlight';
 import { GitHub, Linkedin, Twitter } from 'react-feather';
 import styles from './index.module.css';
+import { AGE } from '@lib/calculateAge';
 
 export default function About(): JSX.Element {
   return (
@@ -15,8 +16,8 @@ export default function About(): JSX.Element {
         </h1>
         <Socials />
         <p>
-          I'm a {calculateAge()} year old Software Engineering student from The Netherlands. My current focus lies in
-          web development.
+          I'm a {AGE} year old Software Engineering student from The Netherlands. My current focus lies in web
+          development.
         </p>
         <p className="mt-2">
           I've had an interest in computers since I was 17. I built my first computer around my 18th birthday. Soon
@@ -35,11 +36,6 @@ export default function About(): JSX.Element {
       </article>
     </>
   );
-}
-
-function calculateAge(): number {
-  const diff = new Date().getTime() - new Date(1998, 5, 18).getTime();
-  return Math.floor(diff / 1000 / 60 / 60 / 24 / 365);
 }
 
 function Socials(): JSX.Element {
