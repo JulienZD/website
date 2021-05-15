@@ -8,13 +8,9 @@ export default function Hero({ src, altSrc }: { src: string; altSrc: string }): 
           clipPath: 'polygon(calc(30% - 10vw) 0, 100% 0, 100% 100%, 45% 100%)',
         }}
       />
-      <img
-        className="container block lg:hidden animate-slideUp"
-        src={altSrc ?? src}
-        alt={''}
-        width="640"
-        height="360"
-      />
+      <div className="container block lg:hidden">
+        <img className="animate-slideUp rounded-t-xl" src={altSrc ?? src} alt={''} height="360" />
+      </div>
     </>
   );
 }
