@@ -1,26 +1,44 @@
-import { ProjectMeta } from '../types';
+import Link from 'next/link';
+import { ReactNode } from 'react';
 import { ChevronRight } from 'react-feather';
 
-export default function ProjectCard({ title, description, image, identifier, linkText }: ProjectMeta) {
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  slug: string;
+  linkText?: string;
+}
+
+export default function ProjectCard({ title, description, image, slug, linkText }: Props): JSX.Element {
+  const href = `/story/${slug}`;
   return (
     <article className="group flex flex-col mt-4 lg:max-w-lg">
-      <a href={`/${identifier}`}>
+      <ProjectLink href={href}>
         <div
           style={{
             backgroundImage: `url(${image})`,
           }}
           className="bg-cover h-72 rounded-t-xl rounded-b transition-transform duration-[250ms] transform group-hover:scale-[1.02]"
         />
-      </a>
-      <a href={`/${identifier}`}>
+      </ProjectLink>
+      <ProjectLink href={href}>
         <h3 className="text-secondary mt-4">{title}</h3>
-      </a>
+      </ProjectLink>
       <p className="mt-4">{description}</p>
-      <a href={`/${identifier}`} className="uppercase mt-4">
-        <div className="inline-flex items-center group-hover:underline">
+      <ProjectLink href={href}>
+        <div className="inline-flex items-center group-hover:underline uppercase mt-4">
           {linkText ?? 'View project'} <ChevronRight size={16} />
         </div>
-      </a>
+      </ProjectLink>
     </article>
+  );
+}
+
+function ProjectLink({ href, children }: { href: string; children: ReactNode }): JSX.Element {
+  return (
+    <Link href={href}>
+      <a>{children}</a>
+    </Link>
   );
 }

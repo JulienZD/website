@@ -4,10 +4,10 @@ export interface ColorCombination {
   contrast: number;
 }
 
-export interface ProjectMeta {
+export interface StoryMeta {
   title: string;
   description: string;
   image: string;
-  identifier: string;
+  slug: string;
   linkText?: string;
 }
