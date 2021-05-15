@@ -15,10 +15,10 @@
     }
   }
   h1 {
-    @apply text-4xl;
+    @apply text-4xl text-secondary;
   }
   h2 {
-    @apply text-3xl;
+    @apply text-3xl text-secondary;
   }
   h3 {
     @apply text-2xl;

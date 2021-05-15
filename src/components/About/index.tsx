@@ -14,7 +14,7 @@ export default function About(): JSX.Element {
           id={styles.heading}
           className="flex flex-col mb-4 lg:mb-12 md:text-6xl md:whitespace-nowrap tracking-normal"
         >
-          <span>Hi, my name is</span>
+          <span className="text-[#acacac]">Hi, my name is</span>
           <Highlight>Julien Zapata Duque</Highlight>
         </h1>
         <Socials />
