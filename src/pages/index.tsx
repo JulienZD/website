@@ -5,6 +5,7 @@ import Projects from '@components/Projects';
 import Contact from '@components/Contact';
 import { getStoriesData } from '@lib/stories';
 import { StoryMeta } from '../types';
+import { useRef } from 'react';
 
 export const getStaticProps: GetStaticProps = async () => {
   const projectsData = getStoriesData(true);
@@ -20,10 +21,11 @@ interface Props {
 }
 
 export default function Home({ projectsData }: Props): JSX.Element {
+  const projectsRef = useRef<HTMLDivElement>(null);
   return (
     <Layout home>
-      <About />
-      <Projects projects={projectsData} />
+      <About scrollTo={projectsRef} />
+      <Projects projects={projectsData} projectsRef={projectsRef} />
       <Contact />
     </Layout>
   );

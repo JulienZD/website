@@ -37,3 +37,8 @@
 #socials > *:nth-child(3) {
     animation-delay: 0.4s;
 }
+
+#scroll {
+    @apply animate-slideUp opacity-0;
+    animation-delay: 1.3s;
+}

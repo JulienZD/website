@@ -1,14 +1,16 @@
-import { StoryMeta } from '../../types';
+import { StoryMeta } from '../types';
 import Link from 'next/link';
 import StoryGrid from '@components/StoryGrid';
-import styles from './index.module.css';
+import { RefObject } from 'react';
+
 interface Props {
   projects: StoryMeta[];
+  projectsRef: RefObject<HTMLDivElement>;
 }
 
-export default function Projects({ projects }: Props): JSX.Element {
+export default function Projects({ projects, projectsRef }: Props): JSX.Element {
   return (
-    <div id="projects" className={`container mt-24 ${styles.projects}`}>
+    <div ref={projectsRef} id="projects" className={`container mt-24 lg:mt-0 animate-slideUp`}>
       <h2 className="mb-4 text-4xl">Projects</h2>
       <p>There's never a time when I'm not working on something. Take a look at my recent endeavors.</p>
       <StoryGrid stories={projects.slice(0, 4)} />
