@@ -25,13 +25,6 @@ export default function Layout({ children, home, title = "Hi, I'm Julien" }: Pro
         <meta property="og:url" content="https://jzd.me" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="theme-color" content="#071625" />
-
-        <link
-          rel="preload"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.2.2/font/bootstrap-icons.css"
-          as="style"
-        />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.2.2/font/bootstrap-icons.css" />
       </Head>
       <Header />
       <main className={`${!home && 'container'}`}>{children}</main>
