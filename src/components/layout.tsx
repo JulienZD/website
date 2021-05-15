@@ -10,6 +10,8 @@ interface Props {
 }
 
 export default function Layout({ children, home, title = "Hi, I'm Julien" }: Props): JSX.Element {
+  const description =
+    "For the past few years I've been playing around with various technologies. I'm eager to learn new things and am always on the lookout for a new challenge.";
   return (
     <>
       <Head>
@@ -17,19 +19,12 @@ export default function Layout({ children, home, title = "Hi, I'm Julien" }: Pro
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title}</title>
         <meta property="og:title" content={title} />
-        <meta
-          name="description"
-          content="Here you'll find the results of me tinkering around with various technologies."
-          key="description"
-        />
-        <meta
-          property="og:description"
-          content="Here you'll find the results of me tinkering around with various technologies."
-          key="og:description"
-        />
-        <meta property="og:image" content="http://jzd.me/images/CircleJ.png" key="og:image" />
+        <meta name="description" content={description} key="description" />
+        <meta property="og:description" content={description} key="og:description" />
+        <meta property="og:image" content="/images/hero-og.jpg" key="og:image" />
         <meta property="og:url" content="https://jzd.me" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="theme-color" content="#071625" />
 
         <link
           rel="preload"
