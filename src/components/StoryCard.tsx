@@ -19,7 +19,7 @@ export default function StoryCard({ title, description, image, slug, linkText }:
           style={{
             backgroundImage: `url(${image})`,
           }}
-          className="bg-cover bg-center-top h-72 rounded-t-xl rounded-b transition-transform duration-[250ms] transform group-hover:scale-[1.02]"
+          className="bg-cover bg-top h-72 rounded-t-xl rounded-b transition-transform duration-[250ms] transform group-hover:scale-[1.02]"
         />
       </ProjectLink>
       <ProjectLink href={href} title={title}>
