@@ -19,6 +19,12 @@ export default function Colors({ shared, initialColors = ['#000', '#fff'] }: Pro
             key="og:description"
           />
         )}
+        <link
+          rel="preload"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.2.2/font/bootstrap-icons.css"
+          as="style"
+        />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.2.2/font/bootstrap-icons.css" />
       </Head>
       <div className="container mx-auto max-w-6xl">
         <div className="text-center">
