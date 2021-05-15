@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Hero from '@components/Hero';
 import Highlight from '@components/Highlight';
 import { GitHub, Linkedin, Twitter } from 'react-feather';
@@ -9,7 +10,7 @@ export default function About(): JSX.Element {
     <>
       <Hero src="/images/hero.jpg" altSrc="/images/hero-og.jpg" />
 
-      <article id={styles.about} className="container lg:pr-[600px]">
+      <article id={styles.about} className="container lg:pr-[600px] md:mb-48">
         <h1
           id={styles.heading}
           className="flex flex-col mb-4 lg:mb-12 md:text-6xl md:whitespace-nowrap tracking-normal"
@@ -23,19 +24,13 @@ export default function About(): JSX.Element {
           development.
         </p>
         <p className="mt-2">
-          I've had an interest in computers since I was 17. I built my first computer around my 18th birthday. Soon
-          after that I was introduced to AutoHotkey, a scripting language to automate various aspects of Windows. I
-          quickly picked up the basics and wrote some simple scripts. A few months later I started learning Python, but
-          soon stopped because I couldn't find a real use for it in my daily life.
+          I'm passionate about all things software development. I'm always reading and learning about new subjects in my
+          free time. In college I've learned to make Java applications and do full-stack web development with .NET Core.
+          In my free time I've learned React, TypeScript and Node.js.
         </p>
-        <p className="mt-2">
-          A year or so went by without much change until one day, when I was working at a local computer repair shop,
-          where I was introduced to web development. They had recently hired a new guy to rebuild their website from the
-          ground up and I was asked if I wanted to look over his shoulder as he worked. While I couldn't understand much
-          of the code, I enjoyed the process around web development. So much that I started learning it in my free time
-          with the help of online courses.
-        </p>
-        {/*TODO: add education section*/}
+        <Link href="/about">
+          <a className="link-animated-hover mt-8">Read more</a>
+        </Link>
       </article>
     </>
   );
