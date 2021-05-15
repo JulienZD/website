@@ -18,6 +18,11 @@ export default function Layout({ children, home, title = "Hi, I'm Julien" }: Pro
         <title>{title}</title>
         <meta property="og:title" content={title} />
         <meta
+          name="description"
+          content="Here you'll find the results of me tinkering around with various technologies."
+          key="description"
+        />
+        <meta
           property="og:description"
           content="Here you'll find the results of me tinkering around with various technologies."
           key="og:description"

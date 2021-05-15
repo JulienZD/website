@@ -34,6 +34,7 @@ export default function Story({ storyData: { title, description, image, contentH
     <Layout title={title}>
       <Head>
         <meta property="og:description" content={description} key="og:description" />
+        <meta name="description" content={description} key="description" />
         <meta property="og:image" content={image} key="og:image" />
       </Head>
       <h1>{title}</h1>
