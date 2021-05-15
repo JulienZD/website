@@ -30,7 +30,9 @@ export default function About(): JSX.Element {
           I've worked on.
         </p>
         <Link href="/about">
-          <a className="link-animated-hover mt-8">Read more</a>
+          <a className="link-animated-hover mt-8" aria-label="Read more about me">
+            Read more
+          </a>
         </Link>
       </article>
     </>
