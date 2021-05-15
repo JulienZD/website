@@ -10,13 +10,16 @@ export default function About(): JSX.Element {
       <Hero src="/images/hero.jpg" altSrc="/images/hero-og.jpg" />
 
       <article id={styles.about} className="container lg:pr-[600px]">
-        <h1 id={styles.heading} className="flex flex-col mb-4 lg:mb-12 md:text-6xl md:whitespace-nowrap">
+        <h1
+          id={styles.heading}
+          className="flex flex-col mb-4 lg:mb-12 md:text-6xl md:whitespace-nowrap tracking-normal"
+        >
           <span>Hi, my name is</span>
           <Highlight>Julien Zapata Duque</Highlight>
         </h1>
         <Socials />
         <p>
-          I'm a {AGE} year old Software Engineering student from The Netherlands. My current focus lies in web
+          I'm a {AGE}-year-old Software Engineering student from The Netherlands. My current focus lies in web
           development.
         </p>
         <p className="mt-2">

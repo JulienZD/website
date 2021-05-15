@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply text-body;
+    @apply text-body tracking-wider;
   }
 
   @screen md {
