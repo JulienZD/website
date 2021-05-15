@@ -239,3 +239,7 @@ button:focus-visible {
     margin-left: 0;
   }
 }
+
+.animate-slideUp, .animate-slideLeft {
+  opacity: 0;
+}

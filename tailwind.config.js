@@ -40,6 +40,20 @@ module.exports = {
       backgroundPosition: {
         'left-center': '-375px center',
       },
+      keyframes: {
+        slideUp: {
+          '0%': { transform: 'translateY(15px)', opacity: 0},
+          '100%': { transform: 'translateY(0px)', opacity: 1}
+        },
+        slideLeft: {
+          '0%': { transform: 'translateX(100px)', opacity: 0},
+          '100%': { transform: 'translateX(0px)', opacity: 1}
+        }
+      },
+      animation: {
+        slideUp: 'slideUp 1s 0.2s forwards',
+        slideLeft: 'slideLeft 1s 0.4s forwards'
+      }
     },
     variants: {
       extend: {},

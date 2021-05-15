@@ -1,14 +1,15 @@
 import Hero from '@components/Hero';
 import Highlight from '@components/Highlight';
 import { GitHub, Linkedin, Twitter } from 'react-feather';
+import styles from './index.module.css';
 
 export default function About(): JSX.Element {
   return (
     <>
       <Hero src="/images/hero.jpg" altSrc="/images/hero-og.jpg" />
       <Socials />
-      <div id="about" className="container lg:pr-[600px]">
-        <h1 className="flex flex-col mb-12 md:mb-20 md:text-6xl md:whitespace-nowrap">
+      <article id={styles.about} className="container lg:pr-[600px]">
+        <h1 id={styles.heading} className="flex flex-col mb-12 md:mb-20 md:text-6xl md:whitespace-nowrap">
           <span>Hi, my name is</span>
           <Highlight>Julien Zapata Duque</Highlight>
         </h1>
@@ -29,9 +30,8 @@ export default function About(): JSX.Element {
           of the code, I enjoyed the process around web development. So much that I started learning it in my free time
           with the help of online courses.
         </p>
-
         {/*TODO: add education section*/}
-      </div>
+      </article>
     </>
   );
 }
@@ -44,7 +44,7 @@ function calculateAge(): number {
 function Socials(): JSX.Element {
   const socialClass = 'mx-4 first:ml-0 last:mr-0 focus-visible:ring-2 focus-visible:ring-secondary-dark';
   return (
-    <div className="flex container justify-end mt-4 lg:mr-40 lg:absolute lg:right-0 lg:top-[750px]">
+    <div id={styles.socials} className="flex container justify-end mt-4 lg:mr-40 lg:absolute lg:right-0 lg:top-[750px]">
       <a className={socialClass} href="https://github.com/JulienZD" aria-label="View my GitHub" title="View my GitHub">
         <GitHub />
       </a>
