@@ -1,4 +1,4 @@
-import ProjectCard from '@components/ProjectCard';
+import StoryCard from '@components/StoryCard';
 import { StoryMeta } from '../types';
 
 interface Props {
@@ -10,7 +10,7 @@ export default function StoryGrid({ stories }: Props): JSX.Element {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-16 gap-x-16 mb-8">
       {stories.map(({ title, description, slug, image, linkText }) => {
         return (
-          <ProjectCard
+          <StoryCard
             key={title}
             title={title}
             description={description}

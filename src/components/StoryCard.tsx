@@ -10,7 +10,7 @@ interface Props {
   linkText?: string;
 }
 
-export default function ProjectCard({ title, description, image, slug, linkText }: Props): JSX.Element {
+export default function StoryCard({ title, description, image, slug, linkText }: Props): JSX.Element {
   const href = `/story/${slug}`;
   return (
     <article className="group flex flex-col mt-4 lg:max-w-lg">
@@ -19,7 +19,7 @@ export default function ProjectCard({ title, description, image, slug, linkText 
           style={{
             backgroundImage: `url(${image})`,
           }}
-          className="bg-cover h-72 rounded-t-xl rounded-b transition-transform duration-[250ms] transform group-hover:scale-[1.02]"
+          className="bg-cover bg-center h-72 rounded-t-xl rounded-b transition-transform duration-[250ms] transform group-hover:scale-[1.02]"
         />
       </ProjectLink>
       <ProjectLink href={href}>
