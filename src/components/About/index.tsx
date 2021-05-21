@@ -33,7 +33,7 @@ export default function About({ scrollTo }: { scrollTo: RefObject<HTMLDivElement
           <Link href="/about">
             <a className="link-animated-hover mt-8" aria-label="Read more about me">
               <span className="flex items-center">
-                Read more <ChevronRight size={16} />
+                More about me <ChevronRight size={16} />
               </span>
             </a>
           </Link>
