@@ -195,3 +195,7 @@ button:focus-visible {
 .animate-slideUp, .animate-slideLeft {
   opacity: 0;
 }
+
+br {
+  @apply mb-4;
+}
