@@ -7,7 +7,7 @@ export default function Contact(): JSX.Element {
       </p>
       <a
         href="mailto:julien.zapataduque@gmail.com"
-        className="transition-colors border-b-2 pb-1 border-secondary hover:border-transparent focus-visible:border-transparent duration-200 font-semibold text-lg"
+        className="transition-colors border-b-2 pb-1 border-transparent hover:border-secondary focus-visible:border-secondary duration-200 font-semibold text-lg"
       >
         julien.zapataduque@gmail.com
       </a>
