@@ -27,7 +27,7 @@ export default function Layout({ children, home, title = "Hi, I'm Julien" }: Pro
         <meta name="theme-color" content="#071625" />
       </Head>
       <Header />
-      <main className={`${!home && 'container'}`}>{children}</main>
+      <main className={home ? '' : 'container'}>{children}</main>
       <footer className="mt-auto text-right py-3 pr-4">
         <div className="flex justify-end">
           {home && (
