@@ -44,7 +44,15 @@ export default function Story({ storyData: { title, description, image, contentH
         <meta property="og:image" content={image} key="og:image" />
       </Head>
       <h1 className="animate-slideUp">{title}</h1>
-      {image && <img src={image} alt="" width={1280} height={720} className="rounded-t-xl" />}
+      {image && (
+        <img
+          src={image}
+          alt=""
+          width={1280}
+          height={720}
+          className="rounded-t-xl object-cover object-top h-56 sm:h-auto"
+        />
+      )}
       <div className="mt-12" dangerouslySetInnerHTML={{ __html: contentHtml }} />
     </Layout>
   );
