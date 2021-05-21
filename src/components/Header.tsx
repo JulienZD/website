@@ -7,7 +7,7 @@ interface Props {
   title?: string;
 }
 
-function NavLink({ href, text, title, className }: Props): JSX.Element {
+function NavLink({ href, text, title, className = '' }: Props): JSX.Element {
   return (
     <Link href={href}>
       <a className={`${className} link-animated-hover first:ml-0 last:mr-0 mx-2`} title={title ?? text}>
