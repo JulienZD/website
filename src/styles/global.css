@@ -100,7 +100,6 @@ a.link.link-animated-hover {
 
 .link-animated-hover::after {
   @apply relative rounded top-0.5 block w-full h-0.5 mx-auto my-0 bg-secondary transition-transform duration-150 ease-linear origin-center;
-  box-shadow: 0 0 0.45rem 0.075rem var(--main-text);
   transform: scaleX(0);
   content: '';
 }
