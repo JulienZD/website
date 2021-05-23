@@ -74,9 +74,9 @@ export default function ColorCard(props: ColorCombination): JSX.Element {
     <article className="m-1">
       <div className="p-2 rounded-md" style={{ backgroundColor: primary, color: secondary }}>
         <hgroup>
-          <h1>Heading 1</h1>
-          <h2>Heading 2</h2>
-          <h3>Heading 3</h3>
+          <p className="text-4xl">Heading 1</p>
+          <p className="text-3xl">Heading 2</p>
+          <p className="text-2xl">Heading 3</p>
         </hgroup>
         <p>The quick brown fox jumps over the lazy dog</p>
         <div className="flex mt-1">
