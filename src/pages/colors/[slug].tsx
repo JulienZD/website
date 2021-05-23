@@ -2,15 +2,21 @@ import { useState, useEffect } from 'react';
 import Colors from './index';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function slug(): JSX.Element {
   const [colors, setColors] = useState<string[] | null>(null);
+  const [loadingTimedOut, setLoadingTimedOut] = useState(false);
   const router = useRouter();
+
   useEffect(() => {
-    if (!router.isReady) return;
+    const timeout = setTimeout(() => setLoadingTimedOut(true), 3000);
+    if (!router.isReady) return (): void => clearTimeout(timeout);
     const importedColors = tryImportColors(router.query.slug as string);
-    if (!importedColors) return;
+    if (!importedColors) return (): void => clearTimeout(timeout);
     setColors(importedColors);
+
+    return (): void => clearTimeout(timeout);
   }, [router.isReady]);
   return (
     <>
@@ -23,7 +29,21 @@ export default function slug(): JSX.Element {
           key="og:description"
         />
       </Head>
-      {colors && <Colors initialColors={colors} shared />}
+      {colors ? (
+        <Colors initialColors={colors} shared />
+      ) : (
+        loadingTimedOut && (
+          <div className="flex flex-col justify-center text-center h-screen animate-slideUp">
+            <h1>This is awkward.</h1>
+            <p>Loading your colors took longer than expected, something may have gone wrong.</p>
+            <div>
+              <Link href="/colors">
+                <a className="link-animated-hover mt-4">Click me to go back to the default colors page</a>
+              </Link>
+            </div>
+          </div>
+        )
+      )}
     </>
   );
 }
