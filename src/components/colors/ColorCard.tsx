@@ -52,7 +52,7 @@ function CardFooter({ colorCombination: { primary, secondary, contrast }, onClic
         <ColorDescriptor text="Secondary" color={secondary} />
         <small>Contrast Ratio: {contrast}</small>
       </div>
-      <div className="flex justify-end" style={{ color: 'var(--main-text)' }}>
+      <div className="flex justify-end text-secondary">
         <button title={copyBtn.title} className="btn-link btn btn-sm" onClick={toClipboard} aria-label={copyBtn.title}>
           <i className={`bi bi-${copyBtn.icon}`} />
         </button>
