@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { ReactNode } from 'react';
 import { ChevronRight } from 'react-feather';
+import { useRef } from 'react';
+import ClickableWrapper from '@components/ClickableWrapper';
 
 interface Props {
   title: string;
@@ -11,34 +12,27 @@ interface Props {
 }
 
 export default function StoryCard({ title, description, image, slug, linkText }: Props): JSX.Element {
-  const href = `/story/${slug}`;
+  const cardRef = useRef<HTMLDivElement>(null);
+  const linkRef = useRef<HTMLAnchorElement>(null);
   return (
-    <article className="group flex flex-col mt-4 lg:max-w-lg">
-      <ProjectLink href={href} title={title}>
+    <ClickableWrapper parent={cardRef} target={linkRef}>
+      <article ref={cardRef} tabIndex={0} className="group flex flex-col mt-4 lg:max-w-lg cursor-pointer">
         <div
           style={{
             backgroundImage: `url(${image})`,
           }}
           className="bg-cover bg-top h-72 rounded-t-xl rounded-b transition-transform duration-[250ms] transform group-focus:scale-[1.02] group-hover:scale-[1.02]"
         />
-      </ProjectLink>
-      <ProjectLink href={href} title={title}>
-        <h3 className="text-secondary mt-4">{title}</h3>
-      </ProjectLink>
-      <p className="mt-4">{description}</p>
-      <ProjectLink href={href} title={title}>
-        <div className="inline-flex items-center group-hover:underline group-focus:underline uppercase mt-4">
+        <Link href={`/story/${slug}`}>
+          <a ref={linkRef} aria-label={`Read more about ${title}`}>
+            <h3 className="text-secondary mt-4">{title}</h3>
+          </a>
+        </Link>
+        <p className="mt-4">{description}</p>
+        <p className="inline-flex items-center uppercase mt-4 text-secondary">
           {linkText ?? 'View project'} <ChevronRight size={16} />
-        </div>
-      </ProjectLink>
-    </article>
-  );
-}
-
-function ProjectLink({ href, title, children }: { href: string; title: string; children: ReactNode }): JSX.Element {
-  return (
-    <Link href={href}>
-      <a aria-label={`Read more about ${title}`}>{children}</a>
-    </Link>
+        </p>
+      </article>
+    </ClickableWrapper>
   );
 }
