@@ -99,9 +99,15 @@ a.link.link-animated-hover {
   content: '';
 }
 
+.group:hover .link-animated-hover.link-animated-hover::after,
+.group:focus .link-animated-hover.link-animated-hover::after,
 .link-animated-hover:hover.link-animated-hover::after,
 .link-animated-hover:focus.link-animated-hover::after {
   transform: scaleX(1);
+}
+
+.link-animated-hover::after {
+  @apply hover:scale-x-100
 }
 
 .j-link,
