@@ -75,12 +75,7 @@ a:hover {
   @apply inline-flex flex-col mb-3;
 }
 
-form textarea,
-form input {
-  @apply focus:ring-offset-transparent focus:ring-secondary-dark focus:ring-1;
-}
-
-textarea {
+textarea, input[type] {
   @apply rounded bg-transparent border-secondary focus:border-current;
 }
 
