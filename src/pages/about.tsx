@@ -7,7 +7,7 @@ import Contact from '@components/Contact';
 
 export default function About(): JSX.Element {
   return (
-    <Layout title="About me | Julien Zapata Duque">
+    <Layout title="About me">
       <Head>
         <meta
           name="description"

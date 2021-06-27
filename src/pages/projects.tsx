@@ -22,7 +22,7 @@ interface Props {
 export default function Projects({ projectsData }: Props): JSX.Element {
   const description = "All of the projects I've worked on during my career as a software engineer.";
   return (
-    <Layout title="Projects | Julien Zapata Duque">
+    <Layout title="Projects">
       <Head>
         <meta name="description" content={description} key="description" />
         <meta property="og:description" content={description} key="og:description" />
