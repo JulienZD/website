@@ -4,7 +4,7 @@ description: "A dashboard to control my IKEA smart lamps directly from a web bro
 summary: "IKEA limited the ability to control their smart devices to their [mobile$app](https://play.google.com/store/apps/details?id=com.ikea.tradfri.lighting) and physical remotes. Since grabbing my phone each time became tedious, I built a minimal dashboard in which anyone on my local network can control the lamps via their browser. Through the use of server-sent events, updates to the lamps are displayed in real-time on each device. The communication with the IKEA hub is achieved with the [node-tradfri-client](https://github.com/AlCalzone/node-tradfri-client) library."
 image: "/images/smart-lighting.png"
 onHomepage: true
-order: 3
+order: 1
 repository: https://github.com/JulienZD/tradfri-dashboard
 stack: [Svelte, TailwindCSS, Node.js, Express, TypeScript]
 ---
