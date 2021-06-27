@@ -6,14 +6,13 @@
 
 @layer base {
   body {
-    @apply text-body tracking-wider overflow-x-hidden;
+    @apply tracking-wide overflow-x-hidden;
   }
 
-  @screen md {
-    body {
-      @apply text-body-md;
-    }
+  p {
+    @apply my-4;
   }
+
   h1 {
     @apply text-4xl text-secondary;
   }
@@ -85,7 +84,7 @@ footer a.link-animated-hover {
 }
 
 .link-animated-hover {
-  @apply inline-block no-underline rounded px-0.5 transition-colors duration-75 ease-linear;
+  @apply inline-block no-underline rounded transition-colors duration-75 ease-linear;
 }
 
 p a.link-animated-hover,

@@ -28,8 +28,8 @@ export default function StoryCard({ title, description, image, slug, linkText }:
             <h3 className="text-secondary mt-4">{title}</h3>
           </a>
         </Link>
-        <p className="mt-4">{description}</p>
-        <p className="inline-flex items-center uppercase mt-4 text-secondary">
+        <p className="mt-4 !mb-0">{description}</p>
+        <p className="inline-flex items-center uppercase mt-4 !mb-0 text-secondary">
           <span className="link-animated-hover">{linkText ?? 'View project'}</span> <ChevronRight size={16} />
         </p>
       </article>

@@ -17,12 +17,13 @@ export default function Layout({ children, home, title = "Hi, I'm Julien" }: Pro
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{title}</title>
-        <meta property="og:title" content={title} />
+        <title>{`${title} | Julien Zapata Duque`}</title>
+        <meta property="og:title" content={`${title} | Julien Zapata Duque`} />
         <meta name="description" content={description} key="description" />
         <meta property="og:description" content={description} key="og:description" />
         <meta property="og:image" content="/images/hero-og.jpg" key="og:image" />
         <meta property="og:url" content="https://jzd.me" />
+        <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="theme-color" content="#071625" />
       </Head>

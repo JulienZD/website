@@ -65,7 +65,7 @@ function ContactForm(): JSX.Element {
           <label htmlFor="message" className="text-secondary">
             Message
           </label>
-          <textarea name="entry.149682232" id="message" required />
+          <textarea name="entry.149682232" id="message" required rows={5} />
         </section>
 
         <button className="btn btn-outline !ml-0 min-w-[7em] grid place-content-center" type="submit">
