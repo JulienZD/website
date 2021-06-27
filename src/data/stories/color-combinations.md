@@ -12,4 +12,4 @@ During my time as a developer I've come across many interesting and nice looking
 To solve this problem I created this application that displays all the contrast-friendly color combinations in a handy grid.  
 Note: The version in the image is a re-design that's still in development. The linked page is the original version.   
 
-Check it out [here](/colors)
+Check it out [here](https://colors.jzd.me/)
