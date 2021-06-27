@@ -9,8 +9,7 @@ stack: [React, Next.js, TailwindCSS]
 repository: https://github.com/JulienZD/color-combinations
 ---
 \<This article is still a work in progress>  
-
-To solve this problem I created this application that displays all the contrast-friendly color combinations in a handy grid.  
+  
 Note: The version in the image is a re-design that's still in development. The linked page is the original version.   
 
 Check it out [here](https://colors.jzd.me/)
