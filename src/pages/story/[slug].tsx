@@ -84,15 +84,7 @@ export default function Story({
         </InfoBlock>
         <InfoBlock title="Code">{repository ? <a href={repository}>Repository</a> : <p>Not available</p>}</InfoBlock>
       </div>
-      {image && (
-        <img
-          src={image}
-          alt=""
-          width={1024}
-          height={576}
-          className="rounded-t-xl object-cover object-top h-56 sm:h-auto"
-        />
-      )}
+      {image && <img src={image} alt="" width={1024} height={576} className="rounded-t-xl" />}
 
       <div className="mt-12" dangerouslySetInnerHTML={{ __html: contentHtml }} />
     </Layout>
