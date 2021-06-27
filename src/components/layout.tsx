@@ -6,10 +6,9 @@ import Header from '@components/Header';
 interface Props {
   children: ReactNode;
   title?: string;
-  home?: boolean;
 }
 
-export default function Layout({ children, home, title = "Hi, I'm Julien" }: Props): JSX.Element {
+export default function Layout({ children, title = "Hi, I'm Julien" }: Props): JSX.Element {
   const description =
     "For the past few years I've been playing around with various technologies. I'm eager to learn new things and am always on the lookout for a new challenge.";
   return (
@@ -27,14 +26,12 @@ export default function Layout({ children, home, title = "Hi, I'm Julien" }: Pro
         <meta name="theme-color" content="#071625" />
       </Head>
       <Header />
-      <main className={home ? '' : 'container'}>{children}</main>
+      <main className="container">{children}</main>
       <footer className="mt-auto text-right py-3 pr-4">
         <div className="flex justify-end">
-          {home && (
-            <Link href="/colors">
-              <a className="link-animated-hover">Preview Color Combinations</a>
-            </Link>
-          )}
+          <Link href="https://colors.jzd.me/">
+            <a className="link-animated-hover">Preview Color Combinations</a>
+          </Link>
           <a className="link-animated-hover" href="https://github.com/JulienZD/website">
             Source
           </a>
