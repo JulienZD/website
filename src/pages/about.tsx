@@ -21,7 +21,7 @@ export default function About(): JSX.Element {
         />
       </Head>
       <h1 className="animate-slideUp">About me</h1>
-      <img src="/images/hero-og.jpg" height={240} alt="" className="rounded-t-xl mb-4 md:max-w-xl" />
+      <img src="/images/hero-og.jpg" width={640} height={360} alt="" className="rounded-t-xl mb-4 md:max-w-xl" />
       <p>My name is Julien Zapata Duque. I am a {AGE}-year-old software engineering student from The Netherlands.</p>
       <p className="mt-2">
         I've had an interest in computers since I was 17. I built my first computer around my 18th birthday. Soon after
