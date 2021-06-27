@@ -24,7 +24,7 @@ export default function About({ scrollTo }: { scrollTo: RefObject<HTMLDivElement
             I'm a {AGE}-year-old Software Engineering student from The Netherlands. My current focus lies in web
             development.
           </p>
-          <p className="mt-2">
+          <p>
             I'm passionate about all things software development. I'm always reading and learning about new subjects in
             my free time. In college I've learned to make Java applications and do full-stack web development with .NET
             Core. In my free time I've learned technologies like React, TypeScript and Node.js. Have a look below to see
