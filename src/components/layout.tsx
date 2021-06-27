@@ -6,9 +6,10 @@ import Header from '@components/Header';
 interface Props {
   children: ReactNode;
   title?: string;
+  home?: boolean;
 }
 
-export default function Layout({ children, title = "Hi, I'm Julien" }: Props): JSX.Element {
+export default function Layout({ children, home, title = "Hi, I'm Julien" }: Props): JSX.Element {
   const description =
     "For the past few years I've been playing around with various technologies. I'm eager to learn new things and am always on the lookout for a new challenge.";
   return (
@@ -26,7 +27,7 @@ export default function Layout({ children, title = "Hi, I'm Julien" }: Props): J
         <meta name="theme-color" content="#071625" />
       </Head>
       <Header />
-      <main className="container">{children}</main>
+      <main className={home ? '' : 'container'}>{children}</main>
       <footer className="mt-auto text-right py-3 pr-4">
         <div className="flex justify-end">
           <Link href="https://colors.jzd.me/">

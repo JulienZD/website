@@ -23,7 +23,7 @@ interface Props {
 export default function Home({ projectsData }: Props): JSX.Element {
   const projectsRef = useRef<HTMLDivElement>(null);
   return (
-    <Layout>
+    <Layout home>
       <About scrollTo={projectsRef} />
       <Projects projects={projectsData} projectsRef={projectsRef} />
       <Contact />
