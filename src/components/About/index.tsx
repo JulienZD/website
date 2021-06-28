@@ -10,7 +10,7 @@ export default function About({ scrollTo }: { scrollTo: RefObject<HTMLDivElement
   return (
     <>
       <div className="lg:h-screen">
-        <Hero src="/images/hero.jpg" altSrc="/images/hero-og.jpg" />
+        <Hero />
         <article id={styles.about} className="container lg:pr-[600px]">
           <h1
             id={styles.heading}

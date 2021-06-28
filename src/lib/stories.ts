@@ -50,6 +50,26 @@ export async function getStoryData(slug: string) {
   const processedContent = await remark().use(html).use(images).process(matterResult.content);
   const contentHtml = processedContent.toString();
 
+  if (matterResult.data.summary) {
+    // Let's pretend that markdown isn't parsed manually to format links in case the summary contains one
+    if (!matterResult.data.summary.includes('](')) {
+      matterResult.data.storySummary = matterResult.data.summary;
+    } else {
+      matterResult.data.storySummary = matterResult.data.summary
+        .split(' ')
+        .map((word: string) => {
+          const result = word.match(/\[(.*)]\((.*)\)/);
+          if (result) {
+            return `<a href=${result[2]}>${result[1].replace(/\$/g, ' ')}</a>`;
+          }
+          return word;
+        })
+        .join(' ');
+    }
+
+    delete matterResult.data.summary;
+  }
+
   return {
     slug,
     contentHtml,

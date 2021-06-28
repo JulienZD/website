@@ -1,4 +1,5 @@
 import { ReactNode, RefObject, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 interface Props {
   children: ReactNode;
@@ -25,25 +26,44 @@ interface Props {
  * @param {ReactNode} props.children [children]
  */
 export default function ClickableWrapper({ parent, target, children }: Props): JSX.Element {
+  const router = useRouter();
+
   useEffect(() => {
     function handleClick(event: KeyboardEvent | MouseEvent): void {
       if (event instanceof KeyboardEvent && event.code !== 'Space' && event.code !== 'Enter') return;
+      event.preventDefault();
 
-      const isTextSelected = window.getSelection()?.toString();
-      if (!isTextSelected) {
-        target.current?.click();
+      const noTextSelected = !window.getSelection()?.toString();
+      if (noTextSelected && target.current) {
+        router.push(target.current.href);
       }
     }
 
-    if (parent.current && target.current) {
-      parent.current.addEventListener('click', handleClick);
-      parent.current.addEventListener('keydown', handleClick);
+    const preventPropagation = (event: MouseEvent | KeyboardEvent): void => {
+      if (event instanceof KeyboardEvent && event.code !== 'Space' && event.code !== 'Enter') return;
+      event.stopPropagation();
+    };
 
-      return (): void => {
-        parent.current?.removeEventListener('click', handleClick);
-        parent.current?.removeEventListener('keydown', handleClick);
-      };
-    }
-  }, []);
+    const anchors =
+      parent.current && Array.from(parent.current.querySelectorAll('a')).filter((a) => a.href !== target.current?.href);
+
+    anchors?.forEach((el) => {
+      el.addEventListener('click', preventPropagation);
+      el.addEventListener('keydown', preventPropagation);
+    });
+
+    parent.current?.addEventListener('click', handleClick);
+    parent.current?.addEventListener('keydown', handleClick);
+
+    return (): void => {
+      anchors?.forEach((el) => {
+        el.removeEventListener('click', preventPropagation);
+        el.removeEventListener('keydown', preventPropagation);
+      });
+
+      parent.current?.removeEventListener('click', handleClick);
+      parent.current?.removeEventListener('keydown', handleClick);
+    };
+  }, [router]);
   return <>{children}</>;
 }
