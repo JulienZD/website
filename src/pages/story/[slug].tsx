@@ -23,7 +23,7 @@ interface Props {
   slug: string;
   title: string;
   description: string;
-  summary: string;
+  storySummary?: string;
   contentHtml: string;
   stack: string[];
   repository?: string;
@@ -33,7 +33,7 @@ interface Props {
 export default function Story({
   title,
   description,
-  summary,
+  storySummary,
   image,
   contentHtml,
   stack,
@@ -52,28 +52,7 @@ export default function Story({
         <meta property="og:image" content={image} key="og:image" />
       </Head>
       <h1 className="animate-slideUp">{title}</h1>
-      {summary ? (
-        /* Let's pretend that markdown isn't parsed manually to extract a link in case a summary contains one
-         * TODO: Find a way to improve this, maybe get rid of markdown files to manage these pages all together
-         */
-        <p
-          className="max-w-4xl my-8"
-          dangerouslySetInnerHTML={{
-            __html: summary
-              .split(' ')
-              .map((word) => {
-                const result = word.match(/\[(.*)]\((.*)\)/);
-                if (result) {
-                  return `<a href=${result[2]}>${result[1].replace(/\$/g, ' ')}</a>`;
-                }
-                return word;
-              })
-              .join(' '),
-          }}
-        />
-      ) : (
-        <p className="max-w-4xl my-8">{description}</p>
-      )}
+      <Summary summary={storySummary} fallback={description} />
       <div className="flex flex-row gap-x-24 my-8">
         <InfoBlock title="Stack">
           {stack?.map((tech) => (
@@ -99,5 +78,18 @@ function InfoBlock({ title, children }: { title: string; children: ReactNode }):
       <strong className="text-secondary mb-2">{title}</strong>
       {children}
     </div>
+  );
+}
+
+function Summary({ summary, fallback }: { summary?: string; fallback?: string }): JSX.Element {
+  return summary ? (
+    <p
+      className="max-w-4xl my-8"
+      dangerouslySetInnerHTML={{
+        __html: summary,
+      }}
+    />
+  ) : (
+    <p className="max-w-4xl my-8">{fallback}</p>
   );
 }
