@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Progress } from 'reactstrap';
 import styles from './index.module.css';
 
@@ -12,7 +12,7 @@ function getPercentualEduProgress(): number {
 }
 
 export default function EduProgress(): JSX.Element {
-  const [percentage, setPercentage] = React.useState(0);
+  const [percentage, setPercentage] = useState(0);
   const tryUpdatePercentage = (): void => {
     const newPercentage = getPercentualEduProgress();
     if (newPercentage > percentage) {

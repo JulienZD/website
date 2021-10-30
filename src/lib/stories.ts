@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import remark from 'remark';
+import { remark } from 'remark';
 import html from 'remark-html';
 import images from 'remark-images';
 import { StoryMeta } from '../types';
