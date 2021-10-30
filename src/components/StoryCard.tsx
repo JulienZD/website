@@ -21,7 +21,7 @@ export default function StoryCard({ title, description, image, slug, linkText }:
           style={{
             backgroundImage: `url(${image})`,
           }}
-          className="bg-cover bg-top h-72 rounded-t-xl rounded-b transition-transform duration-[250ms] transform group-focus:scale-[1.02] group-hover:scale-[1.02]"
+          className="bg-cover bg-top h-72 rounded-t-xl rounded-b transition-transform duration-[250ms] group-focus:scale-[1.02] group-hover:scale-[1.02]"
         />
         <Link href={`/story/${slug}`}>
           <a ref={linkRef} aria-label={`Read more about ${title}`}>

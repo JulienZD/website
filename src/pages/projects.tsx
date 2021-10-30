@@ -6,7 +6,7 @@ import { StoryMeta } from '../types';
 import StoryGrid from '@components/StoryGrid';
 import Contact from '@components/Contact';
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const projectsData = getStoriesData();
   return {
     props: {
