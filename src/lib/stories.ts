@@ -28,7 +28,7 @@ export function getStoriesData(homepage?: boolean): StoryMeta[] {
     };
   }) as StoryMeta[];
   return (homepage ? stories.filter((story) => story.onHomepage) : stories).sort((a, b) => {
-    if (a.order! > b.order!) return 1;
+    if (a.order && b.order && a.order > b.order) return 1;
     return -1;
   });
 }
@@ -44,7 +44,7 @@ export function getStorySlugs(): { params: { slug: string } }[] {
   });
 }
 
-export async function getStoryData(slug: string) {
+export async function getStoryData(slug: string): Promise<{ slug: string; contentHtml: string; [x: string]: unknown }> {
   const matterResult = getFileMatter(slug);
 
   const processedContent = await remark().use(html).use(images).process(matterResult.content);
