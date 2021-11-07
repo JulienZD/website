@@ -11,7 +11,13 @@ export default function Hero(): JSX.Element {
       <div className="container block lg:hidden">
         <picture>
           <source srcSet="/images/hero-og.webp" type="image/webp" />
-          <img className="animate-slideUp rounded-t-xl" src="/images/hero-og.jpg" alt="" height={360} loading="lazy" />
+          <img
+            className="animate-slideUp rounded-t-xl"
+            src="/images/hero-og.jpg"
+            alt=""
+            height={360}
+            decoding="async"
+          />
         </picture>
       </div>
     </>
