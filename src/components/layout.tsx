@@ -9,16 +9,21 @@ interface Props {
   home?: boolean;
 }
 
-export default function Layout({ children, home, title = "Hi, I'm Julien" }: Props): JSX.Element {
+const DEFAULT_TITLE = 'Julien Zapata Duque';
+
+export default function Layout({ children, home, title = DEFAULT_TITLE }: Props): JSX.Element {
   const description =
     "For the past few years I've been playing around with various technologies. I'm eager to learn new things and am always on the lookout for a new challenge.";
+
+  const headTitle = title === DEFAULT_TITLE ? title : `${title} | Julien Zapata Duque`;
+
   return (
     <>
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{`${title} | Julien Zapata Duque`}</title>
-        <meta property="og:title" content={`${title} | Julien Zapata Duque`} />
+        <title>{headTitle}</title>
+        <meta property="og:title" content={headTitle} />
         <meta name="description" content={description} key="description" />
         <meta property="og:description" content={description} key="og:description" />
         <meta property="og:image" content="/images/hero-og.jpg" key="og:image" />
