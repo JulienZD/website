@@ -50,29 +50,31 @@ export async function getStoryData(slug: string): Promise<{ slug: string; conten
   const processedContent = await remark().use(html).use(images).process(matterResult.content);
   const contentHtml = processedContent.toString();
 
-  if (matterResult.data.summary) {
-    // Let's pretend that markdown isn't parsed manually to format links in case the summary contains one
-    if (!matterResult.data.summary.includes('](')) {
-      matterResult.data.storySummary = matterResult.data.summary;
-    } else {
-      matterResult.data.storySummary = matterResult.data.summary
-        .split(' ')
-        .map((word: string) => {
-          const result = word.match(/\[(.*)]\((.*)\)/);
-          if (result) {
-            return `<a href=${result[2]}>${result[1].replace(/\$/g, ' ')}</a>`;
-          }
-          return word;
-        })
-        .join(' ');
-    }
-
-    delete matterResult.data.summary;
-  }
+  const { summary, ...matterResultData } = matterResult.data;
 
   return {
     slug,
     contentHtml,
-    ...matterResult.data,
+    ...matterResultData,
+    ...(summary ? { storySummary: renderMarkdownLinksAsHtml(summary) } : {}),
   };
+}
+
+function renderMarkdownLinksAsHtml(markdown: string): string {
+  return markdown.split(' ').map(renderMarkdownLinkAsHtml).join(' ');
+}
+
+const MARKDOWN_LINK_LIKE_REGEX = /\[(.*)]\((.*)\)/;
+
+function renderMarkdownLinkAsHtml(word: string): string {
+  const markdownLinkLike = word.match(MARKDOWN_LINK_LIKE_REGEX);
+  if (!markdownLinkLike) {
+    return word;
+  }
+
+  const [_rawMarkdown, linkText, href] = markdownLinkLike;
+
+  const isExternal = href.startsWith('http');
+
+  return `<a href="${href}" ${isExternal ? 'target="_blank"' : ''}>${linkText.replaceAll('$', ' ')}</a>`;
 }
