@@ -20,7 +20,14 @@ export default function About({ scrollTo }: { scrollTo: RefObject<HTMLDivElement
             <Highlight>Julien Zapata Duque</Highlight>
           </h1>
           <Socials />
-          <p>I'm a {AGE}-year-old software developer from The Netherlands. My current focus lies in web development.</p>
+          <p>
+            I'm a {AGE}-year-old software developer from The Netherlands. My current focus lies in web development. I'm
+            currently working at{' '}
+            <Link href="https://hoorayhr.io">
+              <a className="link-animated-hover">HoorayHR</a>
+            </Link>
+            .
+          </p>
           <p>
             I'm passionate about all things software development. I'm always reading and learning about new subjects in
             my free time. In college I've learned to make Java applications and do full-stack web development with .NET
