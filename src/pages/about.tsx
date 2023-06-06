@@ -30,15 +30,15 @@ export default function About(): JSX.Element {
         stopped because I couldn't find a real use for it in my daily life.
       </p>
       <p className="mt-2">
-        A year or two went by without much change until one day, when I was working at a local computer repair shop,
-        where I was introduced to web development. They had recently hired a new guy to rebuild their website from the
+        A year or two went by without much change, until one day, when I was working at a local computer repair shop,
+        where I was introduced to web development. They had recently hired someone to rebuild their website from the
         ground up and I was asked if I wanted to look over his shoulder as he worked. While I couldn't understand much
         of the code, I enjoyed the process around web development. So much that I started learning it in my free time
         with the help of online courses.
       </p>
       <p className="mt-2">
         At the age of 21 I decided to go to college to study Software Engineering (you can view my college progress
-        below!). It was there where my love for software development has really made it's home. After a{' '}
+        below!). It was there where my love for software development has really made its home. After a{' '}
         <Link href="/story/neighborhood">
           <a className="link-animated-hover">full-stack web development project</a>
         </Link>{' '}
