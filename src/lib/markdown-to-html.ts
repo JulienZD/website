@@ -18,7 +18,7 @@ function addBlankTargets(): (tree: Parent) => void {
         node.data = {
           ...(node.data ?? {}),
           hProperties: {
-            ...(node.data?.hProperties ?? {}),
+            ...((node.data?.hProperties as Record<string, unknown>) ?? {}),
             target: '_blank',
           },
         };
