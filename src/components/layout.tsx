@@ -37,11 +37,15 @@ export default function Layout({ children, home, title = DEFAULT_TITLE }: Props)
       <footer className="mt-auto text-right py-3 pr-4">
         <div className="flex justify-end">
           <Link href="https://colors.jzd.me/">
-            <a className="link-animated-hover">Preview Color Combinations</a>
+            <a className="link-animated-hover" target="_blank">
+              Preview Color Combinations
+            </a>
           </Link>
-          <a className="link-animated-hover" href="https://github.com/JulienZD/website">
-            Source
-          </a>
+          <Link href="https://github.com/JulienZD/website">
+            <a className="link-animated-hover" target="_blank">
+              Source
+            </a>
+          </Link>
         </div>
       </footer>
     </>

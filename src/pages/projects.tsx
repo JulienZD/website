@@ -33,7 +33,9 @@ export default function Projects({ projectsData }: Props): JSX.Element {
       <p>
         Note: This list isn't up-to-date. Check my{' '}
         <Link href="https://github.com/JulienZD/">
-          <a className="link-animated-hover">Github</a>
+          <a className="link-animated-hover" target="_blank">
+            Github
+          </a>
         </Link>{' '}
         to see what I'm up to.
       </p>

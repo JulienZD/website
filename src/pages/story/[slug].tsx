@@ -62,7 +62,13 @@ export default function Story({
           ))}
         </InfoBlock>
         <InfoBlock title="Code">
-          {repository ? <a href={repository}>Repository</a> : <p className="my-0">Not available</p>}
+          {repository ? (
+            <a href={repository} target="_blank">
+              Repository
+            </a>
+          ) : (
+            <p className="my-0">Not available</p>
+          )}
         </InfoBlock>
       </div>
       {image && <img src={image} alt="" width={1024} height={576} className="rounded-t-xl" />}
