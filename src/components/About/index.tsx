@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Hero from '@components/Hero';
 import Highlight from '@components/Highlight';
-import { ChevronDown, ChevronRight, GitHub, Linkedin, Twitter } from 'react-feather';
+import { ChevronDown, ChevronRight, GitHub, Linkedin } from 'react-feather';
 import styles from './index.module.css';
 import { RefObject } from 'react';
 import { AGE } from '@lib/constants';
@@ -77,14 +77,6 @@ function Socials(): JSX.Element {
         title="Connect with me on LinkedIn"
       >
         <Linkedin />
-      </a>
-      <a
-        className={socialClass}
-        href="https://twitter.com/JulienIsMe"
-        aria-label="Follow me on Twitter"
-        title="Follow me on Twitter"
-      >
-        <Twitter />
       </a>
     </div>
   );
