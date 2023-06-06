@@ -3,8 +3,8 @@ import Hero from '@components/Hero';
 import Highlight from '@components/Highlight';
 import { ChevronDown, ChevronRight, GitHub, Linkedin, Twitter } from 'react-feather';
 import styles from './index.module.css';
-import { AGE } from '@lib/calculateAge';
 import { RefObject } from 'react';
+import { AGE } from '@lib/constants';
 
 export default function About({ scrollTo }: { scrollTo: RefObject<HTMLDivElement> }): JSX.Element {
   return (

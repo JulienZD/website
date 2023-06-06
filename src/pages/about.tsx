@@ -1,9 +1,11 @@
+import Contact from '@components/Contact';
+import EduProgress from '@components/EduProgress';
+import Layout from '@components/layout';
+import { AGE, GRADUATION_DATE } from '@lib/constants';
 import Head from 'next/head';
 import Link from 'next/link';
-import Layout from '@components/layout';
-import { AGE } from '@lib/calculateAge';
-import EduProgress from '@components/EduProgress';
-import Contact from '@components/Contact';
+
+const hasGraduated = new Date() > GRADUATION_DATE;
 
 export default function About(): JSX.Element {
   return (
@@ -50,8 +52,14 @@ export default function About(): JSX.Element {
         <h3 className="mb-2">Software Engineering Bachelor's degree</h3>
         <EduProgress />
         <p className="mt-2">
-          I'm due to graduate on{' '}
-          {new Date(2023, 5, 20).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}.
+          {hasGraduated ? (
+            "I've graduated! 🎉"
+          ) : (
+            <>
+              I'm due to graduate on{' '}
+              {GRADUATION_DATE.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}.
+            </>
+          )}
         </p>
       </section>
       <Contact />
