@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Hero from '@components/Hero';
 import Highlight from '@components/Highlight';
-import { ChevronDown, ChevronRight, GitHub, Linkedin, Twitter } from 'react-feather';
+import { ChevronDown, ChevronRight, GitHub, Linkedin } from 'react-feather';
 import styles from './index.module.css';
 import { RefObject } from 'react';
 import { AGE } from '@lib/constants';
@@ -24,7 +24,9 @@ export default function About({ scrollTo }: { scrollTo: RefObject<HTMLDivElement
             I'm a {AGE}-year-old software developer from The Netherlands. My current focus lies in web development. I'm
             currently working at{' '}
             <Link href="https://hoorayhr.io">
-              <a className="link-animated-hover">HoorayHR</a>
+              <a className="link-animated-hover" target="_blank">
+                HoorayHR
+              </a>
             </Link>
             .
           </p>
@@ -67,24 +69,23 @@ function Socials(): JSX.Element {
     'mx-4 first:ml-0 last:mr-0 focus-visible:ring-2 focus-visible:ring-secondary-dark hover:text-[#acacac] transition-colors duration-200';
   return (
     <div id={styles.socials} className="flex my-4">
-      <a className={socialClass} href="https://github.com/JulienZD" aria-label="View my GitHub" title="View my GitHub">
+      <a
+        className={socialClass}
+        href="https://github.com/JulienZD"
+        target="_blank"
+        aria-label="View my GitHub"
+        title="View my GitHub"
+      >
         <GitHub />
       </a>
       <a
         className={socialClass}
         href="https://linkedin.com/in/julienzapataduque/"
+        target="_blank"
         aria-label="Connect with me on LinkedIn"
         title="Connect with me on LinkedIn"
       >
         <Linkedin />
-      </a>
-      <a
-        className={socialClass}
-        href="https://twitter.com/JulienIsMe"
-        aria-label="Follow me on Twitter"
-        title="Follow me on Twitter"
-      >
-        <Twitter />
       </a>
     </div>
   );

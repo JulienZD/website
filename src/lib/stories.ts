@@ -1,10 +1,8 @@
 import * as fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
-import images from 'remark-images';
+import path from 'path';
 import { StoryMeta } from '../types';
+import { renderMarkdownToHtml } from './markdown-to-html';
 
 const storiesDirectory = path.join(process.cwd(), 'src/data/stories');
 
@@ -47,32 +45,12 @@ export function getStorySlugs(): { params: { slug: string } }[] {
 export async function getStoryData(slug: string): Promise<{ slug: string; contentHtml: string; [x: string]: unknown }> {
   const matterResult = getFileMatter(slug);
 
-  const processedContent = await remark().use(html).use(images).process(matterResult.content);
-  const contentHtml = processedContent.toString();
-
-  if (matterResult.data.summary) {
-    // Let's pretend that markdown isn't parsed manually to format links in case the summary contains one
-    if (!matterResult.data.summary.includes('](')) {
-      matterResult.data.storySummary = matterResult.data.summary;
-    } else {
-      matterResult.data.storySummary = matterResult.data.summary
-        .split(' ')
-        .map((word: string) => {
-          const result = word.match(/\[(.*)]\((.*)\)/);
-          if (result) {
-            return `<a href=${result[2]}>${result[1].replace(/\$/g, ' ')}</a>`;
-          }
-          return word;
-        })
-        .join(' ');
-    }
-
-    delete matterResult.data.summary;
-  }
+  const { summary, ...matterResultData } = matterResult.data;
 
   return {
     slug,
-    contentHtml,
-    ...matterResult.data,
+    contentHtml: await renderMarkdownToHtml(matterResult.content),
+    ...matterResultData,
+    ...(summary ? { storySummary: await renderMarkdownToHtml(summary) } : {}),
   };
 }
