@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Progress } from 'reactstrap';
 import styles from './index.module.css';
+import { GRADUATION_DATE } from '@lib/constants';
 
 function getPercentualEduProgress(): number {
   const startDate = new Date(2019, 8, 1);
-  const endDate = new Date(2023, 5, 20);
-  const totalEduTime = endDate.getTime() - startDate.getTime();
+  const totalEduTime = GRADUATION_DATE.getTime() - startDate.getTime();
   const elapsedTime = Date.now() - startDate.getTime();
   const percentage = (elapsedTime / totalEduTime) * 100;
-  return Number(percentage.toFixed(2));
+
+  return Number(Math.min(100, percentage).toFixed(2));
 }
 
 export default function EduProgress(): JSX.Element {

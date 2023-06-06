@@ -3,8 +3,8 @@ import Hero from '@components/Hero';
 import Highlight from '@components/Highlight';
 import { ChevronDown, ChevronRight, GitHub, Linkedin, Twitter } from 'react-feather';
 import styles from './index.module.css';
-import { AGE } from '@lib/calculateAge';
 import { RefObject } from 'react';
+import { AGE } from '@lib/constants';
 
 export default function About({ scrollTo }: { scrollTo: RefObject<HTMLDivElement> }): JSX.Element {
   return (
@@ -21,8 +21,12 @@ export default function About({ scrollTo }: { scrollTo: RefObject<HTMLDivElement
           </h1>
           <Socials />
           <p>
-            I'm a {AGE}-year-old Software Engineering student from The Netherlands. My current focus lies in web
-            development.
+            I'm a {AGE}-year-old software developer from The Netherlands. My current focus lies in web development. I'm
+            currently working at{' '}
+            <Link href="https://hoorayhr.io">
+              <a className="link-animated-hover">HoorayHR</a>
+            </Link>
+            .
           </p>
           <p>
             I'm passionate about all things software development. I'm always reading and learning about new subjects in

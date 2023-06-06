@@ -13,6 +13,13 @@ export default function Projects({ projects, projectsRef }: Props): JSX.Element 
     <div ref={projectsRef} id="projects" className={`container mt-24 lg:mt-0 animate-slideUp`}>
       <h2 className="mb-4 text-4xl">Projects</h2>
       <p>There's never a time when I'm not working on something. Take a look at my recent endeavors.</p>
+      <p>
+        Note: This list isn't up-to-date. Check my{' '}
+        <Link href="https://github.com/JulienZD/">
+          <a className="link-animated-hover">Github</a>
+        </Link>{' '}
+        to see what I'm up to.
+      </p>
       <StoryGrid stories={projects.slice(0, 4)} />
       {projects.length > 4 && (
         <Link href="/projects">

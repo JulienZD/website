@@ -1,10 +1,11 @@
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
+import Contact from '@components/Contact';
+import StoryGrid from '@components/StoryGrid';
 import Layout from '@components/layout';
 import { getStoriesData } from '@lib/stories';
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
 import { StoryMeta } from '../types';
-import StoryGrid from '@components/StoryGrid';
-import Contact from '@components/Contact';
 
 export const getStaticProps: GetStaticProps = async () => {
   const projectsData = getStoriesData();
@@ -29,6 +30,13 @@ export default function Projects({ projectsData }: Props): JSX.Element {
       </Head>
       <h1 className="animate-slideUp mb-4">All projects</h1>
       <p className="mb-8">{description}</p>
+      <p>
+        Note: This list isn't up-to-date. Check my{' '}
+        <Link href="https://github.com/JulienZD/">
+          <a className="link-animated-hover">Github</a>
+        </Link>{' '}
+        to see what I'm up to.
+      </p>
       <StoryGrid stories={projectsData} />
       <Contact />
     </Layout>
