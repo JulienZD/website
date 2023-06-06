@@ -1,10 +1,8 @@
 import * as fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
-import images from 'remark-images';
+import path from 'path';
 import { StoryMeta } from '../types';
+import { renderMarkdownToHtml } from './markdown-to-html';
 
 const storiesDirectory = path.join(process.cwd(), 'src/data/stories');
 
@@ -47,34 +45,12 @@ export function getStorySlugs(): { params: { slug: string } }[] {
 export async function getStoryData(slug: string): Promise<{ slug: string; contentHtml: string; [x: string]: unknown }> {
   const matterResult = getFileMatter(slug);
 
-  const processedContent = await remark().use(html).use(images).process(matterResult.content);
-  const contentHtml = processedContent.toString();
-
   const { summary, ...matterResultData } = matterResult.data;
 
   return {
     slug,
-    contentHtml,
+    contentHtml: await renderMarkdownToHtml(matterResult.content),
     ...matterResultData,
-    ...(summary ? { storySummary: renderMarkdownLinksAsHtml(summary) } : {}),
+    ...(summary ? { storySummary: await renderMarkdownToHtml(summary) } : {}),
   };
-}
-
-function renderMarkdownLinksAsHtml(markdown: string): string {
-  return markdown.split(' ').map(renderMarkdownLinkAsHtml).join(' ');
-}
-
-const MARKDOWN_LINK_LIKE_REGEX = /\[(.*)]\((.*)\)/;
-
-function renderMarkdownLinkAsHtml(word: string): string {
-  const markdownLinkLike = word.match(MARKDOWN_LINK_LIKE_REGEX);
-  if (!markdownLinkLike) {
-    return word;
-  }
-
-  const [_rawMarkdown, linkText, href] = markdownLinkLike;
-
-  const isExternal = href.startsWith('http');
-
-  return `<a href="${href}" ${isExternal ? 'target="_blank"' : ''}>${linkText.replaceAll('$', ' ')}</a>`;
 }

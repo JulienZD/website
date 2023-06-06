@@ -89,7 +89,7 @@ function InfoBlock({ title, children }: { title: string; children: ReactNode }):
 
 function Summary({ summary, fallback }: { summary?: string; fallback?: string }): JSX.Element {
   return summary ? (
-    <p
+    <div
       className="max-w-4xl my-8"
       dangerouslySetInnerHTML={{
         __html: summary,
